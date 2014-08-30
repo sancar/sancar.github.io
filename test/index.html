@@ -1,0 +1,558 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width">
+<style type="text/css">
+@-webkit-keyframes uil-ring-anim {
+  0% {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes uil-ring-anim {
+  0% {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes uil-ring-anim {
+  0% {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-ms-keyframes uil-ring-anim {
+  0% {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes uil-ring-anim {
+  0% {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes uil-ring-anim {
+  0% {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes uil-ring-anim {
+  0% {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes uil-ring-anim {
+  0% {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.uil-ring-css {
+  background: none;
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+.uil-ring-css > div {
+  position: absolute;
+  display: block;
+  text-align: center;
+  width: 160px;
+  height: 160px;
+  top: 20px;
+  left: -80px;
+  border-radius: 80px;
+  box-shadow: 0 6px 0 0 #000000;
+  -ms-animation: uil-ring-anim 1s linear infinite;
+  -moz-animation: uil-ring-anim 1s linear infinite;
+  -webkit-animation: uil-ring-anim 1s linear infinite;
+  -o-animation: uil-ring-anim 1s linear infinite;
+  animation: uil-ring-anim 1s linear infinite;
+}
+
+@font-face {
+ font-family: Shaikh Hamdullah Mushaf;
+ src: url("fonts/ShaikhHamdullahMushaf.eot") /* EOT file for IE */
+}
+@font-face {
+ font-family: Shaikh Hamdullah Mushaf;
+ src: url("fonts/ShaikhHamdullahMushaf.ttf") /* TTF file for CSS3 browsers */
+}
+.arapcaMetin{
+  font-family: Shaikh Hamdullah Mushaf;
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+</style>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="js/jquery-ui.css">
+</head>
+<body>
+
+<div class="container">
+<br>
+<div class="row">
+  <div class="col-xs-2"></div>
+  <div class="col-xs-8">
+    <h3 class="arapcaMetin text-center" id="ready">
+      <div class='uil-ring-css' style='transform:scale(0.5);  margin: auto; width: 1%;'><div></div></div>
+    </h3>
+  </div>
+  <div class="col-xs-2">
+    <div id="settingsOpenButton" style="display:none;" class="btn btn-default btn-lg glyphicon glyphicon-cog"></div>
+  </div>
+</div>
+<br>
+</div>
+
+<div id="settingsScreen" class="container" style="display:none;">
+<div  class="row" align="center">
+  <div class="col-xs-12">
+    <button id="backSure" type="button" class="btn btn-default btn-lg">&laquo;</button>
+    <div class="btn-group">
+      <button type="button" class="btn sure btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Fatiha
+      </button>
+      <ul id="sureDropdown" class="dropdown-menu scrollable-menu"></ul>
+    </div>
+    <button id="nextSure" type="button" class="btn btn-default btn-lg">&raquo;</button>
+  </div>
+</div>
+<br>
+<div  class="row" align="center">
+  <div class="col-xs-12">
+    <button type="button" class="btn typeButton btn-default btn-lg">ayet ayet</button>
+    <button type="button" class="btn typeButton btn-default btn-lg">kelime kelime</button>
+  </div>
+</div>
+<br>
+<div  class="row" align="center">
+  <div class="col-xs-12">
+    <button type="button" class="btn randomButton btn-default btn-lg">sirayla</button>
+    <button type="button" class="btn randomButton btn-default btn-lg">rastgele</button>
+  </div>
+</div>
+<br>
+<div  class="row" align="center">
+  <div class="col-xs-2">
+    <button id="backAyet" type="button" class="btn btn-default btn-lg">&laquo;</button>
+  </div>
+  <div class="col-xs-8">
+      <div id="chooseAyet" style="position: relative; margin-left: 18px; margin-top: 14px; font-size: 30px;"></div>
+  </div>
+  <div class="col-xs-2">
+    <button id="nextAyet" type="button" class="btn btn-default btn-lg">&raquo;</button>
+  </div>
+</div>
+<br>
+<div class="row" align="center">
+  <div class="col-xs-12">
+      Ben <a class="sure">Fatiha</a> suresinin <a id="ayet">1 ile 7</a> arasini <a id="type">ayet ayet</a>  ve <a id="random">sirayla</a> calisacagim.
+  </div>
+</div>
+<br>
+<div  class="row" align="center">
+  <div class="col-xs-12">
+      <div id="settingsCloseButton"  class="btn btn-default btn-lg" aria-label="...">Tamam</div>
+  </div>
+</div>
+<br>
+</div>
+
+<div id="statisticsScreen" class="container" style="display:none;">
+    <div  class="row" align="center">
+        <div class="col-xs-6">Dogru cevaplanan : <a id="numQuestionsAnswered"></a></div>
+        <div class="col-xs-6">Kalan : <a id="numQuestionsLeft"></a></div>
+    </div>
+</div>
+
+<div id="questionsScreen" class="container" style="display:none;">
+  <div  class="row" align="center">
+      <div class="col-xs-12" id="question"></div>
+      <div class="col-xs-12" id="questionRead"></div>
+  </div>
+  <div  class="row" align="center">
+    <div class="col-xs-12">
+      <button type="button" class="btn showAnswerButton btn-default btn-lg">Cevap</button>
+    </div>
+  </div>
+</div>
+<div id="answerScreen" class="container" style="display:none;">
+  <div class="row" align="center">
+      <div class="col-xs-12" id="answer"></div>
+  </div>
+  <div  class="row" align="center">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-4"><button type="button" id="skipButton" class="btn btn-default btn-lg">Bilemedim</button></div>
+    <div class="col-xs-2"></div>
+    <div class="col-xs-4"><button type="button" id="correctAnswerButton" class="btn btn-default btn-lg">Bildim</button></div>
+    <div class="col-xs-1"></div>
+  </div>
+</div>
+
+<div id="congratsScreen" class="container" style="display:none;">
+  <div class="row" align="center">
+      <div class="col-xs-12"><h1>TEBRIKLER</h1></div>
+  </div>
+</div>
+
+</body>
+</html>
+
+<script src="js/jquery-1.12.1.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.ui.touch-punch.min.js"></script>
+<script>
+
+var seciliSure = 0
+var seciliAyetBegin = 1
+var seciliAyetEnd = 7
+var seciliType = "ayet ayet" // ayet ayet,kelime kelime
+var seciliRandom = "sirayla" //sirayla,rastgele
+
+var turkceAyet
+var arapcaAyet
+var sureler
+var turkceKelime
+var arapcaKelime
+var transliterasyonAyet
+var transliterasyonKelime
+
+var sorular
+var sorularOkunus
+var cevaplar
+var numQuestionsAnswered
+var numQuestions
+var soruIndex
+
+var surelerFuture = $.getJSON( "./sure.json")
+var turkceAyetFuture = $.getJSON( "./turkceAyet.json")
+var arapcaAyetFuture = $.getJSON( "./arapcaAyet.json")
+var turkceKelimeFuture = $.getJSON( "./turkceKelime.json")
+var arapcaKelimefuture = $.getJSON( "./arapcaKelime.json")
+var transliterasyonAyetFuture = $.getJSON( "./transliterasyonAyet.json")
+var transliterasyonKelimeFuture = $.getJSON( "./transliterasyonKelime.json")
+
+// 6235 = 29 * 5 * 43 = 145 * 43
+$.when(turkceAyetFuture, arapcaAyetFuture, surelerFuture, turkceKelimeFuture , arapcaKelimefuture, transliterasyonAyetFuture, transliterasyonKelimeFuture)
+.then(function(v1, v2 , v3 , v4 , v5, v6, v7) {
+    turkceAyet = v1[0]
+    arapcaAyet = v2[0]
+    sureler = v3[0]
+    turkceKelime = v4[0]
+    arapcaKelime = v5[0]
+    transliterasyonAyet = v6[0]
+    transliterasyonKelime = v7[0]
+
+    var sd = ""
+    for(var i = 0 ; i < sureler.length; i++){
+      sd += "<li>"
+      sd += "<a href=\"#\">"
+      sd += sureler[i].sureAdi
+      sd += "</a>"
+      sd += "</li>"
+    }
+    $("#sureDropdown").html(sd);
+    $("#sureDropdown li a").click(function(event){
+      var sa = $(this).text()
+      var s = sureler.filter(function (n,i){
+        return n.sureAdi===sa;
+      });
+      seciliSure = s[0].sureNo - 1
+      seciliAyetBegin = 1
+      seciliAyetEnd = sureler[seciliSure].ayetNo
+      adjustSlider()
+    })
+    $("#ready").text(arapcaAyet[0].ayet);
+    $("#settingsScreen").show()
+    $("#settingsOpenButton").show()
+})
+
+$("#backSure").click(function(event) {
+  if(seciliSure == 0){
+    seciliSure = 113
+  } else {
+    seciliSure--
+  }
+  seciliAyetBegin = 1
+  seciliAyetEnd = sureler[seciliSure].ayetNo
+  adjustSlider()
+})
+
+$("#nextSure").click(function(event) {
+  if(seciliSure == 113){
+    seciliSure = 0
+  } else {
+    seciliSure++
+  }
+  seciliAyetBegin = 1
+  seciliAyetEnd = sureler[seciliSure].ayetNo
+  adjustSlider()
+})
+
+$("#backAyet").click(function(event) {
+  if(seciliAyetBegin != 1){
+    seciliAyetBegin--
+  }
+  adjustSlider()
+})
+
+$("#nextAyet").click(function(event) {
+  if(seciliAyetEnd != sureler[seciliSure].ayetNo){
+    seciliAyetEnd++
+  }
+  adjustSlider()
+})
+
+function adjustSlider(){
+  $( "#chooseAyet" ).slider( "option", "min", 1 );
+  if(seciliType == "kelime kelime" && seciliSure == 0){
+    if(seciliAyetBegin == 1){
+      seciliAyetBegin = 2
+    }
+    $( "#chooseAyet" ).slider( "option", "min", 2 );
+  }
+
+  $(".sure").text(sureler[seciliSure].sureAdi);
+  $( "#chooseAyet" ).slider( "option", "max", sureler[seciliSure].ayetNo );
+  $( "#chooseAyet" ).slider( "option", "values", [ seciliAyetBegin, seciliAyetEnd ] );
+  $( "#ayet" ).text( seciliAyetBegin + " ile " + seciliAyetEnd );
+}
+
+$("#chooseAyet").slider({
+  range: true,
+  min: 1,
+  max: 7,
+  values: [ 1, 7 ],
+  slide: function( event, ui ) {
+    $( "#ayet" ).text( ui.values[ 0 ] + " ile " + ui.values[ 1 ] );
+    seciliAyetBegin = ui.values[ 0 ]
+    seciliAyetEnd = ui.values[ 1 ]
+  }
+})
+
+$(".typeButton").click(function(event) {
+  seciliType = event.target.textContent
+  $("#type").text(event.target.textContent);
+  adjustSlider()
+})
+
+$(".randomButton").click(function(event) {
+  seciliRandom = event.target.textContent
+  $("#random").text(event.target.textContent);
+})
+
+$("#settingsCloseButton").click(function(event) {
+  $("#settingsScreen").hide("blind");
+  $("#questionsScreen").show("blind");
+
+  if(seciliType=="ayet ayet"){
+    sorular = secimFiltre(arapcaAyet)
+    sorularOkunus = secimFiltre(transliterasyonAyet)
+    cevaplar = secimFiltre(turkceAyet)
+  } else {
+    sorular = secimFiltre(arapcaKelime)
+    sorularOkunus = secimFiltre(transliterasyonKelime)
+    cevaplar = secimFiltre(turkceKelime)
+  }
+
+  if(seciliRandom=="rastgele"){
+    var pr = permutation(sorular.length)
+    permute(sorular, pr)
+    permute(sorularOkunus, pr)
+    permute(cevaplar, pr)
+  }
+  soruIndex = 0
+  $("#statisticsScreen").show("blind")
+  numQuestions = sorular.length
+  numQuestionsAnswered = 0
+
+  adjustStatistics()
+  showQuestion()
+})
+
+function adjustStatistics(){
+  $("#numQuestionsAnswered").text(numQuestionsAnswered)
+  $("#numQuestionsLeft").text(sorular.length)
+}
+
+$("#settingsOpenButton").click(function(event) {
+  $("#congratsScreen").hide("blind")
+  $("#statisticsScreen").hide("blind")
+  $("#questionsScreen").hide("blind")
+  $("#answerScreen").hide("blind")
+  $("#settingsScreen").hide("blind")
+  $("#settingsScreen").show("blind")
+
+})
+
+$(".showAnswerButton").click(function(event) {
+  showAnswer()
+})
+
+$("#correctAnswerButton").click(function(event) {
+  sorular.splice(soruIndex, 1)
+  sorularOkunus.splice(soruIndex, 1)
+  cevaplar.splice(soruIndex, 1)
+  numQuestionsAnswered++
+  adjustStatistics()
+  if(numQuestionsAnswered == numQuestions){
+    $("#answerScreen").hide("blind")
+    $("#congratsScreen").show("blind")
+  } else{
+    soruIndex = soruIndex % sorular.length
+    showQuestion()
+  }
+
+})
+
+$("#skipButton").click(function(event) {
+   soruIndex = (soruIndex + 1) % sorular.length
+   showQuestion()
+})
+
+function showQuestion(){
+  $(".showAnswerButton").show()
+  $("#answerScreen").hide("blind")
+  if(seciliType == "kelime kelime"){
+    $("#question").html("<h1  class=\"arapcaMetin\">" + sorular[soruIndex].kelime + "</h1>")
+    $("#questionRead").html("<h1>" + sorularOkunus[soruIndex].kelime + "</h1>")
+  } else {
+    $("#question").html("<h1 class=\"arapcaMetin\">" + sorular[soruIndex].ayet + "</h1>")
+    $("#questionRead").html("<h1>" + sorularOkunus[soruIndex].ayet + "</h1>")
+  }
+  $("#questionsScreen").show("blind")
+}
+
+function showAnswer(){
+  $(".showAnswerButton").hide()
+  if(seciliType == "kelime kelime"){
+    $("#answer").html("<h1>" + cevaplar[soruIndex].kelime + "</h1>")
+  }else{
+    $("#answer").html("<h1>" + cevaplar[soruIndex].ayet + "</h1>")
+  }
+  $("#answerScreen").show("blind")
+}
+
+//*** Logic utiliy methods **//
+
+function secimFiltre(dataJson){
+  var x = dataJson.filter(function (n,i){
+    return n.sureNo==(seciliSure+1) && n.ayetNo>=seciliAyetBegin && n.ayetNo<=seciliAyetEnd;
+  });
+  return x
+}
+
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length; i; i -= 1) {
+        j = Math.floor(Math.random() * i);
+        x = a[i - 1];
+        a[i - 1] = a[j];
+        a[j] = x;
+    }
+}
+
+function permutation( length ) {
+  var p = [], i;
+  for (i = 0; i < length; ++i) p[i] = i;
+  shuffle(p);
+  return p
+}
+
+function permute( a, p ) {
+  var r = [];
+  for (var i = 0; i < a.length; ++i)
+    r.push(a[p[i]]);
+  for (i = 0; i < a.length; ++i)
+    a[i] = r[i];
+}
+</script>
