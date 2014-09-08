@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hack it until you learn it</title>
+    <description>Lessons learned along the way. Experiences building java and cross platform c , c++ libraries.
+</description>
+    <link>http://sancar.github.io/</link>
+    <atom:link href="http://sancar.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Mon, 08 Sep 2014 16:16:21 +0300</pubDate>
+    <lastBuildDate>Mon, 08 Sep 2014 16:16:21 +0300</lastBuildDate>
+    <generator>Jekyll v2.3.0</generator>
+    
+      <item>
+        <title>A dark themed blog with jekkyl</title>
+        <description>&lt;p&gt;Hi everyone, I am starting my first blog with this one. I will be writing
+a new post when I learned anything new , find a new good product or figure out to
+deal with a  difficult problem. All these will be related to software, c, c++, java of course.&lt;/p&gt;
+
+&lt;p&gt;First thing I learned is how to build a blog with jekyll, hence the title.
+I came across &lt;a href=&quot;https://pages.github.com/&quot;&gt;github io pages&lt;/a&gt; in a couple of blogs that I was following.
+And heard that one of my coworkers is also using it and decided to give it a try.
+I am pleased with it so far. Writing blog with a familiar syntax(markdown) and publishing your posts with git push
+is really convenient. I don’t need any other tool or website to use my blog …. after
+the first setup.&lt;/p&gt;
+
+&lt;h3 id=&quot;static-website-generator-jekyll&quot;&gt; Static Website Generator: Jekyll&lt;/h3&gt;
+
+&lt;p&gt;I am using jekyll to generate my blogs. I will skip basics on building blog with jekyyl.
+It has already a nice website and a quick easy setup.
+Here is a &lt;a href=&quot;http://jekyllrb.com/docs/usage/&quot;&gt;link&lt;/a&gt; for the ones who are interested in basics.&lt;/p&gt;
+
+&lt;h3 id=&quot;theme&quot;&gt;Theme&lt;/h3&gt;
+
+&lt;p&gt;I searched a little bit on the web for a theme with black background. Why a dark theme?
+Well, I am a hacker. My IDE’s, my text editor, my desktop background is all with black theme.
+And I want my blog to look same.&lt;/p&gt;
+
+&lt;p&gt;And I found midnight theme for jekyll by  &lt;a href=&quot;http://twitter.com/#!/michigangraham&quot;&gt;mattgraham&lt;/a&gt;.
+You can find the original work from &lt;a href=&quot;https://github.com/mattgraham/Midnight&quot;&gt;here&lt;/a&gt;.
+I really like the colours and design. All I had to do is make it blog friendly. You can find latest
+changes I made from &lt;a href=&quot;https://github.com/sancar/sancar.github.io&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;comments&quot;&gt;Comments&lt;/h3&gt;
+
+&lt;p&gt;I also added comments to my blog. I used &lt;a href=&quot;https://disqus.com/&quot;&gt;disqus&lt;/a&gt; for this.
+It has integrations with common social plugins like facebook, google plus and it looks good with my dark theme.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 09 Sep 2014 02:36:09 +0300</pubDate>
+        <link>http://sancar.github.io/2014/09/09/A-dark-themed-blog-with-jekyll.html</link>
+        <guid isPermaLink="true">http://sancar.github.io/2014/09/09/A-dark-themed-blog-with-jekyll.html</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,15 @@
+# Site settings
+title: Hack it until you learn it
+email: sancar@hazelcast.com
+description: >
+  Lessons learned along the way.
+  Experiences building java and cross platform c , c++ libraries.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://sancar.github.io" # the base hostname & protocol for your site
+twitter_username: mskyounlu
+github_username:  sancar
+linkedin_url: "https://tr.linkedin.com/pub/mustafa-sancar-koyunlu/33/2a2/257/"
+linkedin_username: sancar
+
+# Build settings
+markdown: kramdown
