@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "A dark themed blog with jekkyl"
-date:   2014-09-08 23:36:09
+date:   2014-09-06
 ---
 
 Hi everyone, I am starting my first blog with this one. I will be writing

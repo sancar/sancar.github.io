@@ -6,9 +6,84 @@
 </description>
     <link>http://sancar.github.io/</link>
     <atom:link href="http://sancar.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 08 Sep 2014 16:16:21 +0300</pubDate>
-    <lastBuildDate>Mon, 08 Sep 2014 16:16:21 +0300</lastBuildDate>
+    <pubDate>Mon, 08 Sep 2014 17:54:33 +0300</pubDate>
+    <lastBuildDate>Mon, 08 Sep 2014 17:54:33 +0300</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
+    
+      <item>
+        <title>A new cross platform cpp IDE</title>
+        <description>&lt;p&gt;Today Jetbrains announced EAP with a
+&lt;a href=&quot;http://blog.jetbrains.com/clion/2014/09/05/clion-brand-new-ide-for-c-and-c-developers/&quot;&gt;blog post&lt;/a&gt;
+for their new shiny C/C++ IDE. Lets try it.&lt;/p&gt;
+
+&lt;p&gt;C-lion name sea lion logo , I see what you did there ;).&lt;/p&gt;
+
+&lt;p&gt;I am a fan of jetbeans. I am using intellij idea for java and I was using
+AppCode for C++ development. Appcode is also a jetbrains product. It is originally
+for objective-c but it also supports C++/C. But it has some problems with C++.
+Here is some problems with it before we look into new product:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;It sometimes had problems with finding where a method is used.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;It is based on XCode. Although it enables to make detailed configurations
+from Xcode UI, it makes the IDE only available on Mac. Which is a bummer, since
+I need IDE for my linux and windows environment too.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;It has a weird default behaviour when generating methods like getters and setters
+or when overriding methods. Even tough I try to generate the getter and setter in source file,
+it insists on generating them in header files. And sometimes it puts the generated
+code in wrong place and code ends up in a non compilable state.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Although version control support was working fine with a straight forward Xcode project, when
+I switch to CMake generated Xcode project, VCS failed to work. At the end, I could not integrate it properly
+wit CMake.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Lets see how C-lion is doing compared to these. First successes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;It has builtin CMake support. A huge plus for me since I am using CMake with my projects. I just opened a new project
+with my CMakeLists.txt and it works.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;It is cross platform. It means I can work with one IDE in mac, linux and Windows. Or am I? I need to test this on
+my Windows machine. I will update this part when I did.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Github integration is working fine out of the box.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;It has all the shortcuts as a usual Jetbrains product does.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now failures:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;It still has some weird behaviour when I try to generate methods in source file.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;It still have problems for finding references. It looks like problem related to templated classes.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Project seems promising. Since they are in Early Access stage, I am sure that problems will be fixed.
+I better take visit to their &lt;a href=&quot;http://youtrack.jetbrains.com/issues/CPP&quot;&gt;issue tracker&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 08 Sep 2014 00:00:00 +0300</pubDate>
+        <link>http://sancar.github.io/2014/09/08/A-new-cross-platform-cpp-IDE.html</link>
+        <guid isPermaLink="true">http://sancar.github.io/2014/09/08/A-new-cross-platform-cpp-IDE.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>A dark themed blog with jekkyl</title>
@@ -37,7 +112,8 @@ And I want my blog to look same.&lt;/p&gt;
 
 &lt;p&gt;And I found midnight theme for jekyll by  &lt;a href=&quot;http://twitter.com/#!/michigangraham&quot;&gt;mattgraham&lt;/a&gt;.
 You can find the original work from &lt;a href=&quot;https://github.com/mattgraham/Midnight&quot;&gt;here&lt;/a&gt;.
-I really like the colours and design. All I had to do is make it blog friendly. You can find latest
+Thanks mattgraham for his work. I really like the colours and design.
+All I had to do is make it blog friendly. You can find latest
 changes I made from &lt;a href=&quot;https://github.com/sancar/sancar.github.io&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;comments&quot;&gt;Comments&lt;/h3&gt;
@@ -45,9 +121,9 @@ changes I made from &lt;a href=&quot;https://github.com/sancar/sancar.github.io&
 &lt;p&gt;I also added comments to my blog. I used &lt;a href=&quot;https://disqus.com/&quot;&gt;disqus&lt;/a&gt; for this.
 It has integrations with common social plugins like facebook, google plus and it looks good with my dark theme.&lt;/p&gt;
 </description>
-        <pubDate>Tue, 09 Sep 2014 02:36:09 +0300</pubDate>
-        <link>http://sancar.github.io/2014/09/09/A-dark-themed-blog-with-jekyll.html</link>
-        <guid isPermaLink="true">http://sancar.github.io/2014/09/09/A-dark-themed-blog-with-jekyll.html</guid>
+        <pubDate>Sat, 06 Sep 2014 00:00:00 +0300</pubDate>
+        <link>http://sancar.github.io/2014/09/06/A-dark-themed-blog-with-jekyll.html</link>
+        <guid isPermaLink="true">http://sancar.github.io/2014/09/06/A-dark-themed-blog-with-jekyll.html</guid>
         
         
       </item>
