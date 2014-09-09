@@ -47,6 +47,11 @@ Now failures:
 * It still has same weird behaviour when I try to generate methods in source file.
 
 * It still has problems for finding references. It looks like problem related to templated classes.
+---**EDIT**---
+This [issue](http://youtrack.jetbrains.com/issue/CPP-254?replyTo=27-797411) is resolved.
+It seems that I need to add headers also to CMakeLists.txt even tough compiler does not require it.
+Fair enough, since it does not break anything to add headers to configurations.
+
 
 Project seems promising. Since they are in Early Access stage, I am sure that problems will be fixed.
 I better take visit to their [issue tracker](http://youtrack.jetbrains.com/issues/CPP).
