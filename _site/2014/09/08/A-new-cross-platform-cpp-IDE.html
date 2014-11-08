@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>A new cross platform cpp IDE</title>
+
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/pygment_trac.css">
+    <link rel="canonical" href="http://sancar.github.io/2014/09/08/A-new-cross-platform-cpp-IDE.html">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+</head>
+
+
+  <body>
+
+    <div class="wrapper">
+  <section>
+    <div id="title">
+      <h1>Hack it until you learn it</h1>
+      <p>Lessons learned along the way. Experiences building java and cross platform c , c++ libraries.
+</p>
+      <hr>
+      <span class="credits left"><a class="site-title" href="/">Home</a></span>
+      <span class="credits right"><a href="/about">About</a></span>
+    </div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">A new cross platform cpp IDE</h1>
+    <p class="post-meta">Sep 8, 2014</p>
+  </header>
+
+  <article class="post-content">
+    <p>Today Jetbrains announced EAP with a
+<a href="http://blog.jetbrains.com/clion/2014/09/05/clion-brand-new-ide-for-c-and-c-developers/">blog post</a>
+for their new shiny C/C++ IDE. Lets try it.</p>
+
+<p>C-lion name sea lion logo , I see what you did there ;).</p>
+
+<p>I am a fan of jetbeans. I am using intellij idea for java and I was using
+AppCode for C++ development. Appcode is also a jetbrains product. It is originally
+for objective-c but it also supports C++/C. But it has some problems with C++.
+Here is some problems with it before we look into new product:</p>
+
+<ul>
+  <li>
+    <p>It sometimes had problems with finding where a method is used.</p>
+  </li>
+  <li>
+    <p>It is based on XCode. Although it enables to make detailed configurations
+from Xcode UI, it makes the IDE only available on Mac. Which is a bummer, since
+I need IDE for my linux and windows environment too.</p>
+  </li>
+  <li>
+    <p>It has a weird default behaviour when generating methods like getters and setters
+or when overriding methods. Even tough I try to generate the getter and setter in source file,
+it insists on generating them in header files. And sometimes it puts the generated
+code in wrong place and code ends up in a non compilable state.</p>
+  </li>
+  <li>
+    <p>Although version control support was working fine with a straight forward Xcode project, when
+I switch to CMake generated Xcode project, VCS failed to work. At the end, I could not integrate it properly
+wit CMake.</p>
+  </li>
+</ul>
+
+<p>Lets see how C-lion is doing compared to these. First successes:</p>
+
+<ul>
+  <li>
+    <p>It has builtin CMake support. A huge plus for me since I am using CMake with my projects. I just opened a new project
+with my CMakeLists.txt and it works.</p>
+  </li>
+  <li>
+    <p>It is cross platform. It means I can work with one IDE in mac, linux and Windows. Or am I? I need to test this on
+my Windows machine. I will update this part when I did.</p>
+  </li>
+  <li>
+    <p>Github integration is working fine out of the box.</p>
+  </li>
+  <li>
+    <p>It has all the shortcuts as a usual Jetbrains product does.</p>
+  </li>
+</ul>
+
+<p>Now failures:</p>
+
+<ul>
+  <li>
+    <p>It still has same weird behaviour when I try to generate methods in source file.</p>
+  </li>
+  <li>
+    <p>It still has problems for finding references. It looks like problem related to templated classes.
+—<strong>EDIT</strong>—
+This <a href="http://youtrack.jetbrains.com/issue/CPP-254?replyTo=27-797411">issue</a> is resolved.
+It seems that I need to add headers also to CMakeLists.txt even tough compiler does not require it.
+Fair enough, since it does not break anything to add headers to configurations.</p>
+  </li>
+</ul>
+
+<p>Project seems promising. Since they are in Early Access stage, I am sure that problems will be fixed.
+I better take visit to their <a href="http://youtrack.jetbrains.com/issues/CPP">issue tracker</a>.</p>
+
+  </article>
+</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'sancargithubio'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+      </div>
+    </div>
+
+          <div id="title">
+        <br>
+        <br>
+        <hr>
+        <span class="credits left">Github&nbsp;&nbsp;&nbsp;:&nbsp;<a href="https://github.com/sancar">sancar</a></span>
+        <span class="credits right">Hosted on GitHub Pages — Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        <br>
+        <span class="credits left">Twitter&nbsp;&nbsp;:&nbsp;<a href="https://twitter.com/mskyounlu">mskyounlu</a></span>
+        <br>
+        <span class="credits left">Email&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<a href="mailto:sancar@hazelcast.com">sancar@hazelcast.com</a></span>
+        <br>
+        <span class="credits left">Linkedin&nbsp;:&nbsp;<a href="https://tr.linkedin.com/pub/mustafa-sancar-koyunlu/33/2a2/257/">sancar</a></span>
+      </div>
+      <div>
+      <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+      </div>
+  </section>
+</div>
+
+
+  </body>
+
+</html>

@@ -6,9 +6,125 @@
 </description>
     <link>http://sancar.github.io/</link>
     <atom:link href="http://sancar.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 09 Sep 2014 20:05:47 +0300</pubDate>
-    <lastBuildDate>Tue, 09 Sep 2014 20:05:47 +0300</lastBuildDate>
-    <generator>Jekyll v2.3.0</generator>
+    <pubDate>Sat, 08 Nov 2014 21:11:22 +0200</pubDate>
+    <lastBuildDate>Sat, 08 Nov 2014 21:11:22 +0200</lastBuildDate>
+    <generator>Jekyll v2.5.0</generator>
+    
+      <item>
+        <title>How to tackle segmentation fault or abort in C/C++</title>
+        <description>&lt;p&gt;Segmentation fault or abort is a nightmare for c, c++ developers especially
+for beginners. Your code is crashing without giving any useful information.
+It is saying just one of the following and no more output about what happened.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Segmentation fault (core dumped)&lt;/li&gt;
+  &lt;li&gt;Aborted (core dumped)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I was used to log all the suspected places to figure out which code last executed,
+which method is the one causing problems. Fortunately, there is a quicker
+solution to find problematic method with the power of signal handlers and
+backtrace magic.&lt;/p&gt;
+
+&lt;p&gt;Here is sample code which will print stack trace when executed because of a segmentation fault.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;execinfo.h&amp;gt;
+#include &amp;lt;signal.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+
+void handler(int sig) {
+  size_t nStackTraces = 20; //number of backtraces you want at most
+  void *array[nStackTraces];
+  size_t size;
+  //fills array and returns actual number of backtraces at the moment
+  size = backtrace(array, nStackTraces);
+  printf(&quot;signal no %d \n&quot;, sig);
+
+  //prints array to std error after converting array to
+  //human-readable strings      
+  backtrace_symbols_fd(array, size, STDERR_FILENO);
+  exit(0);
+}
+
+int function1(){
+   int *myUninitiliazedPointer = 0;
+   *myUninitiliazedPointer = 1; //opps here comes segmentation fault
+   return 0;
+}
+
+void function0(){
+  function1();
+}
+
+int main() {
+    signal(SIGSEGV , handler);   // register our handler
+    function0();
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can comment out first line to see our beloved segmentation fault :( .&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Segmentation fault (core dumped)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It is output in my linux :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;signal no 11
+./a.out[0x4008b5]
+/lib/x86_64-linux-gnu/libc.so.6(+0x36ff0)[0x7f8ac8b33ff0]
+./a.out[0x40090d]
+./a.out[0x400923]
+./a.out[0x40094c]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf5)[0x7f8ac8b1ede5]
+./a.out[0x400759]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Which is not very helpful. It seems to get more meaningful output,
+one needs to compile its code with -g -rdynamic flags.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gcc -g -rdynamic sampleCode.c
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After that its output changes to:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;./a.out(_Z7handleri+0x98)[0x400b05]
+/lib/x86_64-linux-gnu/libc.so.6(+0x36ff0)[0x7f7c96c2fff0]
+./a.out(_Z9function1v+0x10)[0x400b5d]
+./a.out(_Z9function0v+0x9)[0x400b73]
+./a.out(main+0x27)[0x400b9c]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf5)[0x7f7c96c1ade5]
+./a.out[0x4009a9]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;From bottom to top you can see that main called function0, and function0 called function1.
+In function1, since it is trying to write to an illegal address, it is raising a segmentation fault signal.
+We can even see our handler function called at the top.&lt;/p&gt;
+
+&lt;p&gt;We registered a handler for just SIGSEGV which is segmentation fault. To catch “Aborted (core dumped).”
+You need to register SIGABRT. You can register same handler function to more than one method.&lt;/p&gt;
+
+&lt;p&gt;There are more signals which can be fired for default libraries. You can check them from
+&lt;a href=&quot;http://www.cplusplus.com/reference/csignal/&quot;&gt;cpluspus.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;And for more information about how we get stack trace. Just type following in your command line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;man backtrace
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that this method is working with a little bit different outputs for linux and mac os environments.
+I did not try Windows. Not sure if these libraries and backtrace method is available in Windows.&lt;/p&gt;
+
+&lt;p&gt;I hope this is helpful to you.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 08 Nov 2014 00:00:00 +0200</pubDate>
+        <link>http://sancar.github.io/2014/11/08/how-to-tackle-segmentation-fault-or-abort.html</link>
+        <guid isPermaLink="true">http://sancar.github.io/2014/11/08/how-to-tackle-segmentation-fault-or-abort.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>A new cross platform cpp IDE</title>
