@@ -33,7 +33,7 @@ Here is sample code which will print stack trace when executed because of a segm
       printf("signal no %d \n", sig);
 
       //prints array to std error after converting array to
-      //human-readable strings      
+      //human-readable strings
       backtrace_symbols_fd(array, size, STDERR_FILENO);
       exit(0);
     }
@@ -89,7 +89,7 @@ In function1, since it is trying to write to an illegal address, it is raising a
 We can even see our handler function called at the top.
 
 We registered a handler for just SIGSEGV which is segmentation fault. To catch "Aborted (core dumped)."
-You need to register SIGABRT. You can register same handler function to more than one method.
+You need to register SIGABRT. You can register same handler function to more than one signal.
 
 There are more signals which can be fired for default libraries. You can check them from
 [cpluspus.com](  http://www.cplusplus.com/reference/csignal/)

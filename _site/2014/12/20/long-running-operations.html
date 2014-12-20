@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Find out what your long running operations is doing</title>
+
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/pygment_trac.css">
+    <link rel="canonical" href="http://sancar.github.io/2014/12/20/long-running-operations.html">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+</head>
+
+
+  <body>
+
+    <div class="wrapper">
+  <section>
+    <div id="title">
+      <h1>Hack it until you learn it</h1>
+      <p>Lessons learned along the way. Experiences building java and cross platform c , c++ libraries.
+</p>
+      <hr>
+      <span class="credits left"><a class="site-title" href="/">Home</a></span>
+      <span class="credits right"><a href="/about">About</a></span>
+    </div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Find out what your long running operations is doing</h1>
+    <p class="post-meta">Dec 20, 2014</p>
+  </header>
+
+  <article class="post-content">
+    <p>We have some interfaces that are implemented by users of
+<a href="www.hazelcast.org">hazelcast</a> . If these operations are blocked
+or take long time, it is bad news for hazelcast since it may cause slowdown.
+Since we do not know what is going on in these operations, best we can do is warn the user
+if operations are taking too long. Additionally, to make the warning more useful we decided that
+we should include stack traces of these operations should be in the warning.</p>
+
+<p>In java, it is more or less straight forward if you are used to multi-threading.
+But I want to talk about how we can do it in C. Trying to do in java can be a good exercise for you.</p>
+
+<p>I get the idea when I was reading <a href="http://antirez.com/news/84">Antirez weblog</a> (Blog of the creator of <a href="http://redis.io/">redis</a>).
+He was talking about a watch dog feature to find out what your long operation is up to.
+How it is working is not explained in that blog since it is not the main topic. I will get into details how it can be achieved in this
+blog.</p>
+
+<p>There is <a href="http://linux.die.net/man/2/alarm">alarm function</a> which will raise signal after given amount of time.
+We will use signal handlers to get the signal and print the stack trace.</p>
+
+<p>We will basically reuse the code in <a href="http://sancar.github.io/2014/11/08/how-to-tackle-segmentation-fault-or-abort.html">my previous post</a>
+to get stack traces. There is one more line at the end of method different from old post, because we want to see print stack trace every 5 seconds.</p>
+
+<pre><code>void alarmHandler(int sig){
+
+  size_t nStackTraces = 20; //number of backtraces you want at most
+  void *array[nStackTraces];
+  size_t size;
+  //fills array and returns actual number of backtraces at the moment
+  size = backtrace(array, nStackTraces);
+  printf("signal no %d \n", sig);
+  //prints array to std error after converting array to
+  //human-readable strings
+  backtrace_symbols_fd(array, size, STDERR_FILENO);
+
+  alarm(5); // raise the alarm again after 5 seconds
+}
+</code></pre>
+
+<p>And we need to have a long running operation. This can be a method that making
+calls to kernel or a database in your code. Or it can be an alien code to you that is
+implemented by users of your library.</p>
+
+<p>I implemented a sample long running operation as follows:</p>
+
+<pre><code>void verylongoperation(){
+  int i = 0;
+  while(i++ &lt; 4){
+    sleep(20); //sleep 20 seconds
+  }
+}
+</code></pre>
+
+<p>Now we need to register our alarm handler to correct signal. We will start
+alarm to raise signal after 5 seconds before calling our long running operation.
+And after that we will close the alarm.</p>
+
+<pre><code>int main(){
+  signal(SIGALRM ,  alarmHandler );
+  alarm(5); // raise signal alarm after 5 seconds
+  verylongoperation();
+  alarm(0); // stop raising alarm signal
+
+  return 0;
+}
+</code></pre>
+
+<p>You can access to working code from  <a href="https://gist.github.com/sancar/8c9cb07b39ad222c87f1">my public gist</a>.
+When we compile and run the code, we get a output as follows:</p>
+
+<pre><code>signal no 14
+0   a.out                               0x000000010c0f4ddc alarmHandler + 76
+1   libsystem_platform.dylib            0x00007fff8d45af1a _sigtramp + 26
+2   a.out                               0x000000010c0f60b2 main + 4626
+3   libsystem_c.dylib                   0x00007fff8aa6bddd sleep + 42
+4   a.out                               0x000000010c0f4e87 verylongoperation + 71
+5   a.out                               0x000000010c0f4ed6 main + 54
+6   libdyld.dylib                       0x00007fff907855c9 start + 1
+7   ???                                 0x0000000000000001 0x0 + 1
+signal no 14
+0   a.out                               0x000000010c0f4ddc alarmHandler + 76
+1   libsystem_platform.dylib            0x00007fff8d45af1a _sigtramp + 26
+2   a.out                               0x000000010c0f60b2 main + 4626
+3   libsystem_c.dylib                   0x00007fff8aa6bddd sleep + 42
+4   a.out                               0x000000010c0f4e87 verylongoperation + 71
+5   a.out                               0x000000010c0f4ed6 main + 54
+6   libdyld.dylib                       0x00007fff907855c9 start + 1
+7   ???                                 0x0000000000000001 0x0 + 1
+signal no 14
+0   a.out                               0x000000010c0f4ddc alarmHandler + 76
+1   libsystem_platform.dylib            0x00007fff8d45af1a _sigtramp + 26
+2   a.out                               0x000000010c0f60b2 main + 4626
+3   libsystem_c.dylib                   0x00007fff8aa6bddd sleep + 42
+4   a.out                               0x000000010c0f4e87 verylongoperation + 71
+5   a.out                               0x000000010c0f4ed6 main + 54
+6   libdyld.dylib                       0x00007fff907855c9 start + 1
+7   ???                                 0x0000000000000001 0x0 + 1
+signal no 14
+0   a.out                               0x000000010c0f4ddc alarmHandler + 76
+1   libsystem_platform.dylib            0x00007fff8d45af1a _sigtramp + 26
+2   a.out                               0x000000010c0f60b2 main + 4626
+3   libsystem_c.dylib                   0x00007fff8aa6bddd sleep + 42
+4   a.out                               0x000000010c0f4e87 verylongoperation + 71
+5   a.out                               0x000000010c0f4ed6 main + 54
+6   libdyld.dylib                       0x00007fff907855c9 start + 1
+7   ???                                 0x0000000000000001 0x0 + 1
+</code></pre>
+
+<p>When alarm is raised, operation is interrupted and our method is called. After that it returns back to
+doing its job. We can see from here that our code is waiting in sleep call inside ‘verylongoperation’ function.</p>
+
+<p>Note: Sleep and signals are not working well together. After handler function is called, it is not going back to sleep.
+It behaves as if sleep is timed out and continues. Normally we should see 16 stack traces in the output. It sleep 20 seconds at each iteration. There is 4 iterations.
+It should take 80 seconds. We are printing every 5 seconds. 80 / 5 = 16 stack traces. But we are making it continue after each 5 seconds by using alarm signal. Hence we end up with only 4 stack traces.</p>
+
+  </article>
+</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'sancargithubio'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+      </div>
+    </div>
+
+          <div id="title">
+        <br>
+        <br>
+        <hr>
+        <span class="credits left">Github&nbsp;&nbsp;&nbsp;:&nbsp;<a href="https://github.com/sancar">sancar</a></span>
+        <span class="credits right">Hosted on GitHub Pages — Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        <br>
+        <span class="credits left">Twitter&nbsp;&nbsp;:&nbsp;<a href="https://twitter.com/mskoyunlu">mskoyunlu</a></span>
+        <br>
+        <span class="credits left">Email&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<a href="mailto:sancar@hazelcast.com">sancar@hazelcast.com</a></span>
+        <br>
+        <span class="credits left">Linkedin&nbsp;:&nbsp;<a href="https://tr.linkedin.com/pub/mustafa-sancar-koyunlu/33/2a2/257/">sancar</a></span>
+      </div>
+      <div>
+      <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+      </div>
+  </section>
+</div>
+
+
+  </body>
+
+</html>

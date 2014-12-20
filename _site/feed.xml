@@ -6,9 +6,131 @@
 </description>
     <link>http://sancar.github.io/</link>
     <atom:link href="http://sancar.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 08 Nov 2014 21:11:22 +0200</pubDate>
-    <lastBuildDate>Sat, 08 Nov 2014 21:11:22 +0200</lastBuildDate>
+    <pubDate>Sat, 20 Dec 2014 17:30:32 +0200</pubDate>
+    <lastBuildDate>Sat, 20 Dec 2014 17:30:32 +0200</lastBuildDate>
     <generator>Jekyll v2.5.0</generator>
+    
+      <item>
+        <title>Find out what your long running operations is doing</title>
+        <description>&lt;p&gt;We have some interfaces that are implemented by users of
+&lt;a href=&quot;www.hazelcast.org&quot;&gt;hazelcast&lt;/a&gt; . If these operations are blocked
+or take long time, it is bad news for hazelcast since it may cause slowdown.
+Since we do not know what is going on in these operations, best we can do is warn the user
+if operations are taking too long. Additionally, to make the warning more useful we decided that
+we should include stack traces of these operations should be in the warning.&lt;/p&gt;
+
+&lt;p&gt;In java, it is more or less straight forward if you are used to multi-threading.
+But I want to talk about how we can do it in C. Trying to do in java can be a good exercise for you.&lt;/p&gt;
+
+&lt;p&gt;I get the idea when I was reading &lt;a href=&quot;http://antirez.com/news/84&quot;&gt;Antirez weblog&lt;/a&gt; (Blog of the creator of &lt;a href=&quot;http://redis.io/&quot;&gt;redis&lt;/a&gt;).
+He was talking about a watch dog feature to find out what your long operation is up to.
+How it is working is not explained in that blog since it is not the main topic. I will get into details how it can be achieved in this
+blog.&lt;/p&gt;
+
+&lt;p&gt;There is &lt;a href=&quot;http://linux.die.net/man/2/alarm&quot;&gt;alarm function&lt;/a&gt; which will raise signal after given amount of time.
+We will use signal handlers to get the signal and print the stack trace.&lt;/p&gt;
+
+&lt;p&gt;We will basically reuse the code in &lt;a href=&quot;http://sancar.github.io/2014/11/08/how-to-tackle-segmentation-fault-or-abort.html&quot;&gt;my previous post&lt;/a&gt;
+to get stack traces. There is one more line at the end of method different from old post, because we want to see print stack trace every 5 seconds.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;void alarmHandler(int sig){
+
+  size_t nStackTraces = 20; //number of backtraces you want at most
+  void *array[nStackTraces];
+  size_t size;
+  //fills array and returns actual number of backtraces at the moment
+  size = backtrace(array, nStackTraces);
+  printf(&quot;signal no %d \n&quot;, sig);
+  //prints array to std error after converting array to
+  //human-readable strings
+  backtrace_symbols_fd(array, size, STDERR_FILENO);
+
+  alarm(5); // raise the alarm again after 5 seconds
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And we need to have a long running operation. This can be a method that making
+calls to kernel or a database in your code. Or it can be an alien code to you that is
+implemented by users of your library.&lt;/p&gt;
+
+&lt;p&gt;I implemented a sample long running operation as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;void verylongoperation(){
+  int i = 0;
+  while(i++ &amp;lt; 4){
+    sleep(20); //sleep 20 seconds
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we need to register our alarm handler to correct signal. We will start
+alarm to raise signal after 5 seconds before calling our long running operation.
+And after that we will close the alarm.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;int main(){
+  signal(SIGALRM ,  alarmHandler );
+  alarm(5); // raise signal alarm after 5 seconds
+  verylongoperation();
+  alarm(0); // stop raising alarm signal
+
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can access to working code from  &lt;a href=&quot;https://gist.github.com/sancar/8c9cb07b39ad222c87f1&quot;&gt;my public gist&lt;/a&gt;.
+When we compile and run the code, we get a output as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;signal no 14
+0   a.out                               0x000000010c0f4ddc alarmHandler + 76
+1   libsystem_platform.dylib            0x00007fff8d45af1a _sigtramp + 26
+2   a.out                               0x000000010c0f60b2 main + 4626
+3   libsystem_c.dylib                   0x00007fff8aa6bddd sleep + 42
+4   a.out                               0x000000010c0f4e87 verylongoperation + 71
+5   a.out                               0x000000010c0f4ed6 main + 54
+6   libdyld.dylib                       0x00007fff907855c9 start + 1
+7   ???                                 0x0000000000000001 0x0 + 1
+signal no 14
+0   a.out                               0x000000010c0f4ddc alarmHandler + 76
+1   libsystem_platform.dylib            0x00007fff8d45af1a _sigtramp + 26
+2   a.out                               0x000000010c0f60b2 main + 4626
+3   libsystem_c.dylib                   0x00007fff8aa6bddd sleep + 42
+4   a.out                               0x000000010c0f4e87 verylongoperation + 71
+5   a.out                               0x000000010c0f4ed6 main + 54
+6   libdyld.dylib                       0x00007fff907855c9 start + 1
+7   ???                                 0x0000000000000001 0x0 + 1
+signal no 14
+0   a.out                               0x000000010c0f4ddc alarmHandler + 76
+1   libsystem_platform.dylib            0x00007fff8d45af1a _sigtramp + 26
+2   a.out                               0x000000010c0f60b2 main + 4626
+3   libsystem_c.dylib                   0x00007fff8aa6bddd sleep + 42
+4   a.out                               0x000000010c0f4e87 verylongoperation + 71
+5   a.out                               0x000000010c0f4ed6 main + 54
+6   libdyld.dylib                       0x00007fff907855c9 start + 1
+7   ???                                 0x0000000000000001 0x0 + 1
+signal no 14
+0   a.out                               0x000000010c0f4ddc alarmHandler + 76
+1   libsystem_platform.dylib            0x00007fff8d45af1a _sigtramp + 26
+2   a.out                               0x000000010c0f60b2 main + 4626
+3   libsystem_c.dylib                   0x00007fff8aa6bddd sleep + 42
+4   a.out                               0x000000010c0f4e87 verylongoperation + 71
+5   a.out                               0x000000010c0f4ed6 main + 54
+6   libdyld.dylib                       0x00007fff907855c9 start + 1
+7   ???                                 0x0000000000000001 0x0 + 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When alarm is raised, operation is interrupted and our method is called. After that it returns back to
+doing its job. We can see from here that our code is waiting in sleep call inside ‘verylongoperation’ function.&lt;/p&gt;
+
+&lt;p&gt;Note: Sleep and signals are not working well together. After handler function is called, it is not going back to sleep.
+It behaves as if sleep is timed out and continues. Normally we should see 16 stack traces in the output. It sleep 20 seconds at each iteration. There is 4 iterations.
+It should take 80 seconds. We are printing every 5 seconds. 80 / 5 = 16 stack traces. But we are making it continue after each 5 seconds by using alarm signal. Hence we end up with only 4 stack traces.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 20 Dec 2014 00:00:00 +0200</pubDate>
+        <link>http://sancar.github.io/2014/12/20/long-running-operations.html</link>
+        <guid isPermaLink="true">http://sancar.github.io/2014/12/20/long-running-operations.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>How to tackle segmentation fault or abort in C/C++</title>
@@ -43,7 +165,7 @@ void handler(int sig) {
   printf(&quot;signal no %d \n&quot;, sig);
 
   //prints array to std error after converting array to
-  //human-readable strings      
+  //human-readable strings
   backtrace_symbols_fd(array, size, STDERR_FILENO);
   exit(0);
 }
@@ -104,7 +226,7 @@ In function1, since it is trying to write to an illegal address, it is raising a
 We can even see our handler function called at the top.&lt;/p&gt;
 
 &lt;p&gt;We registered a handler for just SIGSEGV which is segmentation fault. To catch “Aborted (core dumped).”
-You need to register SIGABRT. You can register same handler function to more than one method.&lt;/p&gt;
+You need to register SIGABRT. You can register same handler function to more than one signal.&lt;/p&gt;
 
 &lt;p&gt;There are more signals which can be fired for default libraries. You can check them from
 &lt;a href=&quot;http://www.cplusplus.com/reference/csignal/&quot;&gt;cpluspus.com&lt;/a&gt;&lt;/p&gt;

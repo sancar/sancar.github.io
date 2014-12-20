@@ -80,7 +80,7 @@ void handler(int sig) {
   printf("signal no %d \n", sig);
 
   //prints array to std error after converting array to
-  //human-readable strings      
+  //human-readable strings
   backtrace_symbols_fd(array, size, STDERR_FILENO);
   exit(0);
 }
@@ -141,7 +141,7 @@ In function1, since it is trying to write to an illegal address, it is raising a
 We can even see our handler function called at the top.</p>
 
 <p>We registered a handler for just SIGSEGV which is segmentation fault. To catch “Aborted (core dumped).”
-You need to register SIGABRT. You can register same handler function to more than one method.</p>
+You need to register SIGABRT. You can register same handler function to more than one signal.</p>
 
 <p>There are more signals which can be fired for default libraries. You can check them from
 <a href="http://www.cplusplus.com/reference/csignal/">cpluspus.com</a></p>
@@ -184,7 +184,7 @@ I did not try Windows. Not sure if these libraries and backtrace method is avail
         <span class="credits left">Github&nbsp;&nbsp;&nbsp;:&nbsp;<a href="https://github.com/sancar">sancar</a></span>
         <span class="credits right">Hosted on GitHub Pages — Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
         <br>
-        <span class="credits left">Twitter&nbsp;&nbsp;:&nbsp;<a href="https://twitter.com/mskyounlu">mskyounlu</a></span>
+        <span class="credits left">Twitter&nbsp;&nbsp;:&nbsp;<a href="https://twitter.com/mskoyunlu">mskoyunlu</a></span>
         <br>
         <span class="credits left">Email&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<a href="mailto:sancar@hazelcast.com">sancar@hazelcast.com</a></span>
         <br>
