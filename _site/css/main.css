@@ -16,10 +16,11 @@ body {
   line-height: 1.5;
   font-weight: 300;
   color: #111;
-  background-color: #fdfdfd; }
+  background-color: #fdfdfd;
+  -webkit-text-size-adjust: 100%; }
 
 /**
- * Set `margin-bottom` to maintain vertycal rhythm
+ * Set `margin-bottom` to maintain vertical rhythm
  */
 h1, h2, h3, h4, h5, h6,
 p, blockquote, pre,

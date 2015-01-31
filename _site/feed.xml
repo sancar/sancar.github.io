@@ -5,9 +5,9 @@
     <description>Lessons learned along the way. Experiences building java and cross platform c , c++ libraries.
 </description>
     <link>http://sancar.github.io/</link>
-    <atom:link href="http://sancar.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 20 Dec 2014 17:30:32 +0200</pubDate>
-    <lastBuildDate>Sat, 20 Dec 2014 17:30:32 +0200</lastBuildDate>
+    <atom:link href="http://sancar.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 31 Jan 2015 23:32:12 +0200</pubDate>
+    <lastBuildDate>Sat, 31 Jan 2015 23:32:12 +0200</lastBuildDate>
     <generator>Jekyll v2.5.0</generator>
     
       <item>
@@ -362,6 +362,11 @@ changes I made from &lt;a href=&quot;https://github.com/sancar/sancar.github.io&
 
 &lt;p&gt;I also added comments to my blog. I used &lt;a href=&quot;https://disqus.com/&quot;&gt;disqus&lt;/a&gt; for this.
 It has integrations with common social plugins like facebook, google plus and it looks good with my dark theme.&lt;/p&gt;
+
+&lt;h4 id=&quot;edit&quot;&gt;EDIT&lt;/h4&gt;
+
+&lt;p&gt;I decided to revert theme to default, this is why you dont see the dark theme anymore. If you are curious about old design
+here is the related &lt;a href=&quot;https://github.com/sancar/sancar.github.io/commit/c50f6058d025c9345dae2b662189a57e7008dd1d&quot;&gt;commit&lt;/a&gt; from github.&lt;/p&gt;
 </description>
         <pubDate>Sat, 06 Sep 2014 00:00:00 +0300</pubDate>
         <link>http://sancar.github.io/2014/09/06/A-dark-themed-blog-with-jekyll.html</link>

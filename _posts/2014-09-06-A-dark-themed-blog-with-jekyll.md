@@ -37,3 +37,8 @@ changes I made from [here](https://github.com/sancar/sancar.github.io).
 
 I also added comments to my blog. I used [disqus]( https://disqus.com/) for this.
 It has integrations with common social plugins like facebook, google plus and it looks good with my dark theme.
+
+#### EDIT
+
+I decided to revert theme to default, this is why you dont see the dark theme anymore. If you are curious about old design
+here is the related [commit](https://github.com/sancar/sancar.github.io/commit/c50f6058d025c9345dae2b662189a57e7008dd1d) from github.

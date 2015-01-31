@@ -2,41 +2,54 @@
 <html>
 
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
 
-    <title>How to tackle segmentation fault or abort in C/C++</title>
+  <title>How to tackle segmentation fault or abort in C/C++</title>
+  <meta name="description" content="Segmentation fault or abort is a nightmare for c, c++ developers especiallyfor beginners. Your code is crashing without giving any useful information.It is s...">
 
-    <link rel="stylesheet" href="/stylesheets/styles.css">
-    <link rel="stylesheet" href="/stylesheets/pygment_trac.css">
-    <link rel="canonical" href="http://sancar.github.io/2014/11/08/how-to-tackle-segmentation-fault-or-abort.html">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://sancar.github.io/2014/11/08/how-to-tackle-segmentation-fault-or-abort.html">
+  <link rel="alternate" type="application/atom+xml" title="Hack it until you learn it" href="http://sancar.github.io/feed.xml" />
 </head>
 
 
   <body>
 
-    <div class="wrapper">
-  <section>
-    <div id="title">
-      <h1>Hack it until you learn it</h1>
-      <p>Lessons learned along the way. Experiences building java and cross platform c , c++ libraries.
-</p>
-      <hr>
-      <span class="credits left"><a class="site-title" href="/">Home</a></span>
-      <span class="credits right"><a href="/about">About</a></span>
-    </div>
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Hack it until you learn it</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
 
 
     <div class="page-content">
@@ -157,6 +170,7 @@ I did not try Windows. Not sure if these libraries and backtrace method is avail
 <p>I hope this is helpful to you.</p>
 
   </article>
+
 </div>
 <div id="disqus_thread"></div>
 <script type="text/javascript">
@@ -177,24 +191,25 @@ I did not try Windows. Not sure if these libraries and backtrace method is avail
       </div>
     </div>
 
-          <div id="title">
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
         <br>
+        <span class="credits left">Github&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<a href="https://github.com/sancar">sancar</a></span>
         <br>
-        <hr>
-        <span class="credits left">Github&nbsp;&nbsp;&nbsp;:&nbsp;<a href="https://github.com/sancar">sancar</a></span>
-        <span class="credits right">Hosted on GitHub Pages — Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        <span class="credits left">Twitter&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<a href="https://twitter.com/mskoyunlu">mskoyunlu</a></span>
         <br>
-        <span class="credits left">Twitter&nbsp;&nbsp;:&nbsp;<a href="https://twitter.com/mskoyunlu">mskoyunlu</a></span>
-        <br>
-        <span class="credits left">Email&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<a href="mailto:sancar@hazelcast.com">sancar@hazelcast.com</a></span>
+        <span class="credits left">Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<a href="mailto:sancar@hazelcast.com">sancar@hazelcast.com</a></span>
         <br>
         <span class="credits left">Linkedin&nbsp;:&nbsp;<a href="https://tr.linkedin.com/pub/mustafa-sancar-koyunlu/33/2a2/257/">sancar</a></span>
-      </div>
-      <div>
-      <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
-      </div>
-  </section>
-</div>
+
+    </div>
+
+  </div>
+
+</footer>
 
 
   </body>
