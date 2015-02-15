@@ -6,9 +6,118 @@
 </description>
     <link>http://sancar.github.io/</link>
     <atom:link href="http://sancar.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 31 Jan 2015 23:32:12 +0200</pubDate>
-    <lastBuildDate>Sat, 31 Jan 2015 23:32:12 +0200</lastBuildDate>
+    <pubDate>Sun, 15 Feb 2015 23:27:35 +0200</pubDate>
+    <lastBuildDate>Sun, 15 Feb 2015 23:27:35 +0200</lastBuildDate>
     <generator>Jekyll v2.5.0</generator>
+    
+      <item>
+        <title>Close your executors properly in java</title>
+        <description>&lt;p&gt;I would like to share something new for me related to java.util.concurrent.ExecutorService.
+I learned this while I was working on a &lt;a href=&quot;https://github.com/hazelcast/hazelcast/pull/4599/files#diff-cb6fbd3eea8efacdb3acd75f97565640&quot;&gt;bug fix&lt;/a&gt; at hazelcast.&lt;/p&gt;
+
+&lt;p&gt;I will try to explain this in three parts : some background on related architecture, the problem and the solution.&lt;/p&gt;
+
+&lt;h3 id=&quot;related-architecture&quot;&gt;Related Architecture&lt;/h3&gt;
+
+&lt;p&gt;We have an executor service that we offload some internal work.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ExecutorService executor = new ThreadPoolExecutor(executorPoolSize,
+                  executorPoolSize, 0L, TimeUnit.MILLISECONDS,
+                new LinkedBlockingQueue&amp;lt;Runnable&amp;gt;(),
+                /..../ );
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;At shutdown of hazelcast, we used to call shutdownNow as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public void shutdown() {
+      //...
+      executor.shutdownNow();
+      //...
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And an innocent attempt to detect executor shutdown:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public Future aUserOperation(){
+  Future future = //....
+
+  try {
+    executionService.execute( internalRunnable );
+  } catch (RejectedExecutionException e) {
+    future.set(e);//A future that user thread is waiting on
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;User calls &lt;code&gt;aUserOperation&lt;/code&gt; and waits on returned &lt;code&gt;Future&lt;/code&gt;. Internal runnable will set the response if it runs.&lt;/p&gt;
+
+&lt;p&gt;Our aim is either set a response to users future, or set an exception if it fails to run.&lt;/p&gt;
+
+&lt;h2 id=&quot;problem&quot;&gt;Problem&lt;/h2&gt;
+
+&lt;p&gt;While user waiting on &lt;code&gt;future&lt;/code&gt;, someone else calls &lt;code&gt;shutdown&lt;/code&gt;. Because of that and a bug, our user could not get any response. Therefore, user threads hangs forever without any clue.&lt;/p&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;The problem occurs because we do not close the executor properly.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public void shutdown() {
+      //...
+      executor.shutdownNow();
+      //...
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;shutdownNow&lt;/code&gt; tries to close currently running runnables via &lt;code&gt;Thread.interrupt&lt;/code&gt;. (Note that runnables are also responsible for setting a response the future in case of interrupt). In our case, problem occurs for runnables that do not event start to run yet. These runnables waiting on a queue inside &lt;code&gt;executor&lt;/code&gt; . When &lt;code&gt;shutdownNow&lt;/code&gt; is called these runnables are returned by this method, but they never run. And note that &lt;code&gt;aUserOperation&lt;/code&gt; is not aware of that because it already send the runnable and did not get any exception. There are different approches that you can take to solve the problem.&lt;/p&gt;
+
+&lt;h3 id=&quot;approach-one&quot;&gt;Approach one&lt;/h3&gt;
+
+&lt;p&gt;If your resources are still available when shutdown method is called, you can choose to run the runnables in shutdown method. This way user operations will be completed and user will get the response.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public void shutdown() {
+    List&amp;lt;Runnable&amp;gt; runnables = executorService.shutdownNow();
+    for (Runnable runnable : runnables) {
+        runnable.run();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;approach-two&quot;&gt;Approach two&lt;/h3&gt;
+
+&lt;p&gt;You can choose to call &lt;code&gt;shutdown&lt;/code&gt; method of executor service. After this method is called, executor runs every runnable it accepted so far, but does not accept new ones. It throws &lt;code&gt;RejectedExecutionException&lt;/code&gt; for new ones, in which we set the exception to user. &lt;a href=&quot;#related-architecture&quot;&gt;see &lt;code&gt;aUserOperation&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public void shutdown() {
+    executorService.shutdown();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that shutdown method is not a blocking call. If you want to make sure that shutdown waits for all runnables to finish you need to use &lt;code&gt;awaitTermination&lt;/code&gt; method of executor. And this is sort of how I end up with in my &lt;a href=&quot;https://github.com/hazelcast/hazelcast/pull/4599/files#diff-cb6fbd3eea8efacdb3acd75f97565640&quot;&gt;bug fix&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public void shutdown() {
+  executorService.shutdown();
+   try {
+       boolean success = executorService.awaitTermination(30, TimeUnit.SECONDS);
+       if (!success) {
+           // A friendly log:
+           // Some operations fail to finish
+           // in 30 seconds in graceful shutdown.
+       }
+   } catch (InterruptedException e) {
+     // A friendly log:
+     // Hazelcast executor service is interrupted.
+     // There are unfinished jobs still running.
+   }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A “reasonable” timeout is given to &lt;code&gt;awaitTermination&lt;/code&gt; to prevent an infinite wait on shutdown. This is a precaution if a bug in one of the runnables causes that thread to stay alive forover. And a second warning in case of InterruptedException which happens if another thread interrupts &lt;code&gt;awaitTermination&lt;/code&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 15 Feb 2015 00:00:00 +0200</pubDate>
+        <link>http://sancar.github.io/2015/02/15/close-your-executors-properly-java.html</link>
+        <guid isPermaLink="true">http://sancar.github.io/2015/02/15/close-your-executors-properly-java.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Find out what your long running operations is doing</title>
