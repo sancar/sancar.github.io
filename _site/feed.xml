@@ -6,9 +6,148 @@
 </description>
     <link>http://sancar.github.io/</link>
     <atom:link href="http://sancar.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 15 Feb 2015 23:27:35 +0200</pubDate>
-    <lastBuildDate>Sun, 15 Feb 2015 23:27:35 +0200</lastBuildDate>
-    <generator>Jekyll v2.5.0</generator>
+    <pubDate>Sun, 25 Oct 2015 14:55:45 +0200</pubDate>
+    <lastBuildDate>Sun, 25 Oct 2015 14:55:45 +0200</lastBuildDate>
+    <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Hazelcast C++ Client Is Now Open Source</title>
+        <description>&lt;p&gt;I am happy announce that Hazelcast C++ Client is now open source. We have been developing Hazelcast quite some time as open source. There was already open source java client. And this week company decided to open source two other clients as well, C++ and C# Client. As the one who build the C++ Client from ground, I can`t highlight enough how excited I am. I am waiting for your feedbacks, issues, pull requests and questions. Link to our repository is can be found &lt;a href=&quot;https://github.com/hazelcast/hazelcast-cpp-client&quot;&gt;here&lt;/a&gt;
+And for your questions and feedbacks, you can use our mailing list. &lt;a href=&quot;https://groups.google.com/forum/#!forum/hazelcast&quot;&gt;https://groups.google.com/forum/#!forum/hazelcast&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Enough with the chit chat, lets talk about what is hazelcast and what we can do with this new shiny open source C++ client.
+Here is a short description:
+Hazelcast is distributed in-memory data grid. You can distribute your data among your servers with well known data structures like
+Map, Queue, List, Set etc. Hazelcast will take care of distribution of data, fail over for you. You can use the hazelcast servers embedded in your application, but today we are going to talk about how to use a simple C++ Client. If you want to know about all features of Hazelcast visit our &lt;a href=&quot;http://docs.hazelcast.org/docs/3.5/manual/html-single/&quot;&gt;documentation page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-build-c-client&quot;&gt;How to build C++ Client&lt;/h2&gt;
+
+&lt;p&gt;For C++ client, I would like to show how to build it yourself. Note that I will describe how to build it on linux and mac. If you want an introduction for windows please leave a comment so that I will know that I should write another blog :). You need to have git, cmake(at least 3.1) and a c++ compiler already installed on your pc. First clone the hazelcast-cpp-client via git.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/hazelcast/hazelcast-cpp-client
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Than, we will go to root, create a build directory and run cmake on the directory.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd hazelcast-cpp-client
+cd mkdir
+cmake ..
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For further options like 32/64 bit, dymanic/static lib , you can check out README file in our &lt;a href=&quot;https://github.com/hazelcast/hazelcast-cpp-client&quot;&gt;repo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;And to start compilation, we will run &lt;code&gt;make&lt;/code&gt;. I suggest using -j option to make it faster.&lt;/p&gt;
+
+&lt;p&gt;make -j&lt;/p&gt;
+
+&lt;p&gt;Now, you should have a library in current directory with name libHazelcastClient[VERSION].a&lt;/p&gt;
+
+&lt;h2 id=&quot;lets-write-our-first-c-client&quot;&gt;Lets write our first C++ Client&lt;/h2&gt;
+
+&lt;p&gt;Here is sample code for c++ client. It will first check if there is already data on the server,
+if not it will put new entry to map. Just to be able to show off ;) .&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt;
+#include &quot;hazelcast/client/HazelcastAll.h&quot;
+using namespace hazelcast::client;
+
+int main(){
+    ClientConfig clientConfig;
+    HazelcastClient client(clientConfig);
+
+    IMap&amp;lt;int , std::string&amp;gt; map = client.getMap&amp;lt;int , std::string &amp;gt;(&quot;myMap&quot;);
+
+    boost::shared_ptr&amp;lt;std::string&amp;gt; value = map.get(1);
+
+    if(value != NULL){
+        std::cout &amp;lt;&amp;lt; &quot; Value stored in the server &quot; &amp;lt;&amp;lt; *value &amp;lt;&amp;lt; std::endl;
+    } else {
+        std::cout &amp;lt;&amp;lt; &quot;Putting value to map &quot; &amp;lt;&amp;lt; std::endl;
+        map.put(1, &quot;Hello Open Source Community!!!&quot;);
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And compile it using following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;g++ cppClient.cpp -I[PATH_TO_REPO]/hazelcast/include -I[PATH_TO_REPO]]external/include [PATH_TO_REPO]/build/libHazelcastClient[VERSION].a  -o cppClient
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;lets-run-a-sample-test&quot;&gt;Lets Run A Sample Test&lt;/h2&gt;
+
+&lt;p&gt;As starter we need a couple of servers running.&lt;/p&gt;
+
+&lt;p&gt;First download our latest release hazelcast-3.6-EA from our website&lt;/p&gt;
+
+&lt;p&gt;http://hazelcast.org/download/&lt;/p&gt;
+
+&lt;p&gt;After downloading the server, unzip the bundle and go to &lt;code&gt;bin&lt;/code&gt; directory. And run the server.sh&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sh bin/server.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can fire as many of them as you want from your machine. They will find each other and form a cluster.&lt;/p&gt;
+
+&lt;p&gt;And now, we can run our c++ client.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cppClient
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here is the sample logs from my machine in the first run.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Oct 24, 2015 05:49:05 PM INFO: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent STARTING
+Oct 24, 2015 05:49:05 PM INFO: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [123145304449024] Connected to Address[localhost:5701] with socket id 4 as the owner connection.
+Oct 24, 2015 05:49:05 PM INFO: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [123145304449024] client authenticated by 192.168.1.2:5701
+Oct 24, 2015 05:49:05 PM INFO: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [123145304449024] LifecycleService::LifecycleEvent CLIENT_CONNECTED
+Oct 24, 2015 05:49:05 PM INFO: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [123145304449024]
+Members [1]  {
+    Member[Address[192.168.1.2:5701]]
+}
+
+Oct 24, 2015 05:49:06 PM INFO: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [140735269326848] Connected to Address[192.168.1.2:5701] with socket id 9.
+Oct 24, 2015 05:49:06 PM INFO: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [140735269326848] client authenticated by 192.168.1.2:5701
+Oct 24, 2015 05:49:06 PM INFO: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent STARTED
+Putting value to map
+Oct 24, 2015 05:49:06 PM INFO: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent SHUTTING_DOWN
+Oct 24, 2015 05:49:06 PM WARNING: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [140735269326848] Closing connection to Address[192.168.1.2:5701] with socket id 4 as the owner connection.
+Oct 24, 2015 05:49:06 PM INFO: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [123145304449024] LifecycleService::LifecycleEvent CLIENT_DISCONNECTED
+Oct 24, 2015 05:49:06 PM INFO: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent SHUTDOWN
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can see, client is started, find cluster , said &lt;code&gt;Putting value to map&lt;/code&gt; and shutdown. Now, in the second run we should see there is already data in the server.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Oct 24, 2015 05:52:59 PM INFO: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent STARTING
+Oct 24, 2015 05:52:59 PM INFO: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [123145304449024] Connected to Address[localhost:5701] with socket id 4 as the owner connection.
+Oct 24, 2015 05:52:59 PM INFO: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [123145304449024] client authenticated by 192.168.1.2:5701
+Oct 24, 2015 05:52:59 PM INFO: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [123145304449024] LifecycleService::LifecycleEvent CLIENT_CONNECTED
+Oct 24, 2015 05:52:59 PM INFO: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [123145304449024]
+Members [1]  {
+    Member[Address[192.168.1.2:5701]]
+}
+
+Oct 24, 2015 05:53:00 PM INFO: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [140735269326848] Connected to Address[192.168.1.2:5701] with socket id 9.
+Oct 24, 2015 05:53:00 PM INFO: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [140735269326848] client authenticated by 192.168.1.2:5701
+Oct 24, 2015 05:53:00 PM INFO: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent STARTED
+ Value stored in the server Hello Open Source Community.
+Oct 24, 2015 05:53:00 PM INFO: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent SHUTTING_DOWN
+Oct 24, 2015 05:53:00 PM WARNING: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [140735269326848] Closing connection to Address[192.168.1.2:5701] with socket id 4 as the owner connection.
+Oct 24, 2015 05:53:00 PM INFO: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [123145304449024] LifecycleService::LifecycleEvent CLIENT_DISCONNECTED
+Oct 24, 2015 05:53:00 PM INFO: [HazelcastCppClient3.6-RC1-SNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent SHUTDOWN
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Do not forget, we are waiting for your feedbacks, questions and pull requests.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://groups.google.com/forum/#!forum/hazelcast&quot;&gt;https://groups.google.com/forum/#!forum/hazelcast&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/hazelcast/hazelcast-cpp-client&quot;&gt;https://github.com/hazelcast/hazelcast-cpp-client&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 24 Oct 2015 00:00:00 +0300</pubDate>
+        <link>http://sancar.github.io/2015/10/24/hazelcast-cpp-client-open-source.html</link>
+        <guid isPermaLink="true">http://sancar.github.io/2015/10/24/hazelcast-cpp-client-open-source.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Close your executors properly in java</title>
