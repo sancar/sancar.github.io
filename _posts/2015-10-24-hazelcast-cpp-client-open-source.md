@@ -18,6 +18,16 @@ For C++ client, I would like to show how to build it yourself. Note that I will 
 
     git clone https://github.com/hazelcast/hazelcast-cpp-client
 
+---**EDIT BEGIN**---
+
+Since it is currently under development you can get compile problems. We have
+added a tag for latest stable version compatible with 3.6 release of hazelcast.
+You need to call following command to get that version.
+
+    git checkout -b YOUR_BRANCH_NAME v3.6-old-protocol
+
+---**EDIT END**---
+
 Than, we will go to root, create a build directory and run cmake on the directory.
 
     cd hazelcast-cpp-client
@@ -87,43 +97,43 @@ And now, we can run our c++ client.
 Here is the sample logs from my machine in the first run.
 
 
-    Oct 24, 2015 05:49:05 PM INFO: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent STARTING
-    Oct 24, 2015 05:49:05 PM INFO: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [123145304449024] Connected to Address[localhost:5701] with socket id 4 as the owner connection.
-    Oct 24, 2015 05:49:05 PM INFO: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [123145304449024] client authenticated by 192.168.1.2:5701
-    Oct 24, 2015 05:49:05 PM INFO: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [123145304449024] LifecycleService::LifecycleEvent CLIENT_CONNECTED
-    Oct 24, 2015 05:49:05 PM INFO: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [123145304449024]
+    Oct 24, 2015 05:49:05 PM INFO: [HazelcastCppClient3.7-SNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent STARTING
+    Oct 24, 2015 05:49:05 PM INFO: [HazelcastCppClient3.7-SNAPSHOT] [dev] [123145304449024] Connected to Address[localhost:5701] with socket id 4 as the owner connection.
+    Oct 24, 2015 05:49:05 PM INFO: [HazelcastCppClient3.7-SNAPSHOT] [dev] [123145304449024] client authenticated by 192.168.1.2:5701
+    Oct 24, 2015 05:49:05 PM INFO: [HazelcastCppClient3.7-SNAPSHOT] [dev] [123145304449024] LifecycleService::LifecycleEvent CLIENT_CONNECTED
+    Oct 24, 2015 05:49:05 PM INFO: [HazelcastCppClient3.7-SNAPSHOT] [dev] [123145304449024]
     Members [1]  {
         Member[Address[192.168.1.2:5701]]
     }
 
-    Oct 24, 2015 05:49:06 PM INFO: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [140735269326848] Connected to Address[192.168.1.2:5701] with socket id 9.
-    Oct 24, 2015 05:49:06 PM INFO: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [140735269326848] client authenticated by 192.168.1.2:5701
-    Oct 24, 2015 05:49:06 PM INFO: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent STARTED
+    Oct 24, 2015 05:49:06 PM INFO: [HazelcastCppClient3.7-SNAPSHOT] [dev] [140735269326848] Connected to Address[192.168.1.2:5701] with socket id 9.
+    Oct 24, 2015 05:49:06 PM INFO: [HazelcastCppClient3.7-SNAPSHOT] [dev] [140735269326848] client authenticated by 192.168.1.2:5701
+    Oct 24, 2015 05:49:06 PM INFO: [HazelcastCppClient3.7-SNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent STARTED
     Putting value to map
-    Oct 24, 2015 05:49:06 PM INFO: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent SHUTTING_DOWN
-    Oct 24, 2015 05:49:06 PM WARNING: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [140735269326848] Closing connection to Address[192.168.1.2:5701] with socket id 4 as the owner connection.
-    Oct 24, 2015 05:49:06 PM INFO: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [123145304449024] LifecycleService::LifecycleEvent CLIENT_DISCONNECTED
-    Oct 24, 2015 05:49:06 PM INFO: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent SHUTDOWN
+    Oct 24, 2015 05:49:06 PM INFO: [HazelcastCppClient3.7-SNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent SHUTTING_DOWN
+    Oct 24, 2015 05:49:06 PM WARNING: [HazelcastCppClient3.7-SNAPSHOT] [dev] [140735269326848] Closing connection to Address[192.168.1.2:5701] with socket id 4 as the owner connection.
+    Oct 24, 2015 05:49:06 PM INFO: [HazelcastCppClient3.7-SNAPSHOT] [dev] [123145304449024] LifecycleService::LifecycleEvent CLIENT_DISCONNECTED
+    Oct 24, 2015 05:49:06 PM INFO: [HazelcastCppClient3.7-SNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent SHUTDOWN
 
 As you can see, client is started, find cluster , said `Putting value to map` and shutdown. Now, in the second run we should see there is already data in the server.
 
-    Oct 24, 2015 05:52:59 PM INFO: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent STARTING
-    Oct 24, 2015 05:52:59 PM INFO: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [123145304449024] Connected to Address[localhost:5701] with socket id 4 as the owner connection.
-    Oct 24, 2015 05:52:59 PM INFO: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [123145304449024] client authenticated by 192.168.1.2:5701
-    Oct 24, 2015 05:52:59 PM INFO: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [123145304449024] LifecycleService::LifecycleEvent CLIENT_CONNECTED
-    Oct 24, 2015 05:52:59 PM INFO: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [123145304449024]
+    Oct 24, 2015 05:52:59 PM INFO: [HazelcastCppClient3.7-SNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent STARTING
+    Oct 24, 2015 05:52:59 PM INFO: [HazelcastCppClient3.7-SNAPSHOT] [dev] [123145304449024] Connected to Address[localhost:5701] with socket id 4 as the owner connection.
+    Oct 24, 2015 05:52:59 PM INFO: [HazelcastCppClient3.7-SNAPSHOT] [dev] [123145304449024] client authenticated by 192.168.1.2:5701
+    Oct 24, 2015 05:52:59 PM INFO: [HazelcastCppClient3.7-SNAPSHOT] [dev] [123145304449024] LifecycleService::LifecycleEvent CLIENT_CONNECTED
+    Oct 24, 2015 05:52:59 PM INFO: [HazelcastCppClient3.7-SNAPSHOT] [dev] [123145304449024]
     Members [1]  {
         Member[Address[192.168.1.2:5701]]
     }
 
-    Oct 24, 2015 05:53:00 PM INFO: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [140735269326848] Connected to Address[192.168.1.2:5701] with socket id 9.
-    Oct 24, 2015 05:53:00 PM INFO: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [140735269326848] client authenticated by 192.168.1.2:5701
-    Oct 24, 2015 05:53:00 PM INFO: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent STARTED
+    Oct 24, 2015 05:53:00 PM INFO: [HazelcastCppClient3.7-SNAPSHOT] [dev] [140735269326848] Connected to Address[192.168.1.2:5701] with socket id 9.
+    Oct 24, 2015 05:53:00 PM INFO: [HazelcastCppClient3.7-SNAPSHOT] [dev] [140735269326848] client authenticated by 192.168.1.2:5701
+    Oct 24, 2015 05:53:00 PM INFO: [HazelcastCppClient3.7-SNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent STARTED
      Value stored in the server Hello Open Source Community.
-    Oct 24, 2015 05:53:00 PM INFO: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent SHUTTING_DOWN
-    Oct 24, 2015 05:53:00 PM WARNING: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [140735269326848] Closing connection to Address[192.168.1.2:5701] with socket id 4 as the owner connection.
-    Oct 24, 2015 05:53:00 PM INFO: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [123145304449024] LifecycleService::LifecycleEvent CLIENT_DISCONNECTED
-    Oct 24, 2015 05:53:00 PM INFO: [HazelcastCppClient3.7-SNAPSHOTSNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent SHUTDOWN
+    Oct 24, 2015 05:53:00 PM INFO: [HazelcastCppClient3.7-SNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent SHUTTING_DOWN
+    Oct 24, 2015 05:53:00 PM WARNING: [HazelcastCppClient3.7-SNAPSHOT] [dev] [140735269326848] Closing connection to Address[192.168.1.2:5701] with socket id 4 as the owner connection.
+    Oct 24, 2015 05:53:00 PM INFO: [HazelcastCppClient3.7-SNAPSHOT] [dev] [123145304449024] LifecycleService::LifecycleEvent CLIENT_DISCONNECTED
+    Oct 24, 2015 05:53:00 PM INFO: [HazelcastCppClient3.7-SNAPSHOT] [dev] [140735269326848] LifecycleService::LifecycleEvent SHUTDOWN
 
 
 Do not forget, we are waiting for your feedbacks, questions and pull requests.
