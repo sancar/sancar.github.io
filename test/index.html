@@ -1,6 +1,7 @@
 <html>
 <head>
 <style type="text/css">
+body { padding: 15px; }
 @font-face {
  font-family: Shaikh Hamdullah Mushaf;
  src: url("ShaikhHamdullahMushaf.eot") /* EOT file for IE */
@@ -10,16 +11,38 @@
  src: url("ShaikhHamdullahMushaf.ttf") /* TTF file for CSS3 browsers */
 }
 </style>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
 </head>
 <body>
-<div align="center" id="ready"></div>
 
-<div id="soruSecDiv" hidden="hidden" align="center">
+<div>
+<div id="settingsOpenButton" class="btn btn-default glyphicon glyphicon-cog" style="float: right;"></div>
+<h2 align="center" id="ready"></h2>
+
+<div id="settings" align="center">
+  <div id="chooseSure"></div>
+  <br>
+  <br>
+  <div id="chooseType" class="btn-group" role="group" aria-label="...">
+      <button type="button" class="btn typeButton btn-default">ayet ayet</button>
+      <button type="button" class="btn typeButton btn-default">kelime kelime</button>
+  </div>
+  <br>
+  <br>
+  <div id="chooseAyet"></div>
+  <br>
+  <div>Ben <a id="sure">Fatiha</a> suresinin <a id="ayet">1 ile 7</a> arasini <a id="type">ayet ayet</a> calisacagim.</div>
+  <br>
+  <div id="settingsCloseButton"  class="btn btn-default" aria-label="...">Taman</div>
+</div>
+</div>
+<!-- <div id="soruSecDiv" hidden="hidden" align="center">
   Ders : <input id="ders" type="text" name="ders" value="144">
   <input id="calis" type="submit" value="Calis">
-</div>
+</div> -->
 
-<div align="center" id="soruEkrani" hidden="hidden">
+<!-- <div align="center" id="soruEkrani" hidden="hidden">
   <br>
   <div id="soru"></div>
   <br>
@@ -34,16 +57,19 @@
   <div id="durum"></div>
   <br>
   <button id="next">SIRADAKI</button>
-</div>
+</div> -->
 
-<div style="width: 100%" id="calismaEkrani" hidden="hidden">
+<!-- <div style="width: 100%" id="calismaEkrani" hidden="hidden">
   <div align="center"><input id="sinav" type="submit" value="Sinava Basla" ></div>
   <div id="calismaMetni"></div>
-</div>
+</div> -->
 
 </body>
 </html>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="js/bootstrap.js"></script>
 <script>
 
 var turkceAyet
@@ -78,92 +104,132 @@ $.when(turkceAyetFuture, arapcaAyetFuture, transliterasyonAyetFuture, surelerFut
     turkceKelime = v5[0]
     arapcaKelime = v6[0]
     $("#ready").text(arapcaAyet[0].ayet);
-    $("#soruSecDiv").show();
+
+    var sureHtml = "";
+    for(var i = 0; i < sureler.length; i++){
+      if(i % 6 == 0){
+        sureHtml += "<div class=\"btn-group btn-group-justified\" role=\"group\" aria-label=\"...\">";
+      }
+      sureHtml += "<div class=\"btn-group\" role=\"group\"><button value=\"" + i + "\" type=\"button\" class=\"btn sureButton btn-default\">" + sureler[i].sureAdi + "</button></div>";
+      if(i % 6 == 5){
+        sureHtml += "</div>";
+      }
+    }
+    $("#chooseSure").html(sureHtml);
+    $(".sureButton").click(function(event) {
+      $("#sure").text(event.target.textContent);
+      $( "#chooseAyet" ).slider( "option", "max", sureler[event.target.value].ayetNo );
+      $( "#chooseAyet" ).slider( "option", "values", [ 1, sureler[event.target.value].ayetNo ] );
+      $( "#ayet" ).text( 1 + " ile " + sureler[event.target.value].ayetNo );
+    })
  })
 
- $( ".sik" ).click(function(event) {
-   if(event.target.id == ("sik" + dogruSik) ){
-     sorular.splice(ayetNo, 1)
-     cevaplar.splice(ayetNo, 1)
-     okunuslar.splice(ayetNo, 1)
-     $( "#sonuc" ).text("DOGRU")
-   }else{
-     $( "#sonuc" ).text("YANLIS. DOGRU CEVAP : " + dogruSik)
-   }
-   if(sorular.length == 0){
-      $( "#durum" ).text("TEBRIKLER")
-   } else {
-      $( "#durum" ).text("Kalan soru sayisi " + sorular.length)
-   }
-
- })
-
- $( "#next" ).click(function(event) {
-   $( "#sonuc" ).empty()
-   soruHazirla()
- })
-
-
- $("#sinav").click(function(){
-     $("#calismaEkrani").hide();
-     soruHazirla()
-     $("#soruEkrani").show();
- })
-
- $("#calis").click(function(){
-     $("#soruEkrani").hide();
-     calismaHazirla()
-     $("#calismaEkrani").show();
- })
-
-function soruHazirla(){
-  ayetNo = Math.floor(Math.random() * sorular.length) // 0 - 42
-
-  $( "#soru" ).empty()
-  $( "#soru" ).append(sorular[ayetNo].ayet)
-
-  $( "#okunusu" ).empty()
-  $( "#okunusu" ).append(okunuslar[ayetNo].ayet)
-
-
-  for(var i = 1; i < 5 ; i++){
-    var rastgeleCevap;
-    do{
-      rastgeleCevap = Math.floor(Math.random() * 43) // 0 - 42
-    }while(rastgeleCevap == ayetNo);
-
-    $( "#sik" + i ).empty()
-    $( "#sik" + i ).append(i + ". " + cevaplarOrigin[rastgeleCevap].ayet)
+$("#chooseAyet").slider({
+  range: true,
+  min: 1,
+  max: 7,
+  values: [ 1, 7 ],
+  slide: function( event, ui ) {
+    $( "#ayet" ).text( ui.values[ 0 ] + " ile " + ui.values[ 1 ] );
   }
+})
 
-  dogruSik = Math.ceil(Math.random() * 4) // 1 - 4
-  $( "#sik" + dogruSik ).empty()
-  $( "#sik" + dogruSik ).append(dogruSik + ". " + cevaplar[ayetNo].ayet)
+$(".typeButton").click(function(event) {
+  $("#type").text(event.target.textContent);
+})
 
-}
+$("#settingsCloseButton").click(function(event) {
+  $("#settings").hide("blind");
+})
 
-function calismaHazirla(){
-  var dersNo = $("#ders").val()
-  var baslangicAyetNo = dersNo * 43 + 1
-  sorular = arapcaAyet.slice(baslangicAyetNo, baslangicAyetNo + 43)
-  okunuslar = transliterasyonAyet.slice(baslangicAyetNo, baslangicAyetNo + 43)
-  cevaplar = turkceAyet.slice(baslangicAyetNo, baslangicAyetNo + 43)
-  cevaplarOrigin = cevaplar.slice()
+$("#settingsOpenButton").click(function(event) {
+  $("#settings").hide("blind");
+  $("#settings").show("blind");
+})
+ // $( ".sik" ).click(function(event) {
+ //   if(event.target.id == ("sik" + dogruSik) ){
+ //     sorular.splice(ayetNo, 1)
+ //     cevaplar.splice(ayetNo, 1)
+ //     okunuslar.splice(ayetNo, 1)
+ //     $( "#sonuc" ).text("DOGRU")
+ //   }else{
+ //     $( "#sonuc" ).text("YANLIS. DOGRU CEVAP : " + dogruSik)
+ //   }
+ //   if(sorular.length == 0){
+ //      $( "#durum" ).text("TEBRIKLER")
+ //   } else {
+ //      $( "#durum" ).text("Kalan soru sayisi " + sorular.length)
+ //   }
+ //
+ // })
 
-  var calismaMetni = ""
-  for(var i = 0; i < 43 ; i++){
-    calismaMetni += "<div style=\"width: 33%; float: left; display: inline-block;\" align=\"center\">"
-    calismaMetni += sorular[i].ayetNo + ". "  +  okunuslar[i].ayet
-    calismaMetni += "</div>"
-    calismaMetni += "<div style=\"width: 33%; float: left; display: inline-block; font-family:Shaikh Hamdullah Mushaf;\" align=\"center\">"
-    calismaMetni += sorular[i].ayetNo + ". "  +  sorular[i].ayet
-    calismaMetni += "</div>"
-    calismaMetni += "<div style=\"width: 33%; float: left; display: inline-block;\" align=\"center\">"
-    calismaMetni += sorular[i].ayetNo + ". "  +  cevaplar[i].ayet
-    calismaMetni += "</div>"
-    calismaMetni += "</br>"
-    calismaMetni += "</br>"
-  }
-  $("#calismaMetni").html(calismaMetni);
-}
+
+ // $( "#next" ).click(function(event) {
+ //   $( "#sonuc" ).empty()
+ //   soruHazirla()
+ // })
+ //
+ //
+ // $("#sinav").click(function(){
+ //     $("#calismaEkrani").hide();
+ //     soruHazirla()
+ //     $("#soruEkrani").show();
+ // })
+ //
+ // $("#calis").click(function(){
+ //     $("#soruEkrani").hide();
+ //     calismaHazirla()
+ //     $("#calismaEkrani").show();
+ // })
+
+// function soruHazirla(){
+//   ayetNo = Math.floor(Math.random() * sorular.length) // 0 - 42
+//
+//   $( "#soru" ).empty()
+//   $( "#soru" ).append(sorular[ayetNo].ayet)
+//
+//   $( "#okunusu" ).empty()
+//   $( "#okunusu" ).append(okunuslar[ayetNo].ayet)
+//
+//
+//   for(var i = 1; i < 5 ; i++){
+//     var rastgeleCevap;
+//     do{
+//       rastgeleCevap = Math.floor(Math.random() * 43) // 0 - 42
+//     }while(rastgeleCevap == ayetNo);
+//
+//     $( "#sik" + i ).empty()
+//     $( "#sik" + i ).append(i + ". " + cevaplarOrigin[rastgeleCevap].ayet)
+//   }
+//
+//   dogruSik = Math.ceil(Math.random() * 4) // 1 - 4
+//   $( "#sik" + dogruSik ).empty()
+//   $( "#sik" + dogruSik ).append(dogruSik + ". " + cevaplar[ayetNo].ayet)
+//
+// }
+//
+// function calismaHazirla(){
+//   var dersNo = $("#ders").val()
+//   var baslangicAyetNo = dersNo * 43 + 1
+//   sorular = arapcaAyet.slice(baslangicAyetNo, baslangicAyetNo + 43)
+//   okunuslar = transliterasyonAyet.slice(baslangicAyetNo, baslangicAyetNo + 43)
+//   cevaplar = turkceAyet.slice(baslangicAyetNo, baslangicAyetNo + 43)
+//   cevaplarOrigin = cevaplar.slice()
+//
+//   var calismaMetni = ""
+//   for(var i = 0; i < 43 ; i++){
+//     calismaMetni += "<div style=\"width: 33%; float: left; display: inline-block;\" align=\"center\">"
+//     calismaMetni += sorular[i].ayetNo + ". "  +  okunuslar[i].ayet
+//     calismaMetni += "</div>"
+//     calismaMetni += "<div style=\"width: 33%; float: left; display: inline-block; font-family:Shaikh Hamdullah Mushaf;\" align=\"center\">"
+//     calismaMetni += sorular[i].ayetNo + ". "  +  sorular[i].ayet
+//     calismaMetni += "</div>"
+//     calismaMetni += "<div style=\"width: 33%; float: left; display: inline-block;\" align=\"center\">"
+//     calismaMetni += sorular[i].ayetNo + ". "  +  cevaplar[i].ayet
+//     calismaMetni += "</div>"
+//     calismaMetni += "</br>"
+//     calismaMetni += "</br>"
+//   }
+//   $("#calismaMetni").html(calismaMetni);
+// }
 </script>
