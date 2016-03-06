@@ -1,7 +1,7 @@
 <html>
 <head>
+<meta name="viewport" content="width=device-width">
 <style type="text/css">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 @font-face {
  font-family: Shaikh Hamdullah Mushaf;
  src: url("ShaikhHamdullahMushaf.eot") /* EOT file for IE */
@@ -10,6 +10,15 @@
  font-family: Shaikh Hamdullah Mushaf;
  src: url("ShaikhHamdullahMushaf.ttf") /* TTF file for CSS3 browsers */
 }
+.arapceMetin{
+  font-family: Shaikh Hamdullah Mushaf;
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
 </style>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="js/jquery-ui.css">
@@ -17,67 +26,107 @@
 <body>
 
 <div class=".container">
-<div id="settingsOpenButton" class="btn btn-default btn-lg glyphicon glyphicon-cog" style="float: right;"></div>
-<h1 align="center" id="ready"></h1>
-
-<div id="settings" align="center">
-  <br>
-  <button id="backSure" type="button" class="btn btn-default btn-lg">&laquo;</button>
-  <button type="button" class="btn sure btn-default btn-lg">Fatiha</button>
-  <button id="nextSure" type="button" class="btn btn-default btn-lg">&raquo;</button>
-  <br>
-  <div id="chooseSure"></div>
-  <br>
-  <div id="chooseType" class="btn-group" role="group" aria-label="...">
-      <button type="button" class="btn typeButton btn-default btn-lg">ayet ayet</button>
-      <button type="button" class="btn typeButton btn-default btn-lg">kelime kelime</button>
+<br>
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <h3 align="center" class="arapcaMetin" id="ready"></h3>
   </div>
-  <br>
-  <br>
-  <div id="chooseAyet" style="font-size: 30px;"></div>
-  <br>
-  <div>Ben <a class="sure">Fatiha</a> suresinin <a id="ayet">1 ile 7</a> arasini <a id="type">ayet ayet</a> calisacagim.</div>
-  <br>
-  <div id="settingsCloseButton"  class="btn btn-default btn-lg" aria-label="...">Taman</div>
+  <div class="col-md-2">
+    <div id="settingsOpenButton" class="btn btn-default btn-lg glyphicon glyphicon-cog"></div>
+  </div>
 </div>
+<br>
 </div>
-<!-- <div id="soruSecDiv" hidden="hidden" align="center">
-  Ders : <input id="ders" type="text" name="ders" value="144">
-  <input id="calis" type="submit" value="Calis">
-</div> -->
 
-<!-- <div align="center" id="soruEkrani" hidden="hidden">
-  <br>
-  <div id="soru"></div>
-  <br>
-  <div id="okunusu"></div>
-  <br>
-  <div id="sik1" class="sik"></div>
-  <div id="sik2" class="sik"></div>
-  <div id="sik3" class="sik"></div>
-  <div id="sik4" class="sik"></div>
-  <br>
-  <div id="sonuc"></div>
-  <div id="durum"></div>
-  <br>
-  <button id="next">SIRADAKI</button>
-</div> -->
+<div id="settings" class=".container">
+<div  class="row" align="center">
+  <div class="col-md-12">
+    <button id="backSure" type="button" class="btn btn-default btn-lg">&laquo;</button>
+    <div class="btn-group">
+      <button type="button" class="btn sure btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Fatiha
+      </button>
+      <ul id="sureDropdown" class="dropdown-menu scrollable-menu">
 
-<!-- <div style="width: 100%" id="calismaEkrani" hidden="hidden">
-  <div align="center"><input id="sinav" type="submit" value="Sinava Basla" ></div>
-  <div id="calismaMetni"></div>
-</div> -->
+      </ul>
+    </div>
+    <button id="nextSure" type="button" class="btn btn-default btn-lg">&raquo;</button>
+  </div>
+</div>
+<br>
+<div  class="row" align="center">
+  <div class="col-md-12">
+    <div id="chooseType" class="btn-group" role="group" aria-label="...">
+        <button type="button" class="btn typeButton btn-default btn-lg">ayet ayet</button>
+        <button type="button" class="btn typeButton btn-default btn-lg">kelime kelime</button>
+    </div>
+  </div>
+</div>
+<br>
+<div  class="row" align="center">
+  <div class="col-md-12">
+    <div id="chooseRandom" class="btn-group" role="group" aria-label="...">
+        <button type="button" class="btn randomButton btn-default btn-lg">sirayla</button>
+        <button type="button" class="btn randomButton btn-default btn-lg">rastgele</button>
+    </div>
+  </div>
+</div>
+<br>
+<div  class="row" align="center">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+      <div id="chooseAyet" style="font-size: 30px;"></div>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+<br>
+<div class="row" align="center">
+  <div class="col-md-12">
+      Ben <a class="sure">Fatiha</a> suresinin <a id="ayet">1 ile 7</a> arasini <a id="type">ayet ayet</a>  ve <a id="random">sirayla</a> calisacagim.
+  </div>
+</div>
+<br>
+<div  class="row" align="center">
+  <div class="col-md-12">
+      <div id="settingsCloseButton"  class="btn btn-default btn-lg" aria-label="...">Taman</div>
+  </div>
+</div>
+<br>
+</div>
+
+<div id="questionsScreen" class=".container">
+  <div  class="row" align="center">
+      <div class="col-md-12" id="question" class="arapcaMetin"></div>
+  </div>
+</div>
+<div id="answerScreen" class=".container">
+  <div class="row" align="center">
+      <div class="col-md-12" id="answer">Cevap</div>
+  </div>
+  <div  class="row" align="center">
+    <div class="col-md-1"></div>
+    <div class="col-md-4"><button type="button" class="btn btn-default btn-lg">Tekrar</button></div>
+    <div class="col-md-2"></div>
+    <div class="col-md-4"><button type="button" class="btn btn-default btn-lg">Bildim</button></div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
 
 </body>
 </html>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="js/jquery-1.12.1.min.js"></script>
+<script src="js/jquery-ui.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/jquery.ui.touch-punch.min.js"></script>
 <script>
 
-var seciliSure = 0
+var seciliSure = 1
+var seciliAyetBegin = 1
+var seciliAyetEnd = 7
+var seciliType = "ayet ayet" // ayet ayet,kelime kelime
+var seciliRandom = "sirayla" //sirayla,rastgele
 
 var turkceAyet
 var arapcaAyet
@@ -87,12 +136,7 @@ var turkceKelime
 var arapcaKelime
 
 var sorular
-var okunuslar
 var cevaplar
-var cevaplarOrigin
-
-var dogruSik
-var ayetNo
 
 var surelerFuture = $.getJSON( "./sure.json")
 var turkceAyetFuture = $.getJSON( "./turkceAyet.json")
@@ -100,6 +144,9 @@ var arapcaAyetFuture = $.getJSON( "./arapcaAyet.json")
 var transliterasyonAyetFuture = $.getJSON( "./transliterasyonAyet.json")
 var turkceKelimeFuture = $.getJSON( "./turkceKelime.json")
 var arapcaKelimefuture = $.getJSON( "./arapcaKelime.json")
+
+$("#questionsScreen").hide();
+$("#answerScreen").hide();
 
 // 6235 = 29 * 5 * 43 = 145 * 43
 $.when(turkceAyetFuture, arapcaAyetFuture, transliterasyonAyetFuture, surelerFuture, turkceKelimeFuture , arapcaKelimefuture)
@@ -112,11 +159,29 @@ $.when(turkceAyetFuture, arapcaAyetFuture, transliterasyonAyetFuture, surelerFut
     arapcaKelime = v6[0]
     $("#ready").text(arapcaAyet[0].ayet);
 
+    var sd = ""
+    for(var i = 0 ; i < sureler.length; i++){
+      sd += "<li>"
+      sd += "<a href=\"#\">"
+      sd += sureler[i].sureAdi
+      sd += "</a>"
+      sd += "</li>"
+    }
+    $("#sureDropdown").html(sd);
+    $("#sureDropdown li a").click(function(event){
+      var sa = $(this).text()
+      var s = sureler.filter(function (n,i){
+        return n.sureAdi===sa;
+      });
+      seciliSure = s[0].sureNo
+      adjustSlider()
+    })
+
 })
 
 $("#backSure").click(function(event) {
-  if(seciliSure == 0){
-    seciliSure = 113
+  if(seciliSure == 1){
+    seciliSure = 114
   } else {
     seciliSure--
   }
@@ -124,8 +189,8 @@ $("#backSure").click(function(event) {
 })
 
 $("#nextSure").click(function(event) {
-  if(seciliSure == 113){
-    seciliSure = 0
+  if(seciliSure == 114){
+    seciliSure = 1
   } else {
     seciliSure++
   }
@@ -137,6 +202,8 @@ function adjustSlider(){
   $( "#chooseAyet" ).slider( "option", "max", sureler[seciliSure].ayetNo );
   $( "#chooseAyet" ).slider( "option", "values", [ 1, sureler[seciliSure].ayetNo ] );
   $( "#ayet" ).text( 1 + " ile " + sureler[seciliSure].ayetNo );
+  seciliAyetBegin = 1
+  seciliAyetEnd = sureler[seciliSure].ayetNo
 }
 
 $("#chooseAyet").slider({
@@ -146,105 +213,60 @@ $("#chooseAyet").slider({
   values: [ 1, 7 ],
   slide: function( event, ui ) {
     $( "#ayet" ).text( ui.values[ 0 ] + " ile " + ui.values[ 1 ] );
+    seciliAyetBegin = ui.values[ 0 ]
+    seciliAyetEnd = ui.values[ 1 ]
   }
 })
 
 $(".typeButton").click(function(event) {
-  $("#type").text(event.target.textContent);
+    seciliType = event.target.textContent
+    $("#type").text(event.target.textContent);
+})
+
+$(".randomButton").click(function(event) {
+  seciliRandom = event.target.textContent
+  $("#random").text(event.target.textContent);
 })
 
 $("#settingsCloseButton").click(function(event) {
   $("#settings").hide("blind");
+  $("#questionsScreen").show("blind");
+
+  if(seciliType=="ayet ayet"){
+    sorular = arapcaAyet.filter(function (n,i){
+      return n.sureNo==seciliSure && n.ayetNo>=seciliAyetBegin && n.ayetNo<=seciliAyetEnd;
+    });
+  } else {
+    sorular = arapcaKelime.filter(function (n,i){
+      return n.sureNo==seciliSure && n.ayetNo>=seciliAyetBegin && n.ayetNo<=seciliAyetEnd;
+    });
+  }
+
+  if(seciliRandom=="rastgele"){
+    shuffle(sorular)
+  }
+  soruIndex = 0
+  showQuestion()
 })
 
 $("#settingsOpenButton").click(function(event) {
+  $("#questionsScreen").hide("blind");
   $("#settings").hide("blind");
   $("#settings").show("blind");
 })
- // $( ".sik" ).click(function(event) {
- //   if(event.target.id == ("sik" + dogruSik) ){
- //     sorular.splice(ayetNo, 1)
- //     cevaplar.splice(ayetNo, 1)
- //     okunuslar.splice(ayetNo, 1)
- //     $( "#sonuc" ).text("DOGRU")
- //   }else{
- //     $( "#sonuc" ).text("YANLIS. DOGRU CEVAP : " + dogruSik)
- //   }
- //   if(sorular.length == 0){
- //      $( "#durum" ).text("TEBRIKLER")
- //   } else {
- //      $( "#durum" ).text("Kalan soru sayisi " + sorular.length)
- //   }
- //
- // })
 
-
- // $( "#next" ).click(function(event) {
- //   $( "#sonuc" ).empty()
- //   soruHazirla()
- // })
- //
- //
- // $("#sinav").click(function(){
- //     $("#calismaEkrani").hide();
- //     soruHazirla()
- //     $("#soruEkrani").show();
- // })
- //
- // $("#calis").click(function(){
- //     $("#soruEkrani").hide();
- //     calismaHazirla()
- //     $("#calismaEkrani").show();
- // })
-
-// function soruHazirla(){
-//   ayetNo = Math.floor(Math.random() * sorular.length) // 0 - 42
-//
-//   $( "#soru" ).empty()
-//   $( "#soru" ).append(sorular[ayetNo].ayet)
-//
-//   $( "#okunusu" ).empty()
-//   $( "#okunusu" ).append(okunuslar[ayetNo].ayet)
-//
-//
-//   for(var i = 1; i < 5 ; i++){
-//     var rastgeleCevap;
-//     do{
-//       rastgeleCevap = Math.floor(Math.random() * 43) // 0 - 42
-//     }while(rastgeleCevap == ayetNo);
-//
-//     $( "#sik" + i ).empty()
-//     $( "#sik" + i ).append(i + ". " + cevaplarOrigin[rastgeleCevap].ayet)
-//   }
-//
-//   dogruSik = Math.ceil(Math.random() * 4) // 1 - 4
-//   $( "#sik" + dogruSik ).empty()
-//   $( "#sik" + dogruSik ).append(dogruSik + ". " + cevaplar[ayetNo].ayet)
-//
-// }
-//
-// function calismaHazirla(){
-//   var dersNo = $("#ders").val()
-//   var baslangicAyetNo = dersNo * 43 + 1
-//   sorular = arapcaAyet.slice(baslangicAyetNo, baslangicAyetNo + 43)
-//   okunuslar = transliterasyonAyet.slice(baslangicAyetNo, baslangicAyetNo + 43)
-//   cevaplar = turkceAyet.slice(baslangicAyetNo, baslangicAyetNo + 43)
-//   cevaplarOrigin = cevaplar.slice()
-//
-//   var calismaMetni = ""
-//   for(var i = 0; i < 43 ; i++){
-//     calismaMetni += "<div style=\"width: 33%; float: left; display: inline-block;\" align=\"center\">"
-//     calismaMetni += sorular[i].ayetNo + ". "  +  okunuslar[i].ayet
-//     calismaMetni += "</div>"
-//     calismaMetni += "<div style=\"width: 33%; float: left; display: inline-block; font-family:Shaikh Hamdullah Mushaf;\" align=\"center\">"
-//     calismaMetni += sorular[i].ayetNo + ". "  +  sorular[i].ayet
-//     calismaMetni += "</div>"
-//     calismaMetni += "<div style=\"width: 33%; float: left; display: inline-block;\" align=\"center\">"
-//     calismaMetni += sorular[i].ayetNo + ". "  +  cevaplar[i].ayet
-//     calismaMetni += "</div>"
-//     calismaMetni += "</br>"
-//     calismaMetni += "</br>"
-//   }
-//   $("#calismaMetni").html(calismaMetni);
-// }
+function showQuestion(){
+  if(sorular.length != 0){
+      $("#question").html("<h1>" + sorular[soruIndex].ayet + "</h1>")
+  }
+}
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length; i; i -= 1) {
+        j = Math.floor(Math.random() * i);
+        x = a[i - 1];
+        a[i - 1] = a[j];
+        a[j] = x;
+    }
+}
 </script>
