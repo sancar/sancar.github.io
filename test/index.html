@@ -1,7 +1,7 @@
 <html>
 <head>
 <style type="text/css">
-body { padding: 15px; }
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 @font-face {
  font-family: Shaikh Hamdullah Mushaf;
  src: url("ShaikhHamdullahMushaf.eot") /* EOT file for IE */
@@ -12,28 +12,33 @@ body { padding: 15px; }
 }
 </style>
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="js/jquery-ui.css">
 </head>
 <body>
 
-<div style="margin-left: 20%;margin-right: 20%;">
-<div id="settingsOpenButton" class="btn btn-default glyphicon glyphicon-cog" style="float: right;"></div>
-<h2 align="center" id="ready"></h2>
+<div class=".container">
+<div id="settingsOpenButton" class="btn btn-default btn-lg glyphicon glyphicon-cog" style="float: right;"></div>
+<h1 align="center" id="ready"></h1>
 
 <div id="settings" align="center">
+  <br>
+  <button id="backSure" type="button" class="btn btn-default btn-lg">&laquo;</button>
+  <button type="button" class="btn sure btn-default btn-lg">Fatiha</button>
+  <button id="nextSure" type="button" class="btn btn-default btn-lg">&raquo;</button>
+  <br>
   <div id="chooseSure"></div>
   <br>
   <div id="chooseType" class="btn-group" role="group" aria-label="...">
-      <button type="button" class="btn typeButton btn-default">ayet ayet</button>
-      <button type="button" class="btn typeButton btn-default">kelime kelime</button>
+      <button type="button" class="btn typeButton btn-default btn-lg">ayet ayet</button>
+      <button type="button" class="btn typeButton btn-default btn-lg">kelime kelime</button>
   </div>
   <br>
   <br>
-  <div id="chooseAyet"></div>
+  <div id="chooseAyet" style="font-size: 30px;"></div>
   <br>
-  <div>Ben <a id="sure">Fatiha</a> suresinin <a id="ayet">1 ile 7</a> arasini <a id="type">ayet ayet</a> calisacagim.</div>
+  <div>Ben <a class="sure">Fatiha</a> suresinin <a id="ayet">1 ile 7</a> arasini <a id="type">ayet ayet</a> calisacagim.</div>
   <br>
-  <div id="settingsCloseButton"  class="btn btn-default" aria-label="...">Taman</div>
+  <div id="settingsCloseButton"  class="btn btn-default btn-lg" aria-label="...">Taman</div>
 </div>
 </div>
 <!-- <div id="soruSecDiv" hidden="hidden" align="center">
@@ -69,7 +74,10 @@ body { padding: 15px; }
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="js/bootstrap.js"></script>
+<script src="js/jquery.ui.touch-punch.min.js"></script>
 <script>
+
+var seciliSure = 0
 
 var turkceAyet
 var arapcaAyet
@@ -104,24 +112,32 @@ $.when(turkceAyetFuture, arapcaAyetFuture, transliterasyonAyetFuture, surelerFut
     arapcaKelime = v6[0]
     $("#ready").text(arapcaAyet[0].ayet);
 
-    var sureHtml = "";
-    for(var i = 0; i < sureler.length; i++){
-      if(i % 6 == 0){
-        sureHtml += "<div class=\"btn-group btn-group-justified\" role=\"group\" aria-label=\"...\">";
-      }
-      sureHtml += "<div class=\"btn-group\" role=\"group\"><button value=\"" + i + "\" type=\"button\" class=\"btn sureButton btn-default\">" + sureler[i].sureAdi + "</button></div>";
-      if(i % 6 == 5){
-        sureHtml += "</div>";
-      }
-    }
-    $("#chooseSure").html(sureHtml);
-    $(".sureButton").click(function(event) {
-      $("#sure").text(event.target.textContent);
-      $( "#chooseAyet" ).slider( "option", "max", sureler[event.target.value].ayetNo );
-      $( "#chooseAyet" ).slider( "option", "values", [ 1, sureler[event.target.value].ayetNo ] );
-      $( "#ayet" ).text( 1 + " ile " + sureler[event.target.value].ayetNo );
-    })
- })
+})
+
+$("#backSure").click(function(event) {
+  if(seciliSure == 0){
+    seciliSure = 113
+  } else {
+    seciliSure--
+  }
+  adjustSlider()
+})
+
+$("#nextSure").click(function(event) {
+  if(seciliSure == 113){
+    seciliSure = 0
+  } else {
+    seciliSure++
+  }
+  adjustSlider()
+})
+
+function adjustSlider(){
+  $(".sure").text(sureler[seciliSure].sureAdi);
+  $( "#chooseAyet" ).slider( "option", "max", sureler[seciliSure].ayetNo );
+  $( "#chooseAyet" ).slider( "option", "values", [ 1, sureler[seciliSure].ayetNo ] );
+  $( "#ayet" ).text( 1 + " ile " + sureler[seciliSure].ayetNo );
+}
 
 $("#chooseAyet").slider({
   range: true,
