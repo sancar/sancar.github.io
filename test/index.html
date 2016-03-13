@@ -4,13 +4,13 @@
 <style type="text/css">
 @font-face {
  font-family: Shaikh Hamdullah Mushaf;
- src: url("ShaikhHamdullahMushaf.eot") /* EOT file for IE */
+ src: url("fonts/ShaikhHamdullahMushaf.eot") /* EOT file for IE */
 }
 @font-face {
  font-family: Shaikh Hamdullah Mushaf;
- src: url("ShaikhHamdullahMushaf.ttf") /* TTF file for CSS3 browsers */
+ src: url("fonts/ShaikhHamdullahMushaf.ttf") /* TTF file for CSS3 browsers */
 }
-.arapceMetin{
+.arapcaMetin{
   font-family: Shaikh Hamdullah Mushaf;
 }
 
@@ -102,7 +102,7 @@
 
 <div id="questionsScreen" class="container">
   <div  class="row" align="center">
-      <div class="col-xs-12" id="question" class="arapcaMetin"></div>
+      <div class="col-xs-12" id="question"></div>
   </div>
   <div  class="row" align="center">
     <div class="col-xs-12">
@@ -342,13 +342,12 @@ $("#skipButton").click(function(event) {
    showQuestion()
 })
 
-
 function showQuestion(){
   $("#answerScreen").hide("blind")
   if(seciliType == "kelime kelime"){
-    $("#question").html("<h1>" + sorular[soruIndex].kelime + "</h1>")
+    $("#question").html("<h1  class=\"arapcaMetin\">" + sorular[soruIndex].kelime + "</h1>")
   } else {
-    $("#question").html("<h1>" + sorular[soruIndex].ayet + "</h1>")
+    $("#question").html("<h1 class=\"arapcaMetin\">" + sorular[soruIndex].ayet + "</h1>")
   }
   $("#questionsScreen").show("blind")
 }
