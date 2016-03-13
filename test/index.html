@@ -93,6 +93,13 @@
 <br>
 </div>
 
+<div id="statisticsScreen" class="container">
+    <div  class="row" align="center">
+        <div class="col-xs-6">Dogru cevaplanan : <a id="numQuestionsAnswered"></a></div>
+        <div class="col-xs-6">Kalan : <a id="numQuestionsLeft"></a></div>
+    </div>
+</div>
+
 <div id="questionsScreen" class="container">
   <div  class="row" align="center">
       <div class="col-xs-12" id="question" class="arapcaMetin"></div>
@@ -109,10 +116,16 @@
   </div>
   <div  class="row" align="center">
     <div class="col-xs-1"></div>
-    <div class="col-xs-4"><button type="button" class="btn nextQuestionButton btn-default btn-lg">Bilemedim</button></div>
+    <div class="col-xs-4"><button type="button" id="skipButton" class="btn btn-default btn-lg">Bilemedim</button></div>
     <div class="col-xs-2"></div>
-    <div class="col-xs-4"><button type="button" class="btn nextQuestionButton btn-default btn-lg">Bildim</button></div>
+    <div class="col-xs-4"><button type="button" id="correctAnswerButton" class="btn btn-default btn-lg">Bildim</button></div>
     <div class="col-xs-1"></div>
+  </div>
+</div>
+
+<div id="congratsScreen" class="container">
+  <div class="row" align="center">
+      <div class="col-xs-12"><h1>TEBRIKLER</h1></div>
   </div>
 </div>
 
@@ -140,6 +153,9 @@ var arapcaKelime
 
 var sorular
 var cevaplar
+var numQuestionsAnswered
+var numQuestions
+var soruIndex
 
 var surelerFuture = $.getJSON( "./sure.json")
 var turkceAyetFuture = $.getJSON( "./turkceAyet.json")
@@ -148,8 +164,11 @@ var transliterasyonAyetFuture = $.getJSON( "./transliterasyonAyet.json")
 var turkceKelimeFuture = $.getJSON( "./turkceKelime.json")
 var arapcaKelimefuture = $.getJSON( "./arapcaKelime.json")
 
+$("#statisticsScreen").hide();
 $("#questionsScreen").hide();
 $("#answerScreen").hide();
+$("#congratsScreen").hide()
+
 
 // 6235 = 29 * 5 * 43 = 145 * 43
 $.when(turkceAyetFuture, arapcaAyetFuture, transliterasyonAyetFuture, surelerFuture, turkceKelimeFuture , arapcaKelimefuture)
@@ -221,6 +240,14 @@ $("#nextAyet").click(function(event) {
 })
 
 function adjustSlider(){
+  $( "#chooseAyet" ).slider( "option", "min", 1 );
+  if(seciliType == "kelime kelime" && seciliSure == 0){
+    if(seciliAyetBegin == 1){
+      seciliAyetBegin = 2
+    }
+    $( "#chooseAyet" ).slider( "option", "min", 2 );
+  }
+
   $(".sure").text(sureler[seciliSure].sureAdi);
   $( "#chooseAyet" ).slider( "option", "max", sureler[seciliSure].ayetNo );
   $( "#chooseAyet" ).slider( "option", "values", [ seciliAyetBegin, seciliAyetEnd ] );
@@ -240,8 +267,9 @@ $("#chooseAyet").slider({
 })
 
 $(".typeButton").click(function(event) {
-    seciliType = event.target.textContent
-    $("#type").text(event.target.textContent);
+  seciliType = event.target.textContent
+  $("#type").text(event.target.textContent);
+  adjustSlider()
 })
 
 $(".randomButton").click(function(event) {
@@ -267,25 +295,74 @@ $("#settingsCloseButton").click(function(event) {
     permute(cevaplar, pr)
   }
   soruIndex = 0
+  $("#statisticsScreen").show("blind")
+  numQuestions = sorular.length
+  numQuestionsAnswered = 0
+
+  adjustStatistics()
   showQuestion()
 })
 
-$("#settingsOpenButton").click(function(event) {
-  $("#questionsScreen").hide("blind");
-  $("#answerScreen").hide("blind");
-  $("#settings").hide("blind");
-  $("#settings").show("blind");
-})
-
-function showQuestion(){
-  $("#question").html("<h1>" + sorular[soruIndex].ayet + "</h1>")
+function adjustStatistics(){
+  $("#numQuestionsAnswered").text(numQuestionsAnswered)
+  $("#numQuestionsLeft").text(sorular.length)
 }
 
-$(".showAnswerButton").click(function(event) {
-  $("#answer").html("<h1>" + cevaplar[soruIndex].ayet + "</h1>")
-  $("#questionsScreen").hide("blind");
-  $("#answerScreen").show("blind");
+$("#settingsOpenButton").click(function(event) {
+  $("#congratsScreen").hide("blind")
+  $("#statisticsScreen").hide("blind")
+  $("#questionsScreen").hide("blind")
+  $("#answerScreen").hide("blind")
+  $("#settings").hide("blind")
+  $("#settings").show("blind")
+
 })
+
+$(".showAnswerButton").click(function(event) {
+  showAnswer()
+})
+
+$("#correctAnswerButton").click(function(event) {
+  sorular.splice(soruIndex, 1)
+  cevaplar.splice(soruIndex, 1)
+  numQuestionsAnswered++
+  adjustStatistics()
+  if(numQuestionsAnswered == numQuestions){
+    $("#answerScreen").hide("blind")
+    $("#congratsScreen").show("blind")
+  } else{
+    soruIndex = soruIndex % sorular.length
+    showQuestion()
+  }
+
+})
+
+$("#skipButton").click(function(event) {
+   soruIndex = (soruIndex + 1) % sorular.length
+   showQuestion()
+})
+
+
+function showQuestion(){
+  $("#answerScreen").hide("blind")
+  if(seciliType == "kelime kelime"){
+    $("#question").html("<h1>" + sorular[soruIndex].kelime + "</h1>")
+  } else {
+    $("#question").html("<h1>" + sorular[soruIndex].ayet + "</h1>")
+  }
+  $("#questionsScreen").show("blind")
+}
+
+function showAnswer(){
+  $("#questionsScreen").hide("blind")
+  if(seciliType == "kelime kelime"){
+    $("#answer").html("<h1>" + cevaplar[soruIndex].kelime + "</h1>")
+  }else{
+    $("#answer").html("<h1>" + cevaplar[soruIndex].ayet + "</h1>")
+  }
+  $("#answerScreen").show("blind")
+}
+
 //*** Logic utiliy methods **//
 
 function secimFiltre(dataJson){
