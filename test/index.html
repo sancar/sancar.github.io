@@ -186,13 +186,13 @@
     </h3>
   </div>
   <div class="col-xs-2">
-    <div id="settingsOpenButton" class="btn btn-default btn-lg glyphicon glyphicon-cog"></div>
+    <div id="settingsOpenButton" style="display:none;" class="btn btn-default btn-lg glyphicon glyphicon-cog"></div>
   </div>
 </div>
 <br>
 </div>
 
-<div id="settingsScreen" class="container">
+<div id="settingsScreen" class="container" style="display:none;">
 <div  class="row" align="center">
   <div class="col-xs-12">
     <button id="backSure" type="button" class="btn btn-default btn-lg">&laquo;</button>
@@ -246,14 +246,14 @@
 <br>
 </div>
 
-<div id="statisticsScreen" class="container">
+<div id="statisticsScreen" class="container" style="display:none;">
     <div  class="row" align="center">
         <div class="col-xs-6">Dogru cevaplanan : <a id="numQuestionsAnswered"></a></div>
         <div class="col-xs-6">Kalan : <a id="numQuestionsLeft"></a></div>
     </div>
 </div>
 
-<div id="questionsScreen" class="container">
+<div id="questionsScreen" class="container" style="display:none;">
   <div  class="row" align="center">
       <div class="col-xs-12" id="question"></div>
   </div>
@@ -263,7 +263,7 @@
     </div>
   </div>
 </div>
-<div id="answerScreen" class="container">
+<div id="answerScreen" class="container" style="display:none;">
   <div class="row" align="center">
       <div class="col-xs-12" id="answer"></div>
   </div>
@@ -276,7 +276,7 @@
   </div>
 </div>
 
-<div id="congratsScreen" class="container">
+<div id="congratsScreen" class="container" style="display:none;">
   <div class="row" align="center">
       <div class="col-xs-12"><h1>TEBRIKLER</h1></div>
   </div>
@@ -316,15 +316,6 @@ var arapcaAyetFuture = $.getJSON( "./arapcaAyet.json")
 var transliterasyonAyetFuture = $.getJSON( "./transliterasyonAyet.json")
 var turkceKelimeFuture = $.getJSON( "./turkceKelime.json")
 var arapcaKelimefuture = $.getJSON( "./arapcaKelime.json")
-
-$("#statisticsScreen").hide();
-$("#questionsScreen").hide();
-$("#answerScreen").hide();
-$("#congratsScreen").hide()
-$("#settingsScreen").hide()
-$("#settingsOpenButton").hide()
-
-
 
 // 6235 = 29 * 5 * 43 = 145 * 43
 $.when(turkceAyetFuture, arapcaAyetFuture, transliterasyonAyetFuture, surelerFuture, turkceKelimeFuture , arapcaKelimefuture)
