@@ -256,6 +256,7 @@
 <div id="questionsScreen" class="container" style="display:none;">
   <div  class="row" align="center">
       <div class="col-xs-12" id="question"></div>
+      <div class="col-xs-12" id="questionRead"></div>
   </div>
   <div  class="row" align="center">
     <div class="col-xs-12">
@@ -299,12 +300,14 @@ var seciliRandom = "sirayla" //sirayla,rastgele
 
 var turkceAyet
 var arapcaAyet
-var transliterasyonAyet
 var sureler
 var turkceKelime
 var arapcaKelime
+var transliterasyonAyet
+var transliterasyonKelime
 
 var sorular
+var sorularOkunus
 var cevaplar
 var numQuestionsAnswered
 var numQuestions
@@ -313,20 +316,24 @@ var soruIndex
 var surelerFuture = $.getJSON( "./sure.json")
 var turkceAyetFuture = $.getJSON( "./turkceAyet.json")
 var arapcaAyetFuture = $.getJSON( "./arapcaAyet.json")
-var transliterasyonAyetFuture = $.getJSON( "./transliterasyonAyet.json")
 var turkceKelimeFuture = $.getJSON( "./turkceKelime.json")
 var arapcaKelimefuture = $.getJSON( "./arapcaKelime.json")
+var transliterasyonAyetFuture = $.getJSON( "./transliterasyonAyet.json")
+var transliterasyonKelimeFuture = $.getJSON( "./transliterasyonKelime.json")
 
 // 6235 = 29 * 5 * 43 = 145 * 43
-$.when(turkceAyetFuture, arapcaAyetFuture, transliterasyonAyetFuture, surelerFuture, turkceKelimeFuture , arapcaKelimefuture)
- .then(function(v1, v2 , v3 , v4 , v5, v6) {
+$.when(turkceAyetFuture, arapcaAyetFuture, surelerFuture, turkceKelimeFuture , arapcaKelimefuture, transliterasyonAyetFuture, transliterasyonKelimeFuture)
+.then(function(v1, v2 , v3 , v4 , v5, v6, v7) {
+//$.when(turkceAyetFuture, arapcaAyetFuture, surelerFuture, turkceKelimeFuture , arapcaKelimefuture)
+// .then(function(v1, v2 , v3 , v4 , v5) {
     turkceAyet = v1[0]
-    arapcaAyet = v2[0]
-    transliterasyonAyet = v3[0]
-    sureler = v4[0]
-    turkceKelime = v5[0]
-    arapcaKelime = v6[0]
-
+    arapcaAyet = v2[0]  
+    sureler = v3[0]
+    turkceKelime = v4[0]
+    arapcaKelime = v5[0]
+    transliterasyonAyet = v6[0]
+    transliterasyonKelime = v7[0]
+    
     var sd = ""
     for(var i = 0 ; i < sureler.length; i++){
       sd += "<li>"
@@ -431,15 +438,18 @@ $("#settingsCloseButton").click(function(event) {
 
   if(seciliType=="ayet ayet"){
     sorular = secimFiltre(arapcaAyet)
+    sorularOkunus = secimFiltre(transliterasyonAyet)
     cevaplar = secimFiltre(turkceAyet)
   } else {
     sorular = secimFiltre(arapcaKelime)
+    sorularOkunus = secimFiltre(transliterasyonKelime)
     cevaplar = secimFiltre(turkceKelime)
   }
 
   if(seciliRandom=="rastgele"){
     var pr = permutation(sorular.length)
     permute(sorular, pr)
+    permute(sorularOkunus, pr)
     permute(cevaplar, pr)
   }
   soruIndex = 0
@@ -472,6 +482,7 @@ $(".showAnswerButton").click(function(event) {
 
 $("#correctAnswerButton").click(function(event) {
   sorular.splice(soruIndex, 1)
+  sorularOkunus.splice(soruIndex, 1)
   cevaplar.splice(soruIndex, 1)
   numQuestionsAnswered++
   adjustStatistics()
@@ -495,8 +506,10 @@ function showQuestion(){
   $("#answerScreen").hide("blind")
   if(seciliType == "kelime kelime"){
     $("#question").html("<h1  class=\"arapcaMetin\">" + sorular[soruIndex].kelime + "</h1>")
+    $("#questionRead").html("<h1>" + sorularOkunus[soruIndex].kelime + "</h1>")
   } else {
     $("#question").html("<h1 class=\"arapcaMetin\">" + sorular[soruIndex].ayet + "</h1>")
+    $("#questionRead").html("<h1>" + sorularOkunus[soruIndex].ayet + "</h1>")
   }
   $("#questionsScreen").show("blind")
 }
