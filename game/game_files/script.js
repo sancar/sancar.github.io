@@ -34,9 +34,7 @@ ControlHandler.prototype.keyDownEvent = function(e) {
         this.d = true
     } else if (e.keyCode == 83) {
         this.s = true
-    } else if ((e.keyCode >= 48 || e.keyCode <= 57) && this.main.state == 'game') {
-        this.playerHandler.hotKey(e.keyCode)
-    }
+    } 
 };
 ControlHandler.prototype.keyUpEvent = function(e) {
     if (e.keyCode == 32) {
@@ -51,22 +49,19 @@ ControlHandler.prototype.keyUpEvent = function(e) {
 };
 
 function CreateLevel(main) {
-    var flatness = 0.90;
     var levelWidth = main.levelWidth;
     var levelHeight = main.levelHeight;
-    var blockSize = main.blockSize;
     var blockInt = main.blockInt;
     var list = main.gridHandler.list;
-    var waterList = main.gridHandler.waterList;
     var horizon = main.horizon;
     var Y = horizon;
     var i, j;
-    for (i = 0; i < levelWidth / 20; i++) {
-        var randX = Math.random() * (levelWidth - 20) + 10 | 0;
-        var randY = Math.random() * (levelHeight * 0.5 - 20) + 8 | 0;
+    for (i = 0; i < levelWidth - 26; i+= 26) {
+        var x = i;
+        var y = 1 * (levelHeight * 0.5 - 20) + 8;
         for (j = 0; j < 25; j++) {
             for (var k = 0; k < 9; k++) {
-                list[randX + Math.random() * k * 2 - k | 0][randY + Math.random() * k - k / 2 | 0] = blockInt.cloud
+                list[x + j][y + k] = blockInt.cloud
             }
         }
     }
@@ -79,57 +74,11 @@ function CreateLevel(main) {
         }
         list[i][0] = blockInt.bedrock;
         list[i][levelHeight - 1] = blockInt.bedrock;
-        if (Y > horizon) {
-            for (j = horizon; j < Y; j++) {
-                list[i][j] = blockInt.water;
-                waterList[waterList.length] = {
-                    x: i,
-                    y: j
-                }
-            }
-        }
         for (j = Y; j < levelHeight - 1; j++) {
             if (j > Y + Math.random() * 8 + 4) {
                 list[i][j] = blockInt.stone
             } else {
                 list[i][j] = blockInt.dirt
-            }
-        }
-        if (Math.random() < flatness) {
-            Y += (Math.random() * 3 | 0) - 1
-        }
-        if (Y > horizon && i > levelWidth / 2 - 20 && i < levelWidth / 2) {
-            Y--
-        }
-        if (Y > levelHeight - 1) {
-            Y--
-        } else if (Y < 1) {
-            Y++
-        }
-    }
-    for (i = 0; i < levelWidth / 25; i++) {
-        var randX = Math.random() * (levelWidth - 20) + 10 | 0;
-        var randY = horizon + Math.random() * (levelHeight * 0.5 - 20) + 8 | 0;
-        for (j = 0; j < 25; j++) {
-            for (var k = Math.random() * 8 | 0; k >= 0; k--) {
-                var X = randX + Math.random() * k * 2 - k | 0;
-                var Y = randY + Math.random() * k - k / 2 | 0;
-                list[X][Y] = false
-            }
-        }
-    }
-    for (i = 0; i < levelWidth / 25; i++) {
-        var randX = Math.random() * (levelWidth - 20) + 10 | 0;
-        var randY = horizon + Math.random() * (levelHeight * 0.5 - 20) + 8 | 0;
-        for (j = 0; j < 25; j++) {
-            for (var k = Math.random() * 8 | 0; k >= 0; k--) {
-                var X = randX + Math.random() * k * 2 - k | 0;
-                var Y = randY + Math.random() * k - k / 2 | 0;
-                list[X][Y] = blockInt.water;
-                waterList[waterList.length] = {
-                    x: X,
-                    y: Y
-                }
             }
         }
     }
@@ -153,8 +102,7 @@ GridHandler.prototype.init = function(main) {
     this.blockInt = main.blockInt;
     this.levelWidth = main.levelWidth;
     this.levelHeight = main.levelHeight;
-    this.list = [];
-    this.waterList = [];
+    this.list = [];    
     this.toggle = 0;
     for (var i = 0; i < this.levelWidth; i++) {
         this.list[i] = [];
@@ -163,58 +111,12 @@ GridHandler.prototype.init = function(main) {
         }
     }
 };
-GridHandler.prototype.enterFrame = function() {
-    var list = this.list;
-    var levelWidth = this.levelWidth;
-    var levelHeight = this.levelHeight;
-    var toggle = this.toggle;
-    for (var i = this.waterList.length - 1; i >= 0; i--) {
-        toggle++;
-        if (toggle > 9) {
-            toggle = 0
-        }
-        if (toggle != 0) {
-            continue
-        }
-        var water = this.waterList[i];
-        if (list[water.x][water.y] != this.blockInt.water) {
-            this.waterList.splice(i, 1);
-            continue
-        }
-        if (water.y < levelHeight && list[water.x][water.y + 1] === false) {
-            list[water.x][water.y + 1] = this.blockInt.water;
-            this.waterList[this.waterList.length] = {
-                x: water.x,
-                y: water.y + 1
-            };
-            continue
-        }
-        if (water.x > 0 && list[water.x - 1][water.y] === false) {
-            list[water.x - 1][water.y] = this.blockInt.water;
-            this.waterList[this.waterList.length] = {
-                x: water.x - 1,
-                y: water.y
-            };
-            continue
-        }
-        if (water.x < levelWidth - 1 && list[water.x + 1][water.y] === false) {
-            list[water.x + 1][water.y] = this.blockInt.water;
-            this.waterList[this.waterList.length] = {
-                x: water.x + 1,
-                y: water.y
-            };
-            continue
-        }
-    }
-    this.toggle++;
-    if (this.toggle > 9) {
-        this.toggle = 0
-    }
+GridHandler.prototype.enterFrame = function() {    
 };
 
 function Main() {
     this.blockSize = 16;
-    this.levelWidth = 500;
+    this.levelWidth = 2000;
     this.levelHeight = 120;
     this.handlers = ['control', 'grid', 'render', 'player', 'view'];
     this.fontFamily = '"Segoe UI",Arial,sans-serif';
@@ -223,10 +125,7 @@ function Main() {
         bedrock: '#363532',
         dirt: '#AE9A73',
         stone: '#807E79',
-        wood: '#9F763B',
-        water: 'rgba(0,72,151,0.5)',
-        cloud: 'rgba(255,255,255,0.7)',
-        platform: '#9F763B'
+        cloud: 'rgba(255,255,255,0.7)'
     };
     this.blockInt = {};
     this.blockColor = [];
@@ -241,7 +140,6 @@ function Main() {
     this.context = this.canvas.getContext('2d');
     this.horizon = this.levelHeight / 2 | 0;
     this.time;
-    this.timeIncrement;
     for (i = 0; i < this.handlers.length; i++) {
         var handlerName = this.handlers[i] + 'Handler';
         var className = handlerName.charAt(0).toUpperCase() + handlerName.slice(1);
@@ -297,7 +195,6 @@ function PlayerHandler(main) {
     this.fallSpeed = 8.0;
     this.width = 20;
     this.height = 25;
-    this.regen = 0.01;
     this.jumpHeight = 7.0;
     this.jumpDelay = 4.0;
 }
@@ -316,9 +213,7 @@ PlayerHandler.prototype.init = function(main) {
     this.y = this.height * 10;
     this.vX = 0;
     this.vY = 20;
-    this.reload = 0;
     this.canJump = 0;
-    this.inWater = false;
     this.spaceDown = false;
 };
 PlayerHandler.prototype.enterFrame = function() {
@@ -365,69 +260,43 @@ PlayerHandler.prototype.enterFrame = function() {
     var endY = Math.min((this.y + height * 0.5) / blockSize | 0, this.levelHeight - 1);
     for (i = startX; i <= endX; i++) {
         for (j = startY; j <= endY; j++) {
-            if (gridList[i][j] !== false && gridList[i][j] != blockInt.cloud && gridList[i][j] != blockInt.platform) {
-                if (gridList[i][j] == blockInt.water) {
-                    this.inWater = true;
-                    if (this.vX > speed * 0.5) {
-                        this.vX = speed * 0.5
-                    } else if (this.vX < -speed * 0.5) {
-                        this.vX = -speed * 0.5
-                    }
+            if (gridList[i][j] !== false && gridList[i][j] != blockInt.cloud) {                
+                if (newX < i * blockSize) {
+                    newX = i * blockSize - width * 0.5
                 } else {
-                    if (newX < i * blockSize) {
-                        newX = i * blockSize - width * 0.5
-                    } else {
-                        newX = i * blockSize + blockSize + width * 0.5
-                    }
-                    this.vX = 0
+                    newX = i * blockSize + blockSize + width * 0.5
                 }
+                this.vX = 0
             }
         }
     }
     this.x = newX;
-    if (this.inWater) {
-        this.vY += 0.25;
-        if (this.vY > this.fallSpeed * 0.3) {
-            this.vY = this.fallSpeed * 0.3
-        }
-        var newY = this.y + this.vY * 0.6
-    } else {
-        this.vY += 0.4;
-        if (this.vY > this.fallSpeed) {
-            this.vY = this.fallSpeed
-        }
-        var newY = this.y + this.vY
+    
+    this.vY += 0.4;
+    if (this.vY > this.fallSpeed) {
+        this.vY = this.fallSpeed
     }
+    var newY = this.y + this.vY
+
     var collide = false;
-    this.inWater = false;
+    
     startX = Math.max((this.x - width * 0.5) / blockSize | 0, 0);
     startY = Math.max((newY - height * 0.5) / blockSize | 0, 0);
     endX = Math.min((this.x + width * 0.5 - 1) / blockSize | 0, this.levelWidth - 1);
     endY = Math.min((newY + height * 0.5) / blockSize | 0, this.levelHeight - 1);
     for (i = startX; i <= endX; i++) {
         for (j = startY; j <= endY; j++) {
-            if (gridList[i][j] !== false && gridList[i][j] != blockInt.cloud && gridList[i][j] != blockInt.platform) {
+            if (gridList[i][j] !== false && gridList[i][j] != blockInt.cloud) {
                 collide = true;
-                if (gridList[i][j] == blockInt.water) {
-                    this.inWater = true;
+                
+                if (newY < j * blockSize) {
+                    newY = j * blockSize - height * 0.5 - 0.001;
                     this.canJump--
                 } else {
-                    if (newY < j * blockSize) {
-                        newY = j * blockSize - height * 0.5 - 0.001;
-                        this.canJump--
-                    } else {
-                        newY = j * blockSize + blockSize + height * 0.5
-                    }
-                    this.vY = 0
+                    newY = j * blockSize + blockSize + height * 0.5
                 }
-            }
-            if (gridList[i][j] == blockInt.platform && this.vY > 0 && controlHandler.s == false) {
-                if (this.y + height * 0.5 < j * blockSize) {
-                    newY = j * blockSize - height * 0.5 - 0.001;
-                    collide = true;
-                    this.vY = 0;
-                    this.canJump--
-                }
+                this.vY = 0
+            
             }
         }
     }
@@ -435,7 +304,6 @@ PlayerHandler.prototype.enterFrame = function() {
     if (collide == false) {
         this.canJump = this.jumpDelay
     }
-    this.reload--;
 };
 
 function RenderHandler(main) {
@@ -455,7 +323,6 @@ RenderHandler.prototype.init = function(main) {
     this.gridHandler = main.gridHandler;
     this.controlHandler = main.controlHandler;
     this.viewHandler = main.viewHandler;
-    this.dustHandler = main.dustHandler;
     this.player = main.playerHandler
 };
 RenderHandler.prototype.enterFrame = function() {
@@ -511,16 +378,13 @@ RenderHandler.prototype.enterFrame = function() {
     for (i = startX; i < endX; i++) {
         for (j = startY; j < endY; j++) {
             obj = gridList[i][j];
-            if (obj !== false && obj != blockInt.water && obj != blockInt.cloud) {
+            if (obj !== false && obj != blockInt.cloud) {
                 X = Math.round(i * blockSize + offsetX);
                 Y = Math.round(j * blockSize + offsetY);
                 context.fillStyle = blockColor[obj];
-                if (obj == blockInt.platform) {
-                    context.fillRect(X, Y, blockSize, blockSize * 0.25);
-                    context.fillRect(X, Y + blockSize * 0.5, blockSize, blockSize * 0.25)
-                } else {
-                    context.fillRect(X, Y, blockSize, blockSize)
-                }
+                
+                context.fillRect(X, Y, blockSize, blockSize)
+                
             }
             if (obj === false && j == horizon && gridList[i][j - 1] === false) {
                 X = Math.round(i * blockSize + offsetX);
@@ -556,16 +420,11 @@ RenderHandler.prototype.enterFrame = function() {
                 context.fillRect(X + 5, Y - 5, 3, 2);
                 context.fillRect(X + 11, Y - 5, 2, 2)
             }
-            if (obj == blockInt.water || obj == blockInt.cloud) {
+            if (obj == blockInt.cloud) {
                 X = Math.round(i * blockSize + offsetX);
                 Y = Math.round(j * blockSize + offsetY);
                 context.fillStyle = blockColor[obj];
                 context.fillRect(X, Y, blockSize, blockSize)
-            }
-            if (obj == blockInt.water && j <= horizon && (gridList[i][j - 1] === false || gridList[i][j - 1] == blockInt.cloud)) {
-                context.fillStyle = 'rgba(255,255,255,0.2)';
-                context.fillRect(X, Y, blockSize, 6);
-                context.fillRect(X, Y, blockSize / 2, 3)
             }
         }
     }
@@ -581,13 +440,9 @@ RenderHandler.prototype.enterFrame = function() {
                 Y = Math.round(Y + offsetY);
                 context.fillStyle = 'rgba(0,0,0,' + (depth * 0.05 * Math.max(Math.min(dist / 16000, 1), 0.4)) + ')';
                 context.fillRect(X, Y, blockSize, blockSize);
-                if (obj == blockInt.platform) {
-                    depth += 0.2
-                } else if (obj == blockInt.water) {
-                    depth += 0.5
-                } else {
-                    depth += 1
-                }
+                
+                depth += 1
+                
             }
         }
     }
