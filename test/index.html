@@ -324,16 +324,14 @@ var transliterasyonKelimeFuture = $.getJSON( "./transliterasyonKelime.json")
 // 6235 = 29 * 5 * 43 = 145 * 43
 $.when(turkceAyetFuture, arapcaAyetFuture, surelerFuture, turkceKelimeFuture , arapcaKelimefuture, transliterasyonAyetFuture, transliterasyonKelimeFuture)
 .then(function(v1, v2 , v3 , v4 , v5, v6, v7) {
-//$.when(turkceAyetFuture, arapcaAyetFuture, surelerFuture, turkceKelimeFuture , arapcaKelimefuture)
-// .then(function(v1, v2 , v3 , v4 , v5) {
     turkceAyet = v1[0]
-    arapcaAyet = v2[0]  
+    arapcaAyet = v2[0]
     sureler = v3[0]
     turkceKelime = v4[0]
     arapcaKelime = v5[0]
     transliterasyonAyet = v6[0]
     transliterasyonKelime = v7[0]
-    
+
     var sd = ""
     for(var i = 0 ; i < sureler.length; i++){
       sd += "<li>"
