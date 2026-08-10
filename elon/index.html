@@ -1,0 +1,2484 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#111315">
+<title>Elon Musk – The Economist Röportajı</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #16191c;
+    --muted: #6b7280;
+    --rule: #e5e7eb;
+    --accent: #b91c1c;
+    --accent2: #1d4ed8;
+    --chip: #f3f4f6;
+    --fs: 18px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111315;
+      --fg: #e7e9ea;
+      --muted: #9aa3ad;
+      --rule: #262a2e;
+      --accent: #f87171;
+      --accent2: #93b4ff;
+      --chip: #1c2024;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: var(--fs);
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+  }
+  .bar {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--rule);
+    padding: .5rem max(env(safe-area-inset-left), 1rem) .5rem max(env(safe-area-inset-right), 1rem);
+    display: flex; align-items: center; gap: .75rem;
+  }
+  .bar .label {
+    font-size: .8rem; font-weight: 600; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--muted);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .bar .spacer { flex: 1; }
+  .bar button {
+    font: inherit; font-size: .9rem; line-height: 1;
+    padding: .5rem .7rem; min-width: 2.4rem;
+    border: 1px solid var(--rule); border-radius: .5rem;
+    background: var(--chip); color: var(--fg); cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .bar button:active { opacity: .6; }
+  #progress {
+    position: absolute; left: 0; bottom: -1px; height: 2px;
+    width: 0; background: var(--accent);
+  }
+  main {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 1.5rem max(env(safe-area-inset-left), 1.15rem) 5rem max(env(safe-area-inset-right), 1.15rem);
+  }
+  header.doc { border-bottom: 1px solid var(--rule); padding-bottom: 1.25rem; margin-bottom: 1.5rem; }
+  header.doc h1 { font-size: 1.6rem; line-height: 1.25; margin: 0 0 .5rem; letter-spacing: -.01em; }
+  header.doc .sub { color: var(--muted); font-size: .95rem; margin: 0; }
+  .turn { margin: 0 0 1.6rem; }
+  .who {
+    font-size: .8rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+    margin: 0 0 .35rem; display: flex; align-items: baseline; gap: .5rem;
+  }
+  .musk .who { color: var(--accent); }
+  .econ .who { color: var(--accent2); }
+  .ts {
+    font-weight: 500; letter-spacing: 0; text-transform: none;
+    color: var(--muted); font-variant-numeric: tabular-nums; font-size: .78rem;
+  }
+  .turn p { margin: 0 0 .8rem; overflow-wrap: break-word; }
+  .turn p:last-child { margin-bottom: 0; }
+  .econ {
+    border-left: 2px solid var(--rule);
+    padding-left: .9rem;
+  }
+  footer {
+    max-width: 40rem; margin: 0 auto; padding: 0 1.15rem 3rem;
+    color: var(--muted); font-size: .85rem; border-top: 1px solid var(--rule); padding-top: 1rem;
+  }
+  footer a { color: inherit; }
+  #top {
+    position: fixed; right: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom));
+    width: 2.75rem; height: 2.75rem; border-radius: 50%;
+    border: 1px solid var(--rule); background: var(--chip); color: var(--fg);
+    font-size: 1.1rem; cursor: pointer; display: none;
+  }
+  #top.show { display: block; }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <span class="label">Elon Musk × The Economist</span>
+  <span class="spacer"></span>
+  <button id="smaller" aria-label="Yazıyı küçült">A−</button>
+  <button id="bigger" aria-label="Yazıyı büyüt">A+</button>
+  <div id="progress"></div>
+</div>
+
+<main>
+  <header class="doc">
+    <h1>Elon Musk – The Economist Röportajı</h1>
+    <p class="sub">Türkçe Çeviri · 510 konuşma sırası · ~8.340 kelime</p>
+  </header>
+
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">00:00</span></h2>
+      <p>Elon Musk, bize katıldığınız için çok teşekkür ederim. Bizi Tesla Giga&#x27;da ağırladığınız için de teşekkürler. Sizi tanıtırken üstünlük belirten sıfatlar kullanmadan bunu yapmak gerçekten çok zor. Yani şu anda hayatta olan kelimenin tam anlamıyla herkesten daha fazla geleceği inşa ettiğinizi düşünüyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">00:14</span></h2>
+      <p>Genel olarak çok fazla şey inşa ediyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Çok fazla şey inşa ediyorsunuz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Sanırım ben bir &quot;inşaatçı&quot;yım. Bir şeyler inşa etmeyi seviyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">00:19</span></h2>
+      <p>Öylesiniz. Ama bir yandan da elektrikli araçlara öncülük ettiniz, uzay yolculuğunu devrim niteliğinde değiştirdiniz, artık son teknoloji bir yapay zekâ modeliniz, insansı robotlarınız var. Bu konuşmaya bütün bunları bir araya getirerek başlayabilir miyiz?</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">00:37</span></h2>
+      <p>Başarılı olduğunuzu varsayalım. Bundan 10 yıl sonra dünya nasıl olacak?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>10 yıl, yani 2036&#x27;dan bahsediyoruz.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Evet.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Umarım ikimiz de o zaman burada oluruz.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">00:46</span></h2>
+      <p>Umarım.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Muhtemelen oluruz. Büyük ihtimalle burada oluruz. Yapay zekânın genel olarak ezici bir biçimde baskın olmadığı bir gelecek hayal etmek zor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">00:59</span></h2>
+      <p>10 yıl içinde yapay zekânın, insan zekâsının toplamından çok daha büyük olmasını bekliyorum. Gerçekten çok daha büyük.</p>
+      <p>Hatta bence yapay zekâ, yaklaşık 5 yıl içinde insan zekâsının toplamını aşabilir.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">01:16</span></h2>
+      <p>5 yıl içinde mi?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Tahminim kabaca 5 yıl.</p>
+      <p>O noktada, belki insan olmak dışında, yapay zekânın insanlardan daha iyi yapamayacağı hiçbir şey kalmayacak.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">01:29</span></h2>
+      <p>Daha sıradan bir düzeyde sorarsak, hayat nasıl olacak?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>En muhtemel sonuç, inanılmaz bir bolluk çağına girmemiz. Herkes, aklına getirebildiği her şeye sahip olabilecek.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">01:46</span></h2>
+      <p>Bu kulağa saçma gelebilir. Ama şu anda 2026 yılındayız. 2036&#x27;da nerede olacağımıza bakalım.</p>
+      <p>Elbette bunu rayından çıkarabilecek şeyler var. Örneğin büyük çaplı küresel bir nükleer savaş ya da benzeri bir şey.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">02:02</span></h2>
+      <p>Ama III. Dünya Savaşı olmadığını varsayarsak, inanılmaz bir bolluk çağına doğru ilerlediğimizi düşünüyorum.</p>
+      <p>Dolayısıyla bu, geleceğe dair iyimserlik ve heyecan mesajı.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">02:18</span></h2>
+      <p>Bolluk konusuna birazdan geleceğiz. Ama çok daha sıradan bir noktaya gelirsek: Şirketleriniz nasıl para kazanacak?</p>
+      <p>SpaceX&#x27;in halka arz izahnamesine baktığımızda, gelirlerin ezici çoğunluğunun uzaya bir şeyler taşımaktan değil, yapay zekâdan, özellikle de Grok&#x27;tan geleceği izlenimini ediniyoruz.</p>
+      <p>10 yıl sonra şirketleriniz ne yapıyor olacak? Ve nasıl para kazanacaklar?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">02:38</span></h2>
+      <p>Ekonomiyi kabaca dijital zekâ ve fiziksel zekâ olarak düşünebilirsiniz.</p>
+      <p>Şu anda çok hızlı ilerleyen şey açıkça dijital zekâ. Yapay zekâ ile birlikte neredeyse her geçen hafta yeni bir yapay zekâ atılımı görüyoruz.</p>
+      <p>Daha önce yapamadığı inanılmaz bir şeyi yapabiliyor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">03:07</span></h2>
+      <p>Ama hâlâ bir ölçüde dijital alanla sınırlı. Fiziksel olarak hareket ettiricileri, yani &quot;end effector&quot;ları yok.</p>
+      <p>Bunun için insansı robotlar gerekiyor. İnsan biçiminde, fiziksel dünyada hareket edebilen çok sayıda robota ihtiyacınız var.</p>
+      <p>Kısacası çok sayıda bota ihtiyacınız var.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">03:25</span></h2>
+      <p>Sonra zekânın yalnızca dijital ortamda ortaya çıkmasından atomları şekillendirmeye geçebilirsiniz.</p>
+      <p>&quot;Peki ekonomi nedir?&quot; diye sorarsanız, ekonomi mal üretimi ve hizmet sunumudur.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">03:46</span></h2>
+      <p>Eğer çok büyük miktarda dijital zekâya sahip çok sayıda robotunuz varsa, bir tür neredeyse sınırsız ekonomiye sahip olursunuz.</p>
+      <p>Gelecek gerçekten geçmişten çok farklı olacak.</p>
+      <p>Yaşayacağımız değişimin büyüklüğünü anlatabilecek bir benzetme ya da metafor olduğunu düşünmüyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">04:18</span></h2>
+      <p>Bunu anlıyorum. Ben de bunun nasıl bir dünya olacağını anlamaya çalışıyorum. Ama bir açıdan...</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Oldukça inanılmaz olacak.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Evet, ama bazı riskler de var. Onlara geleceğiz.</p>
+      <p>Fakat para kazanma konusuna dönelim. Sonuçta insanlar hisselerinizi, para kazanacağınızı düşündükleri için satın alıyorlar.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">04:37</span></h2>
+      <p>Başka bir tahminde bulunayım: 2036&#x27;da paranın hiçbir önemi olmayacak.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">04:50</span></h2>
+      <p>SpaceX hisselerinizi satın alan insanların paranın 2036&#x27;da önemli olmayacağını düşündüklerinden emin değilim.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Parayı ne için istiyorsunuz?</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Ne için istediğimi mi?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Evet. Parayı ne için istiyorsunuz?</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Mal ve hizmetler için.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Aynen.</p>
+      <p>Yiyecek, konut, ulaşım, eğlence istiyorsunuz.</p>
+      <p>Eğer bunlar o kadar bol hale gelirse ki robotlar ve yapay zekâ, herhangi bir insanın tüketebileceğinden çok daha fazla mal ve hizmet üretiyor olursa, o zaman paraya ne ihtiyacınız olacak?</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">05:25</span></h2>
+      <p>Ama bu robotları siz üretiyorsunuz. Onları satacak mısınız?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>O zaman paraya ihtiyacınız olacak, elbette.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Yani insansı robotları mı satacaksınız, yoksa kontrol ettiğiniz insansı robotlarla mal ve hizmet mi üreteceksiniz?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">05:54</span></h2>
+      <p>Sanırım benim, benden çok daha zeki olan bir süper deha yapay zekâyı kontrol edeceğimi düşünmem bir kibir gösterisi olur.</p>
+      <p>Bence yapabileceğimiz ve yapmamız gereken şey, yapay zekânın iyi değerlere sahip olmasını sağlamak.</p>
+      <p>İnsanlığı önemsemesini ve bizim mutlu olmamızı, gelişmemizi istemesini sağlamalıyız.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">06:08</span></h2>
+      <p>Bence muhtemelen böyle olacak.</p>
+      <p>Benim biyolojik sinir ağımın bana söylediği şey, yapay zekâ güvenliği açısından en önemli şeyin gerçeği mümkün olduğunca fazla aramak ve meraklı olmak olduğudur.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">06:22</span></h2>
+      <p>Eğer durum buysa, insanlığın gelişmesini sağlayacağını düşünüyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>O halde bunu biraz açalım. 10 yıl içinde insanların artık kontrolün sahibi olmayacağından emin misiniz?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">06:34</span></h2>
+      <p>Bunun olmasının muhtemel olmadığını düşünüyorum.</p>
+      <p>Şöyle düşünün: Yapay zekâ ile insanlar arasındaki zekâ farkı, yapay zekâ ile şempanzeler arasındaki zekâ farkından çok daha büyükse, şempanzelerin yönetimde olacağını hayal etmek zor.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">06:51</span></h2>
+      <p>Bunu söylerken gerçekten çok etkilendim.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Biz de evrimleşmiş bir şempanze türüyüz.</p>
+      <p>Çok uzun zaman önce ağaçlarda sallanıyor, ormanda muz yiyorduk.</p>
+      <p>Bu arada hâlâ muz yiyoruz.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Evet.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Hâlâ bazen ağaçlarda sallanıyoruz.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Bazen ağaçlarda sallanıyoruz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Eğlenceli aslında. Geçmişi hatırlatıyor.</p>
+      <p>Eski günlerin hatırına arada bir ağaçlarda sallanmak lazım.</p>
+      <p>Muhtemelen insanların düşündüğünden çok daha eğlencelidir.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">07:22</span></h2>
+      <p>Bu konuda sizinle aynı fikirdeyim.</p>
+      <p>Ama sizi şimdi bunu söylerken dinlemek beni gerçekten etkiledi. Yıllar boyunca söylediklerinizin çoğunu dinledim.</p>
+      <p>Yaklaşık 10 yıl önce, sanırım Neil deGrasse Tyson&#x27;ın podcast&#x27;inde, sizi en çok korkutan şeyin yapay zekânın hızlı ve yinelemeli biçimde kendini geliştirmesi olduğunu söylemiştiniz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">07:36</span></h2>
+      <p>Evet.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Bu sözünüz aklımda kaldı. &quot;En iyi ihtimalle yapay zekânın evcil Labradorları olacağız&quot; demiştiniz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">07:47</span></h2>
+      <p>Labradorlar oldukça mutlu yaratıklardır. En azından benim deneyimim böyle.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>2023&#x27;te yapay zekâ konusunda yavaşlama çağrısı yaptınız, çünkü endişeliydiniz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">07:55</span></h2>
+      <p>Evet. Pek çok kişiyle birlikte imzaladım. Yaklaşık 500 kişi vardı. Ben de o bildiriyi imzalayanlardan yalnızca biriydim.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Ama geçen yıl bile, sanırım Ted Cruz&#x27;un podcast&#x27;inde, katil robotların insanlığı yok etme ihtimalinin yüzde 10 ila 20 olduğunu söylemiştiniz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">08:12</span></h2>
+      <p>Evet.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>O zaman endişeli görünüyordunuz. Şimdi ise bu konuda oldukça rahatsınız. Fikriniz değişti mi?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Yapay zekâ ve robotlarla ilişkili bir risk olduğunu hâlâ düşünüyorum. Sıfır değil.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">08:26</span></h2>
+      <p>Sanırım felsefi olarak vardığım sonuç, olayların olumlu tarafına bakmak.</p>
+      <p>Bu inanılmaz yapay zekâ ve robotik ivmesini durdurmanın gerçekten bir yolunu göremiyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">08:44</span></h2>
+      <p>Hatta bazen düşünüyorum: Diyelim ki bir durdurma düğmesi bile var. Belki de ona basmamalıyız.</p>
+      <p>Çünkü en muhtemel sonuç, herkes için inanılmaz bir bolluk.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">09:03</span></h2>
+      <p>Benim de düşündüğüm buydu. Artık bunun kaçınılmaz olduğuna karar vermişsiniz gibi geldi bana.</p>
+      <p>&quot;En iyisini umalım ve bu yolculuğa çıkalım.&quot;</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">09:12</span></h2>
+      <p>Evet, aşağı yukarı böyle.</p>
+      <p>Bence artık yolculuğun tadını çıkarmalıyız.</p>
+      <p>Çünkü yapay zekâ ve robotlarda durdurulamaz bir ilerleme var gibi görünüyor.</p>
+      <p>Ben istesem bile bunu durduramam.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">09:39</span></h2>
+      <p>Hâlâ yüzde 10 ila 20 ihtimalle katil robotların insanlığın sonunu getirebileceğini düşünüyor musunuz?</p>
+      <p>Buna yüksek &quot;kıyamet ihtimali&quot; diyebiliriz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Uzun vadede hepimiz öleceğiz, elbette.</p>
+      <p>Standart fizik modeline göre evrenin sonu, yavaş yavaş soğuyan, uzun ve sıkıcı bir tür ince gri çorba olacak.</p>
+      <p>Buna evrenin ısı ölümü deniyor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">10:14</span></h2>
+      <p>Eğer gerçekten gerçekliğimizin sonu evrenin ısı ölümü olacaksa, o zaman her şey yolculukla ilgilidir.</p>
+      <p>Çünkü varış noktası korkunç.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">10:24</span></h2>
+      <p>10 yıl çok uzun bir süre değil.</p>
+      <p>Ama diyelim ki 10 yıl içinde yüzde 10 ila 20 ihtimal var. Bir roketin patlayıp sizi öldürme ihtimalinin yüzde 10 ila 20 olduğunu bilseniz o rokete biner miydiniz?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">10:38</span></h2>
+      <p>Evet.</p>
+      <p>Ama diyelim ki bu konuda yapabileceğiniz hiçbir şey yok.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Tamam.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Sanırım yapabileceğimiz tek şey kötü sonucun gerçekleşme ihtimalini mümkün olduğunca azaltmaya çalışmak.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">10:51</span></h2>
+      <p>Ama yapay zekâyı ve robotları durdurmaya çalışmak...</p>
+      <p>Uzun süre yapay zekâya katılmayı reddettim.</p>
+      <p>OpenAI&#x27;ı da esas olarak Google&#x27;a karşı bir denge unsuru olarak kurmuştuk. Çünkü o dönemde Google&#x27;ın yapay zekâ üzerinde aşağı yukarı bir tekel konumunda olduğunu düşünüyordum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">11:15</span></h2>
+      <p>Sonra Anthropic, OpenAI&#x27;dan ayrıldı.</p>
+      <p>Ve ironik olan şu ki, eylemlerimin aslında yapay zekânın gelişimini hızlandırmış olması.</p>
+      <p>Yapay zekâyı hızlandırmak için bunu yapmayı amaçlamıyordum.</p>
+      <p>Ama OpenAI&#x27;ı kurmam, ardından Anthropic&#x27;in oradan ayrılması ve bugün Anthropic&#x27;in yapay zekâ alanında lider konuma gelmesi...</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">11:35</span></h2>
+      <p>Bütün bunların zincirleme etkileri aslında yapay zekânın gelişimini hızlandırdı.</p>
+      <p>Benim niyetim bu değildi.</p>
+      <p>Dolayısıyla bütün yollar yapay zekânın hızlanmasına çıkıyor gibi görünüyor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">11:55</span></h2>
+      <p>Sonra şöyle düşünüyorum:</p>
+      <p>&quot;Tamam. Bunun için üzülüp durabilirsin ya da kulübe katılabilirsin.&quot;</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Siz kesinlikle kulübe katıldınız.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">12:03</span></h2>
+      <p>Evet.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Kesinlikle katıldınız. Ama riskleri azaltmaya çalışmaya ne dersiniz?</p>
+      <p>Diğer yapay zekâ şirketlerinin liderleri riskleri azaltmak için çeşitli yollar üzerinde çalışıyor.</p>
+      <p>Geçen hafta Demis Hassabis, kamu-özel sektör ortaklığında bir düzenleyici yapı kurulmasını önerdi.</p>
+      <p>Siz bunun tartışma için iyi bir başlangıç noktası olduğunu söylediniz sanırım.</p>
+      <p>Sizce yapay zekâ şirketleri riskleri kontrol altına alacak bir sistem oluşturmak için daha aktif biçimde çalışmalı mı, yoksa bunun da imkânsız olduğunu mu düşünüyorsunuz?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">12:41</span></h2>
+      <p>Demis&#x27;e önerim — yazısını yayımlamadan önce birkaç saat onunla konuştum — en acil olarak yapabileceğimiz şeyin, önde gelen yapay zekâ şirketlerinin en azından birkaç haftada bir bir araya gelmesi ya da bir tür görüşme yapması olduğunu söyledim.</p>
+      <p>Sadece güvenlik ve emniyet konularını tartışmak için.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">13:11</span></h2>
+      <p>Ayrıca yeni bir sınır modelinin, yani mevcut her şeyden çok daha zeki yeni nesil bir modelin piyasaya sürülmesinden önce, rakip yapay zekâ şirketlerine o modeli zararlı etkiler açısından test etme fırsatı verilmesini önerdim.</p>
+      <p>Ve bazı güvenlik sorunlarını çözmek için piyasaya sürülmesinin ertelenmesini tavsiye edebilmeleri gerekir.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">13:30</span></h2>
+      <p>Bence bu, yapabileceğimiz en kolay ve hızlı adım.</p>
+      <p>Zaman içinde bundan daha kapsamlı bir sisteme dönüşebilir.</p>
+      <p>Ama bunun akıllıca bir hamle olacağını düşünüyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">13:46</span></h2>
+      <p>Peki bunu neden henüz yapmadınız?</p>
+      <p>Sonuçta yaklaşık beş kişisiniz, değil mi?</p>
+      <p>Herkes ilk isimlerini biliyor: Dario, Demis, Sam...</p>
+      <p>Birbirinizi pek sevmiyorsunuz.</p>
+      <p>Ayrıca hepiniz birbirinizle rekabet ediyorsunuz. Hepiniz ilk olmak istiyorsunuz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">13:59</span></h2>
+      <p>Ama bence tam da bu nedenle rakipler birbirlerini denetleyebilir.</p>
+      <p>Hükümette, derin teknik anlayışı olmayan ve yapay zekânın sınırlarını ileri götüren çalışmaları bizzat yürütmeyen birinin, bir modelin piyasaya sürülüp sürülmemesi gerektiğini anlaması oldukça zor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">14:19</span></h2>
+      <p>Buna karşılık rakip şirketler, yeni bir modeli incelemek için bir veya iki hafta süre verilirse sorunları ortaya çıkarabilir.</p>
+      <p>Üstelik bütün rakiplerin diğerlerini dürüst tutmak için bir teşviki vardır.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">14:35</span></h2>
+      <p>Bunu yapacak kadar aranızda güven var mı?</p>
+      <p>Birbirinizi pek sevmiyorsunuz. Sam Altman, böyle bir şey yaparsanız fikirlerini çalacağınızı düşünmez mi?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">14:43</span></h2>
+      <p>Burada aslında yalnızca...</p>
+      <p>Dürüst olmak gerekirse, özel testler için bir haftanın bile yeterli olduğunu düşünüyorum.</p>
+      <p>Yapay zekâyı tamamen teslim etmelerinden bahsetmiyoruz. Sadece test etmelerinden bahsediyoruz.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">14:55</span></h2>
+      <p>Bunu önerdiniz mi?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Evet. Örneğin bir API üzerinden test edilebilir.</p>
+      <p>Bence bunu yapmak iyi olur.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Ama gerçekten önerdiniz mi? Sonuçta bunu organize edebilirsiniz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">15:06</span></h2>
+      <p>Demis&#x27;e söyledim.</p>
+      <p>Sanırım Dario ile de bunun hakkında konuşacağım.</p>
+      <p>Ayrıca elbette Çin&#x27;de çok yetkin yapay zekâ şirketleri var. Birkaç tanesi gerçekten çok iyi.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">15:26</span></h2>
+      <p>Yeni Kimi modeli...</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Kimi K3.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Evet, geçen hafta çıkan Kimi K3. Neredeyse Fable kadar iyi, değil mi?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">16:59</span></h2>
+      <p>Bir noktada lider olma ihtimalleri oldukça yüksek. Yapay zekâ üzerindeki kısıtları temelde elektrik ve yapay zekâ çipleri olarak düşünebilirsiniz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">17:12</span></h2>
+      <p>Fiziksel yapay zekâ içinse robotlar gerekiyor. Çin&#x27;in de çok iyi robot şirketleri var. Hatta robot spor etkinlikleri düzenliyorlar. Bazılarını görmüşsünüzdür belki.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">17:22</span></h2>
+      <p>Evet, gördüm. Pekin&#x27;de son bulunduğumda robotları görmüştüm.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Sonra robotlarla bir tür boks ya da dövüş maçı yapıyorlar. Oldukça eğlenceli.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">17:32</span></h2>
+      <p>Kafası yerinden kopmuş bir robotun, kafası kopmuş halde bile dövüşmeye devam ettiği bir video görmüştüm. Oldukça komikti. Aslında robot savaşlarının izlemesi oldukça eğlenceli olacak.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">17:44</span></h2>
+      <p>Çin robotlarda çok güçlü, dijital yapay zekâda da çok güçlü. Elektrik üretimine bakarsanız yapay zekânın, hangi faktör sınırlayıcıysa onun bir fonksiyonu olduğunu söyleyebilirsiniz. Çipler veya elektrik sınırlayıcıysa, Çin&#x27;in ABD&#x27;den çok daha fazla elektriği var. Hatta Çin&#x27;in elektrik üretimi şimdiden ABD, Avrupa ve Hindistan&#x27;ın toplamından daha fazla. Tahminim Çin&#x27;in elektrik üretiminin ABD&#x27;nin yaklaşık dört katına çıkacağı yönünde; bu da kabaca nüfus oranıyla orantılı.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">18:21</span></h2>
+      <p>ABD hükümeti bu konuda ne yapmalı? En güçlü teknoloji alanında otoriter bir rejimin çok önde olması biraz endişe verici. ABD hükümetinin açıkça yapmaya çalıştığı şey, ihracat kontrolleri ve benzeri önlemlerle Çin&#x27;i geride tutmak. Örneğin Kimi K3&#x27;ün kullanımını yasaklamaları gerektiğini düşünüyor musunuz?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">18:42</span></h2>
+      <p>ABD hükümeti, ABD şirketlerinin Çin modellerini kullanmasını engelleyen bir yasa çıkarabilir. Ama dünyanın geri kalanının bunları kullanmasını engelleyemez.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">18:54</span></h2>
+      <p>ABD hükümetinin Çin veya dünyanın geri kalanı üzerinde yetkisi yok.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>ABD şirketlerinin bunları kullanmasını engellemeleri gerektiğini düşünüyor musunuz? Şu anda böyle bir şey tartışılıyor, değil mi?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">19:06</span></h2>
+      <p>Bunun yardımcı olduğunu düşünmüyorum. Bu, Çin&#x27;in yapay zekâda lider olmasını engellemez. Dijital zekâ açısından mesele gerçekten ne kadar yapay zekâ işlem gücünüz olduğuna dayanıyor. Kaç çipiniz var ve ne kadar gücünüz, yani ne kadar elektriğiniz var?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">19:28</span></h2>
+      <p>Şu anda kısıtlayıcı faktörün yapay zekâ çiplerinden biraz daha fazla enerji ve soğutma olduğunu düşünüyorum. Çünkü yapay zekâ çiplerinin enerji ihtiyacı çok ama çok yüksek. Su ihtiyacından da bahsedeceğiz ama yapay zekânın su kullanımı ihmal edilebilir düzeyde, neredeyse yok denecek kadar az.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">19:50</span></h2>
+      <p>Ama elektrik talebi çok yüksek.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Bu yüzden yörüngedeki veri merkezlerini düşünüyorsunuz sanırım.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Evet. Çin&#x27;de yapay zekâ çiplerinin çalıştırılmasını engelleyen kısıt elektrik; ayrıca güç, soğutma, elektrik ekipmanları ve diğer her şey.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">20:07</span></h2>
+      <p>Yapay zekâ çiplerinin üretilme hızı, yeni elektrik üretim kapasitesinin devreye girme hızını aşıyor.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Çin&#x27;de mi?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Çin dışında.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Çin dışında, anladım.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>ABD, en yeni yapay zekâ çiplerinin Çin&#x27;e ihracatını yasakladığı için Çin bir ölçüde çip sıkıntısı çekiyor. Bu nedenle sahip oldukları çipleri kullanma konusunda çok daha verimli hale geliyorlar. Kimi K3&#x27;ün dikkat çekici taraflarından biri de bu verimlilik.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">20:41</span></h2>
+      <p>Ayrıca Çin&#x27;in litografi sorununu çözmeye çoğu insanın düşündüğünden daha yakın olduğunu düşünüyorum. Bu da çok büyük hacimlerde yapay zekâ çipleri üretebilmelerini sağlayacaktır.</p>
+      <p>Bence bu artık yalnızca bir Çin meselesi değil. Şu anda Çin dışında kısıtlayıcı faktör elektrik; Çin&#x27;de ise çipler.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">21:08</span></h2>
+      <p>Uzaydaki yapay zekâ veri merkezleriyle güç kısıtlamasını çözdüğümüzde, Çin dışında kısıtlayıcı faktör yeniden çipler olacak.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Bu bana, genel güvenlik kısıtlamaları oluşturacaksanız Çin ve ABD&#x27;nin birlikte çalışması gerektiğini düşündürüyor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Bence buna sınırdaki yapay zekâ modellerini geliştiren Çinli şirketler de dahil edilmeli.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">21:46</span></h2>
+      <p>Önerim şu: Yapay zekâ alanındaki önde gelen şirketlerden bazıları yeni bir modelin çok tehlikeli olduğunu söylerse hükümeti bilgilendirmeliler.</p>
+      <p>Yeni bir model gerçekten çok tehlikeliyse ve o modeli üreten şirket tehlikeyi ele almak için önlem almıyorsa, hükümeti uyarıp modelin piyasaya sürülmesini sınırlayacak bir adım atmasını istemeliler.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">22:20</span></h2>
+      <p>Bu, Çin hükümetinin veya ABD hükümetinin atacağı bir adım olabilir. Burada gerçekten harekete geçme gücüne sahip olanlar ABD ve Çin hükümetleri.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">22:30</span></h2>
+      <p>Ama insanların, bir grup model geliştiricisinin bunun yapılıp yapılmayacağına karar vermesine güvenmek konusunda endişeli olacağını düşünüyorum. ABD hükümetinin Mythos konusunda yaptıklarına bakarsanız, siber güvenlik risklerinden endişe ettikleri için müdahale ettiler ve ihracat kontrolü tehdidini kullanarak modelin yaygın biçimde piyasaya sürülmesini engellediler.</p>
+      <p>Hükümetlerin, sonunda modelin piyasaya sürülüp sürülmeyeceğine kendilerinin karar verme yetkisini korumak istemeyeceklerini anlamakta zorlanıyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">22:53</span></h2>
+      <p>Bence bu yetkiye sahip olmalılar. Ama Mythos&#x27;un korkutucu siber güvenlik riskleri taşıdığını hükümetten birinin keşfettiği söylenemez. Bunu Amazon fark etti.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">23:17</span></h2>
+      <p>Amazon bunu gündeme getirdi ve Beyaz Saray&#x27;ı aradı.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Yani model geliştiricilerinin birbirlerinin çalışmalarını kontrol ettiği bir sisteminiz olacak. Onları endişelendiren bir şey varsa hükümete söyleyecekler. Hükümet de &quot;Tamam&quot; diyecek.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Eğer şirket bu riski gidermek için hiçbir şey yapmıyorsa, işte o zaman hükümetin devreye girip harekete geçmesi gereken an bu olur.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">23:38</span></h2>
+      <p>Bu, Mythos konusunda az önce gerçekleşen şeyin aynısı.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Bunun gerçekleşmesi gerekiyor mu?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Bence bunu yapmak iyi olur. Hemen, gerçekten.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">23:50</span></h2>
+      <p>İnsanlar bana sürekli bunu söylüyor. Modellerin gelişme hızı nedeniyle önümüzdeki altı ay içinde bir tür sistem kurmamız gerektiğini söylüyorlar.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">23:58</span></h2>
+      <p>Evet, altı ay uzun bir süre.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Daha kısa mı olmalı diyorsunuz?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Bir düşünün, bazen günde birden fazla olmak üzere o kadar çok yapay zekâ atılımı duyurusu geliyor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">24:12</span></h2>
+      <p>Geçen hafta kaç tane vardı?</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Çok.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Ben saymayı bıraktım.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Evet, çok fazlaydı.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">24:27</span></h2>
+      <p>Dolayısıyla Demis&#x27;in önerisi veya başka öneriler olsun, bir araya gelip bunu kurmanız gerekiyor. Söylediğiniz şey, bunun aşağı yukarı şimdi yapılması gerektiği.</p>
+      <p>Evet. En azından gayriresmî olarak haftalık veya iki haftada bir görüşme yapılmasını ve rakiplere yeni modeller için belki bir veya iki haftalık erken erişim verilmesini öneririm.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">24:57</span></h2>
+      <p>Teşviklerin işe yaradığını düşünmemin nedeni şu: Rakip şirketler bir şeyin güvenlik riski olup olmadığını anlayabilecek konumdalar. Ayrıca rakiplerinin modellerinin piyasaya sürülmesinin ertelenmesi gerektiğini söylemekten çekinmeyeceklerdir.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">25:18</span></h2>
+      <p>Bence bu yapı oldukça iyi çalışabilir. Motion Picture Association&#x27;da da buna benzer bir sistem var. Filmlerin nasıl sınıflandırılması gerektiğine karar veren bir sektör kuruluşu. Örneğin filmin küçük çocuklar için uygun olup olmadığına karar veriyorlar.</p>
+      <p>Bu oldukça iyi çalışmış görünüyor.</p>
+      <p>Sonrasında, bir şirket çok tehlikeli bir şey yapıyorsa ve tehlikeyi azaltmak için hiçbir adım atmıyorsa hükümetten müdahale etmesini istersiniz.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">25:38</span></h2>
+      <p>Bu zor bir soru ama siz birbirinizi pek sevmiyorsunuz ve birbirinize pek güvenmiyorsunuz. Sosyal medyada sürekli birbirinize hakaret ediyorsunuz. Bu kadar kişisel düşmanlık varken bunu birbirinden hoşlanmayan insanlarla yapabileceğinizi düşünüyor musunuz?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">25:57</span></h2>
+      <p>Evet. Sam Altman&#x27;ın hayranı değilim çünkü...</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">26:11</span></h2>
+      <p>Eğer açık kaynaklı bir yapay zekâ şirketi olması ve dünyanın sahip olması amacıyla kâr amacı gütmeyen bir kuruluş kurduysanız ve bu kuruluş bir şekilde 800 milyar dolarlık, kapalı kaynaklı, kâr amacı güden bir şirkete dönüştüyse, &quot;Bir dakika, bağışladığım paranın amacı bunun tam tersiydi&quot; dersiniz. Benim sorunum bu. Bunun meşru bir sorun olduğunu düşünüyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">26:36</span></h2>
+      <p>Bence Dario da Sam Altman&#x27;ın hayranı değil. Anthropic ekibinin OpenAI&#x27;dan ayrılmasının nedeni de Sam Altman&#x27;a güvenmemeleriydi.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">26:48</span></h2>
+      <p>Aksi halde Anthropic var olmazdı; hâlâ OpenAI&#x27;da olurlardı.</p>
+      <p>Dario&#x27;nun çok ilkeli bir insan olduğunu düşünüyorum. Birçok şeyi gerçekten önemsiyor. Dünyanın geleceğini önemsiyor. Anthropic&#x27;te şimdiye kadar tanıştığım herkes de iyi niyetli görünüyor. Hiçbiri bende bir &quot;kötülük alarmı&quot; uyandırmadı.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">27:16</span></h2>
+      <p>Ama cehenneme giden yolun çoğunun iyi niyet taşlarıyla döşendiğini düşünüyorum. Bu yüzden rehavete kapılmamalıyız.</p>
+      <p>Günün sonunda konuşmamız gerekiyorsa konuşuruz. Dünyanın iyiliği için kişisel farklılıklarımızı bir kenara bırakırız.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">27:30</span></h2>
+      <p>Bu, geri kalanımızın duyması açısından çok iyi bir şey.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">27:47</span></h2>
+      <p>İnsanların endişelendiği başka bir riske geçebilir miyiz? Özellikle sıradan Amerikalıların. Yapay zekâ son derece popülerliğini yitirdi; insanların yüzde 75&#x27;i bundan endişeli. Bence işlerinden endişe ediyorlar.</p>
+      <p>Dario&#x27;nun ünlü biçimde söylediği gibi, birkaç yıl içinde giriş seviyesindeki beyaz yakalı işlerin yüzde 50&#x27;si ortadan kalkacak.</p>
+      <p>Siz insansı robotlar geliştiriyorsunuz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">27:58</span></h2>
+      <p>Evet. Dario, Mythos konusunda kendi kuyusunu biraz kazdı. Çünkü Mythos&#x27;un &quot;çok korkutucu, dehşet verici&quot; olduğunu söyledi ve ardından &quot;bu arada, onu piyasaya süreceğiz&quot; dedi.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">28:12</span></h2>
+      <p>Bence gelecekte sözlerini biraz daha farklı seçecektir.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Ama sizin görüşünüz ne?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Herkesi dehşete düşürüp sonra &quot;Bu korkunç şeyi piyasaya sürüyoruz&quot; derseniz, insanlar doğal olarak alarma geçer. Onlara korkmaları gerektiğini söylediniz ve ardından korkutucu şeyi piyasaya sürdünüz. İnsanların korkması doğal.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">28:30</span></h2>
+      <p>İnsanları alarma geçirmenizi kesinlikle istemiyorum. Ama yapay zekânın insanları işlerinden ne kadar hızlı ve ne ölçüde uzaklaştıracağı konusunda çok önemli bir tartışma olduğunu düşünüyorum.</p>
+      <p>Çünkü söylediğiniz gibi, 10 yıl içinde herhangi bir insan zekâsından daha fazla yapay zekâ olacaksa...</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">28:51</span></h2>
+      <p>Evet.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Ve siz bu ülkede insansı robotlara güç sağlama konusunda herkesten ilerideyseniz, bu aynı zamanda...</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">28:59</span></h2>
+      <p>...bir tür fabrika işlerine de dönüşecek.</p>
+      <p>İşlerin ne hızla ortadan kalkacağı konusunda, örneğin Dario&#x27;ya mı daha yakınsınız?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">29:11</span></h2>
+      <p>Bunun inişli çıkışlı bir yol olacağını düşünüyorum.</p>
+      <p>Çünkü yapay zekâ herhangi bir işi, o işi yapan herhangi bir insandan daha iyi yapabilecek.</p>
+      <p>Bu çok hızlı biçimde, dijital olan veya bir kişinin bilgisayar ya da telefon başında yaptığı hemen her iş için geçerli olacak. Yapay zekâ çok yakında bunların tamamını yapabilecek.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">29:42</span></h2>
+      <p>Yazılım mühendisliğinde zaten yapay zekânın yazılım yazma konusunda insanların en az yüzde 90&#x27;ından daha iyi olduğu bir durumdayız. En azından profesyonel yazılım mühendislerinin yüzde 90&#x27;ından daha iyi.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">29:59</span></h2>
+      <p>Gerçekten yüzde 99&#x27;dan daha iyi olacağı noktaya geliyoruz. Sonra rekabet etmenin hiçbir yolu kalmayacak.</p>
+      <p>Ben buna Stockfish seviyesi diyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">30:10</span></h2>
+      <p>Stockfish, satranç programı. Satrançta o kadar iyi ki küçük bir bilgisayarda bile Magnus Carlsen&#x27;i veya başka herhangi birini kolayca yenebilir.</p>
+      <p>Hatta Stockfish&#x27;i telefonunuzda çalıştırıp Magnus Carlsen&#x27;i yenebileceğinizi düşünüyorum. Satrançta ne kadar iyi olduğunun göstergesi bu.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">30:38</span></h2>
+      <p>Yapay zekâ da yazılım yazmada bu seviyeye gelecek.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Peki yazılımın ötesinde?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Bu her şey için geçerli.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Her şey?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Her şey, her şey.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">30:48</span></h2>
+      <p>Her şey. Peki fiziksel işler, montaj işleri? Bunun için insansı robotlarda henüz bulunmayan yeteneklere de ihtiyacınız olacak, değil mi?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">31:00</span></h2>
+      <p>Doğru. Bu nedenle dijital yapay zekâdan ve ardından robotlar biçiminde fiziksel olarak somutlaşmış yapay zekâdan söz ediyorum.</p>
+      <p>Robot, aşağı yukarı bir uç efektör gibi olacak; belli miktarda yerel zekâya sahip olacak ama büyük bir yapay zekâ modeli tarafından yönetilecek.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">31:15</span></h2>
+      <p>Birçok kez söylediğim gibi, bence çalışmak isteğe bağlı hale gelecek.</p>
+      <p>Belki iyi bir karşılaştırma bahçecilik olabilir.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">31:36</span></h2>
+      <p>Bahçecilik yapmak zorunda değilsiniz. Bahçenizde sebze yetiştirmek zorunda değilsiniz. Mağazaya gidebilirsiniz ve orada kusursuz sebzeler olacak.</p>
+      <p>Ya da bahçenizde sebze yetiştirebilirsiniz; bunlar aslında daha az kusursuz olacak. Domatesiniz mağazadakiler kadar dolgun ve sulu olmayacak. Biraz daha el yapımı görünecek.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">31:59</span></h2>
+      <p>Ama bir arkadaşınızın evine giderseniz ve size bahçesinden topladığı sebzelerle yemek hazırlarsa, bu hoş bir ayrıntı olur.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">32:10</span></h2>
+      <p>İşte gelecekte çalışma böyle olacak.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Yapay zekâyı anlıyorum. Ben o dünyada umutsuz olurdum çünkü hayatım kurtulsun diye bile bahçecilik yapamam. Ama fikri anlıyorum.</p>
+      <p>İnsanlar, her bilgisayar daha iyi olmasına rağmen hâlâ birbirleriyle satranç oynamayı seviyor.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">32:20</span></h2>
+      <p>Ama bunun siyasetine bakalım.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">32:30</span></h2>
+      <p>Çünkü sizin anlattığınız dünya, 10 yıl içinde hemen hemen her işin bir yapay zekâ tarafından daha iyi yapılabileceği bir dünya gibi görünüyor.</p>
+      <p>Ve bu zekâdan sizin gibi insanlar büyük getiriler elde ediyor. Siz dünyanın en zengin insanısınız.</p>
+      <p>İşlerini kaybeden, yerlerinden edilen ve belki gidip bahçecilik yapacak insanlar nasıl yaşayacak? Ne tür bir...</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Evrensel yüksek gelir.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">32:47</span></h2>
+      <p>Ama oraya nasıl ulaşacaksınız? Bunun siyaseti hakkında konuşalım. Çünkü şu anda çoğu ülkedeki siyasi baskılara baktığımızda insanlar bundan çok ama çok endişeli ve buna karşı.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">32:58</span></h2>
+      <p>Bana öyle geliyor ki bu cennete kolay bir geçişten ziyade devrime doğru gitme riskimiz var.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Yani inişli çıkışlı bir yol olacak. Her şeyin pürüzsüz ilerleyeceğini söylemiyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">33:13</span></h2>
+      <p>Geçmişte var olan ama bilgisayarlar nedeniyle artık var olmayan birçok iş var.</p>
+      <p>Örneğin &quot;computer&quot; kelimesi eskiden hesaplama yapan bir kişiyi ifade ediyordu.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">33:28</span></h2>
+      <p>Bu, bir insanın meslek tanımıydı. İnternette, tamamen hesaplama yapan insanlarla dolu gökdelenlerin fotoğraflarını görebilirsiniz.</p>
+      <p>Örneğin banka hesabınızdaki faizi hesaplamak gibi işler yapıyorlardı.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">33:43</span></h2>
+      <p>Bilgisayarlar ortaya çıkana kadar işler uzun süre böyle yapıldı. Başlangıçta bilgisayarlar çok pahalı ve kullanılması zordu.</p>
+      <p>Buradaki farklılık, değişimin hızının radikal biçimde artmış olması.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">34:03</span></h2>
+      <p>Yine de bazı insanlar banka faizini hesaplama işlerinin artık var olmayacak olmasından üzülmüştü.</p>
+      <p>Ama bugün o işi yapmak isteyen birini bulmakta zorlanırsınız.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">34:20</span></h2>
+      <p>Geleceğin nasıl olacağı konusunda fikir edinmek için okunabilecek bilimkurgu kitapları konusunda bir önerim var.</p>
+      <p>Okuduğum en iyi yapay zekâ geleceği tasvirleri Ian Banks&#x27;in kitaplarında, Culture serisinde.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">34:40</span></h2>
+      <p>Excession&#x27;ı okuyorum. Sizin sayenizde bunları okumaya başladım.</p>
+      <p>Ama o geleceği çok çekici bulmuyorum çünkü insanların o gelecekte kendi iradelerine sahip olduğunu düşünmüyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">34:52</span></h2>
+      <p>Sahipler.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Zihinlerle kıyaslandığında çok az.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Evet, ama Ian Banks bildiğiniz gibi sosyalistti. Bununla birlikte Ian Banks&#x27;in çok farklı bir siyasi felsefesi vardı.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">35:02</span></h2>
+      <p>Bunun tamamen doğru olduğundan emin değilim.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Sonunda oraya varabileceğimizi kabul edelim.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Ben yol konusunda endişeliyim. Demokrasilerde yaşıyoruz ve insanlar bundan çok endişeli.</p>
+      <p>Sanırım iki sorum var. İlk olarak, sizin gibi insanlardan işlerini kaybeden insanlara büyük çaplı bir yeniden dağıtım yapmak zorunda mıyız?</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">35:24</span></h2>
+      <p>Daha fazla vergi ödemeniz gerekiyor mu? Bir tür evrensel gelir finanse etmek için sermaye üzerinden çok daha yüksek vergiler gerekiyor mu? Aksi halde insanlar neyle geçinecek?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">35:35</span></h2>
+      <p>Bence Hazine insanlara doğrudan çek vermeli.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Gelir nereden gelecek? Ben bir ekonomistim. Sadece çek basarsanız enflasyon yaratacaksınız.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">35:44</span></h2>
+      <p>Bu tür şeylerin çoğu geçmişte anlamlıydı, gelecekte anlamlı olmayacak.</p>
+      <p>Enflasyon basitçe para ile mal ve hizmetler arasındaki orandır.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">36:01</span></h2>
+      <p>Dolayısıyla mal ve hizmet üretimi dramatik biçimde artarsa, örneğin yüzde 1000 artarsa, para arzını da çok büyük ölçüde artırabilirsiniz. Aslında fiziksel olarak para basmanız gerekmiyor; veritabanında para yaratıyorsunuz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">36:15</span></h2>
+      <p>Yaratılan para miktarı, mal ve hizmetlerin artış hızından daha düşük olduğu sürece aslında deflasyon yaşarsınız.</p>
+      <p>Dolayısıyla bir tahminde bulunacağım: Sorun enflasyon değil, deflasyon olacak.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">36:34</span></h2>
+      <p>Çünkü mal ve hizmet üretimi arttıkça, eğer mal ve hizmet üretimi para arzından daha hızlı artarsa deflasyon yaşarsınız.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">36:43</span></h2>
+      <p>Buna gerçekten inanmaya hazırım. Pekâlâ haklı olabilirsiniz.</p>
+      <p>Ama mevcut kutuplaşmış, öfkeli ve korkulu politikadan sizin tarif ettiğiniz cennete nasıl geçeceğimize takılıp kalıyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">37:06</span></h2>
+      <p>İnsanların bundan o kadar korktuğu bir tablo çizebilirsiniz ki, bunu durdurmaya çalışırlar. Belki başaramazlar ama şirketler kamulaştırılır, aşırı sol bir hükümet gelir, çok yüksek vergi artışları olur ve ekonomi çöker.</p>
+      <p>Çünkü insanlar sizin tarif ettiğiniz oldukça korkutucu gelecek konusunda çok endişeli.</p>
+      <p>Şimdiki siyaseti nasıl yönetiyorsunuz?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">37:24</span></h2>
+      <p>Korkutucu.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Evet, tam olarak.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Dürüst olmak gerekirse, bana herhangi bir gün sorsanız, yapay zekâ konusunda bazen aynı gün içinde bile büyük heyecandan dehşete geçebiliyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">37:45</span></h2>
+      <p>Yani burada her şeyin harika olacağını ve hiçbir risk olmadığını söyleyen bir Pangloss görüşü sunmaya çalışmıyorum.</p>
+      <p>Bir miktar risk olduğunu söylüyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Bu konuda aynı fikirdeyiz.</p>
+      <p>Ben daha küçük ölçekli ve pratik düşünmeye, bu riskleri sınırlamak için şimdi ne yapılabileceğine odaklanmaya çalışıyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">38:06</span></h2>
+      <p>Sizin ve diğer model geliştiricilerinin yapabilecekleri konusunda çok güçlü bir argüman sundunuz.</p>
+      <p>Peki hükümet ne yapmalı?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Birbirimizin modellerinde gördüğümüz sorunları koordine edip vurgulamamız, böylece aşağı yönlü riskleri azaltmamız iyi olur.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">38:18</span></h2>
+      <p>Peki hükümet ne yapmalı? Daha fazla transfer programını finanse etmek için daha fazla vergi ödemeli misiniz?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Öncelikle çok fazla vergi ödüyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">38:36</span></h2>
+      <p>Hatta bir insan tarafından şimdiye kadar ödenen en yüksek vergi miktarı konusunda rekor kırdım.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Bu aynı zamanda dünyanın en zengin insanı olmanızdan kaynaklanıyor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Daha önce de çok ödüyordum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">38:48</span></h2>
+      <p>Tahminim, birçok trilyon dolar vergi ödeyeceğim.</p>
+      <p>Bununla bir sorunum yok. Böyle olacak.</p>
+      <p>Ama gelecekte paranın önemini yitireceğini düşündüğüm gibi, vergilendirmenin de bir ölçüde önemsiz hale geleceğini düşünüyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">39:01</span></h2>
+      <p>İnsanlara yükselişte kendilerinin de payı olduğu hissini vermeye ne dersiniz?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Elbette.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>İnsanlara SpaceX ve Tesla&#x27;dan hisse vermek? Şu anda bunun hakkında çok konuşuluyor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">39:11</span></h2>
+      <p>SpaceX&#x27;i halka açmamın nedenlerinden biri, halkın SpaceX&#x27;e katılabilmesi ve SpaceX&#x27;in bir parçasına sahip olabilmesiydi.</p>
+      <p>Özel bir şirketken halka arzdan önce sahip olabileceğimiz hissedar sayısı çok sınırlı.</p>
+      <p>Halka açık bir şirket olarak milyonlarca hissedarımız olabilir.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">39:29</span></h2>
+      <p>Özel şirket olarak yalnızca birkaç bin hissedarla sınırlıyız.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Peki hisselerin dağıtılması gerektiğini düşünüyor musunuz? Örneğin Alaska servet fonu var. Trump hesaplarının da buna benzer bir araç olabileceği konuşuluyor.</p>
+      <p>Sahip olduğunuz hisselerin bir bölümünün sıradan Amerikalılara gitmesini hayal edebilir misiniz?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">39:51</span></h2>
+      <p>Ödediğim vergilere bakarsak, hisse opsiyonlarım için ulusal düzeyde yüzde 40 gelir vergisi ödüyorum.</p>
+      <p>Ayrıca zamanımın yaklaşık yüzde 30&#x27;unu Kaliforniya&#x27;da geçiriyorum ve bunun karşılığında yaklaşık yüzde 15 olan Kaliforniya eyalet vergilerini de ödüyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">40:18</span></h2>
+      <p>Yani toplamda yaklaşık yüzde 45 vergi ödüyorum; kabaca yarısı diyebilirsiniz.</p>
+      <p>Sonra öldüğümde bunun yaklaşık bir yüzde 45&#x27;i daha vergilendirilecek.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">40:33</span></h2>
+      <p>Günün sonunda muhtemelen sahip olduğum her şeyin dörtte biri kalacak.</p>
+      <p>Ama bunun bana sağladığı tek şey, bir süreliğine şirketlerin yönünü kontrol edebilmek.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">40:52</span></h2>
+      <p>Hepsi bu. Ta ki yapay zekâ o kadar akıllı hale gelene kadar ki şirketlerin kontrolü onun eline geçsin.</p>
+      <p>O noktada şirketleri kontrol etmenin pek bir önemi kalmayacak.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">41:06</span></h2>
+      <p>Bundan bahsedelim. Çünkü dünyanın gittiği yön konusunda insanları endişelendiren başka bir şey olduğunu düşünüyorum.</p>
+      <p>Biraz karikatürize edeceğim ama insanlar dünyanın çok küçük sayıdaki son derece güçlü insan tarafından şekillendirildiğini düşünüyor ve siz bu listenin en üstündesiniz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">41:22</span></h2>
+      <p>Ama bu geçmişten nasıl farklı?</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Sizinle aynı fikirdeyim. Geçmişte de böyleydi.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">41:29</span></h2>
+      <p>Ne zaman böyle değildi?</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Her zaman böyleydi, aynen.</p>
+      <p>Ama sizin çok canlı biçimde tarif ettiğiniz gibi, bu inanılmaz derecede hızlı bir değişim.</p>
+      <p>Şirketinizin kontrolüyle başlayalım. Şu anda şirketiniz üzerinde kesinlikle kontrolünüz var.</p>
+      <p>Halka arzdan sonra oy hakkına sahip hisselerin yaklaşık yüzde 80&#x27;ine sahip olduğunuzu anlıyorum ve bildiğim kadarıyla yalnızca sizin kontrol ettiğiniz hisselerin oyuyla görevden alınabilirsiniz.</p>
+      <p>Yanlışsam düzeltin ama sanırım gerçekten istediğiniz her şeyi yapabilirsiniz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Bu gruba yapay zekâ şirketlerini de dahil edebilirsiniz. Örneğin Google da bu grupta. Alphabet, Larry ve Sergey tarafından kontrol ediliyor.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">41:49</span></h2>
+      <p>Yanlışsam düzeltin ama bence gerçekten istediğiniz her şeyi yapabilirsiniz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Bu gruba yapay zekâ şirketlerini de dahil edebilirsiniz. Örneğin Google bu grupta. Alphabet, Larry ve Sergey tarafından kontrol ediliyor.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">42:00</span></h2>
+      <p>Ama sizinki daha uç bir örnek. Bir kişinin bir şirket üzerinde bu kadar fazla kontrole sahip olması sizce mantıklı mı?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Gerçekten yapmam gereken şey, uzun vadeye odaklanabildiğimden emin olmak. Uzun vade derken 5 ila 10 yılı kastediyorum.</p>
+      <p>Halka açık bir şirket olmanın zorluklarından biri, her çeyrekte harika sonuçlar elde etme baskısının olması.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">42:55</span></h2>
+      <p>5 ila 10 yıl sonra sonuç verecek yatırımlara yeterince yatırım yapmama baskısı oluşuyor.</p>
+      <p>SpaceX konusunda Dünya&#x27;nın ötesine bilinci yaymak istiyorum. Ay&#x27;da, Mars&#x27;ta ve Güneş Sistemi&#x27;nin başka yerlerinde büyüyen bir medeniyet oluşturmak istiyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">43:09</span></h2>
+      <p>Bunun nihayetinde yatırım açısından çok yüksek bir getirisi olacağını düşünüyorum. Ama kısa vadede bir Ay üssüne veya Mars üssüne çok para harcıyor olacağız ve insanlar &quot;Bu çeyrekte hedefini kaçırdın çünkü Mars&#x27;a çok fazla para harcadın&quot; diyecek.</p>
+      <p>Ben de &quot;Evet&quot; diyeceğim.</p>
+      <p>Bu arada bu, S-1 halka arz izahnamesinde açıkça yazılıydı. Yapacağımız şeylerden biri olarak kelimesi kelimesine listelenmiş durumda.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">43:41</span></h2>
+      <p>Ama yine de bu tür şeylere kızıyorlar. &quot;Brüt kâr marjın şu kadar olacaktı dedin, biraz daha kötü çıktı, şimdi seni cezalandıracağız&quot; diyorlar. Açığa satış yapanlar da üzerinize geliyor ve çok fazla baskı oluşuyor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">43:58</span></h2>
+      <p>Bu yüzden bir şekilde &quot;Dinleyin arkadaşlar, 5 ila 10 yıllık veya daha uzun vadeli yatırımlara odaklanacağız. Bu kısa vadeli kazançlarımızı düşürecek ama uzun vadede...&quot; diyebilmek istiyorum.</p>
+      <p>Uzun vadeli düşünen yatırımcılarımız da var. Hatta bireysel yatırımcıların büyük bir hayranıyım. Genel olarak bireysel yatırımcılarımızın çok bilinçli ve çok uzun vadeli düşündüğünü görüyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">44:40</span></h2>
+      <p>Burada teşvik yapısı devreye giriyor. Portföy yöneticilerinin üç aylık kazançlara neden bu kadar baskı yaptığını anlamak mümkün. Çünkü ücretleri ve terfi edip etmeyecekleri, portföylerinin performansına bağlı.</p>
+      <p>Karar vermek için yalnızca birkaç yılları var. Hatta bazen yalnızca bir yıl veya daha kısa sürede aldıkları kararlar üzerinden değerlendiriliyorlar.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">45:01</span></h2>
+      <p>Dolayısıyla anlık getiri elde etmeleri için baskı altında olduklarından şirketlere de anlık getiri sağlamaları yönünde baskı yapıyorlar.</p>
+      <p>Teşvik yapısını anladığınızda davranışın neden doğal olarak ortaya çıktığını da anlıyorsunuz.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">45:15</span></h2>
+      <p>Peki kilit kişi riskine ne dersiniz? Yarın, Allah korusun, başınıza bir şey gelse ne olur? Bu şirketler üzerinde tamamen kontrolünüz var. Siz olmadan nasıl ilerleyeceklerine dair bir planınız var mı?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">45:31</span></h2>
+      <p>Bence aslında birkaç yıl boyunca çok iyi ilerlerler.</p>
+      <p>SpaceX için, daha doğrusu bir &quot;uzay haritası&quot; diyebileceğim net bir yol haritası var.</p>
+      <p>Tesla için de kelimenin tam anlamıyla bir yol haritası var.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">46:09</span></h2>
+      <p>Steve Jobs&#x27;tan sonra Apple&#x27;a bakabilirsiniz. Steve Jobs&#x27;ın stratejik bir vizyonu ve fikirlerini ortaya attığı bir dizi ürünü vardı ve Apple sonrasında da çok başarılı oldu.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">46:22</span></h2>
+      <p>Ama Steve Jobs gibi yaratıcı bir deha olmadığında, Apple&#x27;ın eksik olan şeyi inanılmaz çığır açıcı ürünler.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">46:33</span></h2>
+      <p>Harika telefonlar ve bilgisayarlar üretiyorlar ama Apple, Steve Jobs seviyesinde çığır açan yeni bir ürün ortaya koymadı.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">46:48</span></h2>
+      <p>O halde benzetmeyle, bütün şirketlerinize kattığınız şey bu. Mars&#x27;tan söz ettiniz. Çoğu insan sizi, Mars&#x27;ta bir koloni kurmak ve çok gezegenli bir medeniyet oluşturmak isteyen adam olarak görüyor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Bunu çok uzun zamandır söylüyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Ama şimdi yapay zekâya ve yapay zekânın önümüzdeki 10 yılda neler yapacağına çok daha fazla odaklanmış görünüyorsunuz. Ayrıca Ay&#x27;ı, yörüngedeki yapay zekâ uydularına sıçramak için bir üs olarak kullanma konusunda çok daha heyecanlı konuşuyorsunuz.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">47:05</span></h2>
+      <p>Mars&#x27;tan ilginizi uzaklaştırdınız mı, yoksa Mars&#x27;ı kolonileştirmekle hâlâ eskisi kadar mı ilgilisiniz?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Benim ilgilendiğim şey, bilincin geleceğe mümkün olan en yüksek ölçüde yayılmasını sağlayacak eylemler bütünü.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">47:19</span></h2>
+      <p>Böylece bilincin gelecekteki ışık konisi mümkün olduğunca büyük olsun.</p>
+      <p>Yıldızlar arasında dolaşan bir uzay medeniyetinin ortaya çıktığı heyecan verici bir gelecek var. Distopik olmayan bilimkurgu kitaplarında ve filmlerinde hayal edilen harika şeylerin bir gün gerçek olmasını istiyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">47:46</span></h2>
+      <p>Bir nevi Star Trek, Star Wars geleceğini istiyorum.</p>
+      <p>Bu arada Star Wars, sinemada izlediğim ilk filmdi.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Gerçekten mi?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Muhtemelen üzerimde derin bir etkisi oldu. Sanırım 6 yaşındaydım ve aklım tamamen başımdan gitmişti.</p>
+      <p>&quot;Hayatımda gördüğüm en harika şey bu&quot; diye düşünmüştüm.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">48:06</span></h2>
+      <p>Hayatınız bunun gerçekleşmesini sağlamakla mı geçti?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Evet. Gençken böyle olacağını düşünmemiştim ama hayatım şu anda biraz gerçeküstü geliyor. Bu şeylerin gerçekten gerçekleştiğine inanamıyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">48:20</span></h2>
+      <p>Bence dünya da biraz gerçeküstü geliyor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Simülasyon teorisini düşündüğümde de böyle. Yaptığım şeyler o kadar sıra dışı ki gerçek olduklarına inanmak zor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">48:34</span></h2>
+      <p>Starship var; şimdiye kadar yapılmış en büyük ve en güçlü uçan nesne.</p>
+      <p>Ve onu saatte birden fazla kez fırlatmayı planlıyoruz.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Biliyorum. Bunu okudum. Ne kadar hızlı gerçekleşeceği tartışılabilir ama geçmiş performansınıza bakarsak bir noktada gerçekleşeceğini varsaymalıyız.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">48:55</span></h2>
+      <p>Gerçekleşecek.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Ben de bu dünyadan sizin kadar etkileniyorum. Siz bunu içeriden yaşıyorsunuz, ben ise çok daha dışarıdan ve naif bir seviyeden izliyorum.</p>
+      <p>Ama benim için yapay zekânın evrimi ve bu modellerin yetenekleri kendi başına bile akıl almaz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">49:15</span></h2>
+      <p>Aşağı yukarı tahmin ettiğim gibi gerçekleşiyor.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Öyle mi?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Evet.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>İlginç.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Bunu yalnızca ben değil, birçok kişi öngördü. Ray Kurzweil&#x27;ın tahminleri dikkat çekici derecede doğru çıktı.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Tekillik yaklaşıyor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Evet.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">49:33</span></h2>
+      <p>Şimdi daha yakın zamana, bugüne dönelim.</p>
+      <p>Şirketlerinizdeki kontrol yoğunlaşmasından bahsettik. Neden buna sahip olmanız gerektiğine dair çok iyi bir argüman sundunuz.</p>
+      <p>Starlink aracılığıyla da inanılmaz bir jeopolitik güce sahipsiniz. Ben de müşterilerinizden biriyim.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Teşekkür ederim.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Harika bir ürün.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Umarım öyledir.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Ama Starlink olmasaydı Ukraynalılar ciddi, çok ciddi sorun yaşayacaktı.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">49:55</span></h2>
+      <p>Ukrayna hükümeti, Starlink&#x27;in Ukrayna&#x27;yı savunmada ne kadar önemli olduğunu defalarca kamuoyu önünde dile getirdi.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">50:11</span></h2>
+      <p>Yakın zamanda işgal altındaki bölgelerde Rusların Starlink&#x27;e erişmesini engellemeye karar verdiniz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Hayır, Ruslara hiçbir zaman Starlink satmadık. Ama onlar Starlink&#x27;i ele geçiriyorlardı ve kullanıyorlardı.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Evet.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">50:21</span></h2>
+      <p>Esasen Ukrayna üzerinden sipariş ettikleri Starlink cihazlarını elde ettiler ve bunları Rusların bulunduğu doğu Ukrayna&#x27;ya kaçırdılar.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">50:34</span></h2>
+      <p>Bazı durumlarda bunları saldırılar için de kullanıyorlardı.</p>
+      <p>Bunu ele almak için Ukrayna hükümetiyle birlikte çalışarak onaylı Starlink terminallerinden oluşan bir beyaz liste oluşturduk.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">50:53</span></h2>
+      <p>Bunun bazı olumsuz tarafları var. Çünkü yalnızca Starlink&#x27;i masum biçimde kullanan, iş veya eğitim amacıyla internete erişmeye çalışan pek çok insan da artık Starlink&#x27;e sahip değil.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">51:06</span></h2>
+      <p>Bunlar sonuçları çok büyük jeopolitik kararlar.</p>
+      <p>Böyle bir güce sahip olmak size nasıl hissettiriyor? Savaşların sonucunu belirleyebilirsiniz. Bu size nasıl geliyor? Ve böyle bir güce sahip olmanız doğru mu?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">51:18</span></h2>
+      <p>Ukrayna&#x27;daki savaşın nihai sonucunu belirlediğimizden emin değilim.</p>
+      <p>Bence bir an önce bir tür barış anlaşmasına varılmasını gerçekten umuyorum. Çünkü iki veya üç yıldır sınır neredeyse hiç değişmedi ve her gün cephe hattında çok sayıda insan ölüyor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">51:50</span></h2>
+      <p>Burada insanların &quot;Rusya tamamen çekilmeli&quot; demesi gibi çok fazla gerçeklikten kopuk düşünce var.</p>
+      <p>Bu gerçekçi değil.</p>
+      <p>Bence pragmatik olmamız gerekiyor. Bir tür barışa ulaşmalıyız.</p>
+      <p>Bence korkunç olan şey, cephe hattında insanların üç yıl daha anlamsız biçimde ölmeye devam etmesi olur.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">52:28</span></h2>
+      <p>Cephede ölen insanların çocuklarına bunu nasıl açıklayacaksınız?</p>
+      <p>Bu arada Rus tarafındaki insanlar da askere alınıp oraya gönderiliyor.</p>
+      <p>Cephede insanlar ölürken lüks yerlerde yedi çeşit yemek yiyen ve Rusya&#x27;nın çekilmesi gerektiği konusunda ahkâm kesen gösterişli diplomatlar beni gerçekten rahatsız ediyor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">52:52</span></h2>
+      <p>Rusya çekilmeyecek.</p>
+      <p>Dolayısıyla bu doğrultuda kabul edilebilir bir barışa gerçekten ihtiyaç var.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">53:02</span></h2>
+      <p>Barışa doğru terazinin doğru gördüğünüz tarafa eğilmesinde rol oynamanın sizin sorumluluğunuz olduğunu düşünüyor musunuz?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Uzun zamandır barışı savunuyorum.</p>
+      <p>Birkaç yıl önce Rusya&#x27;ya bazı tavizler verilmesi gerektiğini yazmıştım.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">53:23</span></h2>
+      <p>Bu Rusya yanlısı olduğum anlamına gelmiyor. Sadece pragmatik davranıyorum.</p>
+      <p>Aksi halde insanlar yıllarca hiçbir şey elde edemeden ölecekler.</p>
+      <p>Ve tam olarak olan da bu.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Bilmiyorum. Ukraynalılar şu anda...</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Tam olarak olan bu.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Ukraynalılar şu anda, inanılmaz drone kapasiteleriyle Rusya&#x27;nın içlerini vurma konusunda oldukça iyi durumdalar. Genel kanaat, savaşın dengesinin değişmekte olduğu yönünde.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">53:55</span></h2>
+      <p>O toprakları geri almayacaklar.</p>
+      <p>Bu gerçekleşmeyecek.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Benim asıl sorum, Starlink aracılığıyla inanılmaz bir güce sahip olduğunuz düşünüldüğünde, bu gücü kullanmanızın uygun olup olmadığı.</p>
+      <p>Bir bireyin, bir kabiliyeti açıp kapatarak bir çatışmayı şekillendirecek kadar güce sahip olması oldukça nadir.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">54:14</span></h2>
+      <p>Peki farklı yapmam gerektiğini düşündüğünüz bir şey var mı?</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Bence Ukrayna&#x27;yı desteklemekte haklıydınız.</p>
+      <p>Rusya&#x27;nın saldırısının, birçok nedenle korkunç bir saldırı olduğunu düşünüyorum. Yaptığınız önemli bir şeydi.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">54:34</span></h2>
+      <p>Bu çatışmanın arka planını tam olarak anlamak için çok derin bir araştırma yaptım.</p>
+      <p>Bana eski bir sözü hatırlatıyor: Savaşta melek yoktur.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">54:50</span></h2>
+      <p>Bence ülke içi siyaset konusunda da benzer bir ton var.</p>
+      <p>Burada iç siyasette büyük bir rol oynadınız. Donald Trump&#x27;ın yeniden seçilmesi için çok para harcadınız.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">55:02</span></h2>
+      <p>Seçimden sonra DOGE aracılığıyla çok aktif biçimde hükümete dahil oldunuz; harcamaları azaltmaya ve hükümeti yeniden şekillendirmeye çalıştınız.</p>
+      <p>Ama bunun, istediğiniz kadar başarılı olmadığını düşünüyorsunuz sanırım. Çünkü kesmeye çalıştığınız kadar harcama kesilmedi.</p>
+      <p>Geriye dönüp baktığınızda ne düşünüyorsunuz?</p>
+      <p>Siyasete bu kadar dahil olduğunuz için pişman mısınız? Bunun iyi bir şey olduğunu düşünüyor musunuz?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">55:19</span></h2>
+      <p>Siyasete biraz fazla dahil olduğumu düşünüyorum. Açıkçası kendimi kaptırdım.</p>
+      <p>DOGE çalışmasının amacı, çok büyük olan bütçe açığı konusunda bir şeyler yapmaya çalışmaktı.</p>
+      <p>Şu anda faiz ödemeleri, Savaş Bakanlığı&#x27;na harcanan paradan daha fazla.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">55:44</span></h2>
+      <p>ABD&#x27;de artık Savaş Bakanlığı olarak adlandırılan kuruma ve istihbarata harcanan bütün parayı toplasanız bile bu, borcun faiz ödemelerinden daha az.</p>
+      <p>Dolayısıyla harcamalara çok yakından bakmamız, paranın mantıklı biçimlerde harcandığından ve israf edilmediğinden ya da dolandırıcılık faaliyetlerine gitmediğinden emin olmamız gerekiyor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">56:10</span></h2>
+      <p>Bunun yüzünden elbette çok eleştiri aldım.</p>
+      <p>Ama insanların DOGE ekibinin ödemeleri onaylamasının ne kadar kolay olduğunu anlamadığını düşünüyorum.</p>
+      <p>Kelimenin tam anlamıyla yalnızca alıcıların iletişim bilgilerini veya paranın örneğin amaçlanan yere gittiğine dair bir kanıt istedik.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">56:37</span></h2>
+      <p>Ama tekrar tekrar bize &quot;Afrika&#x27;daki önemli bir amaç için para havale etmemiz gerekiyor&quot; deniyordu.</p>
+      <p>Biz de &quot;Tamam ama havale talimatları Afrika&#x27;ya değil, Washington DC&#x27;deki Deloitte &amp; Touche&#x27;a ait&quot; diyorduk.</p>
+      <p>&quot;Parayı Afrika&#x27;ya göndermek istiyoruz. Alıcılarla bizi bağlantıya geçirebilir misiniz ki parayı doğrudan onlara gönderelim?&quot;</p>
+      <p>Sonra sessizlik oluyordu.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">57:01</span></h2>
+      <p>DOGE konusunu tekrar tartışmamıza gerek yok. ABD hükümetinde çok fazla israf olduğundan hiç şüphem yok.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Muhtemelen herkesin hayal edebileceğinden çok daha kötü.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">57:11</span></h2>
+      <p>Ama çok sayıda programı kapatma biçiminizin gereksiz acılara yol açtığı yönünde haklı bir eleştiri olduğunu düşünüyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Hayır.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Hayır mı?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Hayır.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Bunu hiç kabul etmiyorsunuz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Çok fazla şikâyete neden oldu.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">57:36</span></h2>
+      <p>Peki ani biçimde yaptığınız kesintiler nedeniyle Afrika&#x27;da tek bir çocuğun bile öldüğü fikrini kabul etmiyorsunuz?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Sıfır.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">57:46</span></h2>
+      <p>Bunun doğru olduğunu düşünmüyorum.</p>
+      <p>Afrika&#x27;dan bana bilgi veren insanlar oldu.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Kaç tane STK var? Bunların kaçı devreye girebilir?</p>
+      <p>Bunun çok hızlı gerçekleştiğini unutmayın. Dünyada kelimenin tam anlamıyla on binlerce STK var.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">58:02</span></h2>
+      <p>Herkes sizin gibi çalışmıyor.</p>
+      <p>Antiretroviral ilaçların finansmanı bir gecede kesilirse ve tamamen durursa, insanlar bunlara erişemediğinde ölecektir.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Hayır. Ancak bu ilaçlar için başka finansman bulamazlarsa.</p>
+      <p>Gates Vakfı&#x27;nın 50 milyar doları var.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">58:19</span></h2>
+      <p>Bunun hakkında ne düşünüyorsunuz? Ya da başka birçok kuruluş var.</p>
+      <p>McKenzie Bezos&#x27;un vakfı da var.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">58:34</span></h2>
+      <p>Pratik olalım. Bu ülkelerin çoğunda USAID en büyük finansördü.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>USAID siyasi bir organizasyondu.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">58:41</span></h2>
+      <p>Öyle de olabilir ama aynı zamanda sağlık sistemlerinin en büyük finansörüydü.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Rejim değişikliğinin bir aracıydı.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">58:49</span></h2>
+      <p>Sistemin değiştirilmesinin bazı faydaları da olabilir.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Finansman durdurulmadı. Dışişleri Bakanlığı&#x27;na aktarıldı.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Durduruldu. Afrika&#x27;da sağlıkla ilgili çok sayıda şey kapatıldı.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">59:01</span></h2>
+      <p>Bunların iddiaları yanlış. Saçmalık. Tamamen saçmalık.</p>
+      <p>Finansman dolandırıcı kuruluşlara veya dolandırıcılık faaliyetlerine yönelikse, &quot;Lütfen dolandırıcılığı finanse etmeye devam edin&quot; diyeceklerini mi düşünüyorsunuz?</p>
+      <p>Yoksa finansmanın yeniden sağlanması için sempati uyandıran üzücü bir hikâye anlatacaklarını mı?</p>
+      <p>Elbette ikincisini yaparlar.</p>
+      <p>Tam olarak yaptıkları da bu.</p>
+      <p>Ama sıfır kişi öldü.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">59:28</span></h2>
+      <p>İşte buna itiraz ediyorum.</p>
+      <p>Trump yönetiminin ABD&#x27;nin yardım sisteminde gerçekleştirdiği değişime büyük ölçüde sempati duyuyorum.</p>
+      <p>Ancak bunun gerçekleşme hızı ve ani olması nedeniyle gereksiz acılara ve ölümlere yol açmış olmasının neredeyse kesin olduğunu düşünüyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">59:59</span></h2>
+      <p>Bu tamamen yanlış.</p>
+      <p>Bunun açıkça yanlış olmasının nedeni, bahsettiğimiz finansman miktarının Gates Vakfı veya McKenzie Bezos&#x27;un vakfı gibi özel bir vakıf tarafından karşılanabilecek miktardan çok daha az olması.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">60:20</span></h2>
+      <p>On milyarlarca dolar dağıttı.</p>
+      <p>Gates Vakfı&#x27;nın da on milyarlarca doları var.</p>
+      <p>Çok hızlı hareket edebilirler.</p>
+      <p>Eğer hareket etmedilerse onların da aynı ölçüde sorumlu olduğunu söylerim.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">60:30</span></h2>
+      <p>Anlıyorum. Tamam.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Açıkçası.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Pekâlâ. Adil bir nokta.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Sıfır kişi.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Sizi çok net duyuyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Sıfır.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">61:12</span></h2>
+      <p>Ülke içinde bu konulardan uzaklaştınız.</p>
+      <p>Yapmaya çalıştığınız şeyi yapmak zordu; bunu az önce açıkladınız.</p>
+      <p>Ama bu yönetim, iki buçuk yıl önce beklediğinizi düşündüğümden farklı yönlere gitti.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Herhangi bir yönetimin yaptığı her şeye katılmayacağım.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">61:28</span></h2>
+      <p>Bu yönetimden hayal kırıklığına uğradınız mı?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Hayır. Bence bu yönetim genel olarak mükemmel.</p>
+      <p>Hiçbir yönetim kusursuz değil ama alternatife kıyasla çok daha iyi.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">61:42</span></h2>
+      <p>Avrupa hakkında konuşabilir miyiz? Çok ama çok odaklandığınız bir yer.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Avrupa&#x27;ya o kadar da odaklanmış değilim.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Paylaşımlarınıza bakılırsa Avrupa konusunda oldukça endişelisiniz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Arada sırada bir şey paylaşıyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Oldukça sık. Arada sırada değil.</p>
+      <p>Ama ben Avrupa&#x27;da, Londra&#x27;da yaşayan biri olarak bununla gerçekten ilgileniyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">61:50</span></h2>
+      <p>Öncelikle yalnızca popülist sağa değil, aşırı sağa da destek veriyorsunuz. Hatta bazı ülkelerde çok marjinal partileri destekliyorsunuz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Normal insanları destekliyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Tamam.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Aşırı sağ demekle neyi kastettiğinizi anlamıyorum. Bu yanlış.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">62:00</span></h2>
+      <p>Kelimenin tam anlamıyla 10 veya 15 yıl geriye gitseniz, bu politikalar tamamen normaldi.</p>
+      <p>Bence oldukça komik bir numara var.</p>
+      <p>Obama&#x27;nın veya Hillary&#x27;nin bir konuşmasını alıp, bunu birine &quot;Trump&#x27;ın konuşması hakkında ne düşünüyorsun?&quot; diye sormak için kullanabilirsiniz.</p>
+      <p>&quot;Vay canına, o şimdiye kadarki en kötü insan&quot; derler.</p>
+      <p>Sonra &quot;Aslında bu Obama&#x27;nın konuşmasıydı&quot; dersiniz.</p>
+      <p>Veya &quot;Aslında bu Hillary&#x27;nin konuşmasıydı.&quot;</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">62:23</span></h2>
+      <p>Ülkenin siyasi merkezinin kaydığını kabul ediyorum. Demokrat Parti kesinlikle sola kaydı.</p>
+      <p>Ama ben Rupert Lowe gibi insanlardan bahsediyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Lütfen.</p>
+      <p>Bunlar gerçekten normal insanlar.</p>
+      <p>Sadece normal insanlar.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">62:39</span></h2>
+      <p>Prensipler şunlar:</p>
+      <p>Güvenli sınırlara sahip olmamız gerektiğini söylüyorum.</p>
+      <p>Güvenli şehirlere sahip olmamız gerektiğini söylüyorum.</p>
+      <p>Mantıklı harcamalar yapmamız gerektiğini söylüyorum.</p>
+      <p>Bunlardan hangisi aşırı sağ ve marjinal?</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Sizi ve medyayı aşırı sağın bu absürt şekilde tanımlanmasına karşı uyarmak isterim.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Bu yanlış, yanıltıcı ve saçmalık.</p>
+      <p>Lütfen bu kısmı kesinlikle bırakın.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">63:07</span></h2>
+      <p>Hepsini bırakacağız.</p>
+      <p>Ama buna itiraz etmek istiyorum.</p>
+      <p>X&#x27;te 250 milyona yakın takipçiniz var.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Evet, çünkü popüler biriyim.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>&quot;Britanya&#x27;da iç savaş kaçınılmaz. Sadece ne zaman olacağı meselesi&quot; gibi şeyler söylüyorsunuz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Evet.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">63:26</span></h2>
+      <p>Britanya&#x27;ya en son ne zaman gittiniz?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Birkaç yıl önce.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Tam olarak.</p>
+      <p>Ben orada yaşıyorum. Sürekli oradayım.</p>
+      <p>Bu saçmalık.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Kapalı bir çevrede yaşıyorsunuz.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Hayır, aslında öyle değilim.</p>
+      <p>Ayrıca rakamlar da söylediğinizi çürütüyor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Hangi rakamlar?</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Suçla ilgili bütün rakamlar.</p>
+      <p>Londra, ABD&#x27;deki herhangi bir şehirden çok daha güvenli bir şehir.</p>
+      <p>Birleşik Krallık&#x27;taki şiddet suçları sizin düşündüğünüz yerde değil.</p>
+      <p>Hatta azalıyor.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">63:51</span></h2>
+      <p>Siz, bu kadar çok takipçiniz olduğu için, birçok Amerikalının inandığı bir tablo çizdiniz:</p>
+      <p>Avrupa ve Birleşik Krallık&#x27;ın korkunç Müslüman göçmenler tarafından istila edildiği, her köşede tecavüz olduğu ve bir tür medeniyet yıkımının yaşandığı bir tablo.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Bunların hiçbirini söylemedim.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>&quot;Britanya&#x27;da iç savaş kaçınılmaz&quot; dediniz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Evet, mevcut eğilimler devam ederse kaçınılmaz.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">64:10</span></h2>
+      <p>Neden?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Batılı değerlere zıt inançlara sahip, büyük ve hızla büyüyen bir insan grubunuz varsa, bir noktada bir hesaplaşma olacaktır.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">64:29</span></h2>
+      <p>Onlar kendi görüşlerini uygulamaya çalışacaklar, buna karşı çıkanlar da karşı çıkacak ve buna iç savaş denir.</p>
+      <p>Açıkçası eğilim bu yönde.</p>
+      <p>Ayrıca kesinlikle kapalı bir çevrede yaşıyorsunuz.</p>
+      <p>İsterseniz Britanya turuna çıkabiliriz.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">64:47</span></h2>
+      <p>Elbette. Britanya turuna sizinle çıkmaktan çok memnun olurum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Sonra kendiniz göreceksiniz.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Sürekli yaşadığım ülkeyi, birkaç yıl önce gitmiş olduğunuz ülkeyi bana göstereceksiniz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">64:56</span></h2>
+      <p>Evet.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">64:56</span></h2>
+      <p>Kelimenin tam anlamıyla yüzlerce kez.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Ama en son ne zaman gittiniz?</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Kelimenin tam anlamıyla birkaç yıl önce.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">65:15</span></h2>
+      <p>Bunun beni neden bu kadar rahatsız ettiğini biliyor musunuz? Çünkü Birleşik Krallık hakkında gerçekten kamuoyunun görüşünü şekillendirdiniz. Karşılaştığım ve konuştuğum o kadar çok Amerikalı var ki Londra&#x27;nın ne kadar tehlikeli bir yer olduğunu, her yerde çetelerin bulunduğunu ve her yerde şiddet olduğunu söylüyorlar.</p>
+      <p>İnsanların, sizin X&#x27;te paylaştığınız veya X&#x27;te paylaşılan şeylerden edindiği tablo bu.</p>
+      <p>Örneğin 48 Hours adlı bir vatandaş-vigilante filmini 48 saat boyunca paylaşıyordunuz.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">65:30</span></h2>
+      <p>Bu film Avrupa&#x27;yı distopik bir yer olarak gösteriyor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>İzledim.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Evet. Ben de izledim. Dün izledim. Pek eğlenceli değildi. Çok iyi bir film de değil.</p>
+      <p>Ama aynı zamanda Avrupa&#x27;nın distopik bir görüntüsünü çiziyor ve kanunsuz şiddeti yüceltiyor. Müslüman bir göçmen ailenin öldürülmesini yüceltiyor.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">65:46</span></h2>
+      <p>Bunu X&#x27;te paylaşmanızın sorumsuzca olduğunu düşünüyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Bence bu bir film. İzlemeye değer.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Açıkça Avrupa&#x27;nın distopik bir yer olduğunu ima ediyorsunuz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Evet. Peki Avrupa&#x27;daki sansürle mücadele etmek için neden daha fazla şey yapmıyorsunuz?</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">66:08</span></h2>
+      <p>Avrupa&#x27;da sansürle mücadele etmek için pek bir şey yaptığınızı göremiyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Birleşik Krallık&#x27;ta sosyal medya paylaşımları nedeniyle insanların hapse atılması hakkında ne düşünüyorsunuz?</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Hayır, bu konuda başyazılar yayımladık. Ama benim meselem Birleşik Krallık değil.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Bence bu tür şeylerin kötü olduğunu düşünüyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Katılıyorum. Ancak kanunsuz şiddeti yüceltmeniz veya yaptığınız şeyleri paylaşarak Avrupa hakkında tamamen yanlış bir tablo çizmeniz gerektiğini düşünmüyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">66:35</span></h2>
+      <p>Bence öyle.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Birleşik Krallık turu yapmalıyız.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Evet.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Çünkü Birleşik Krallık aslında göçmenleri topluma entegre etme konusunda oldukça başarılı oldu. Birleşik Krallık bunu yapmakta oldukça etkili.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Sorunlar var.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Sorunlar olduğunu ilk kabul eden benim. Ancak bu, sizin 240 milyon takipçinize anlattığınız veya ima ettiğiniz tablo değil.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">67:01</span></h2>
+      <p>Hayır, bence ben tamamen haklıyım.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Bunu görmek zorundayız.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Özgür ifade özgürlüğünüz olduğu için...</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>İnsanların yanıldığınızı söylemesine izin vermek istemiyorsunuz. Ancak meseleniz yalnızca &quot;İstediğimi söylemeye hakkım var&quot; değil. Avrupa konusunda haklı olduğunuzu söylüyorsunuz ve gerçekten öyle olduğunuzu düşünmüyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">67:17</span></h2>
+      <p>Bence haklıyım.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Avrupa&#x27;daki insanların çoğunun veya en azından birçoğunun sizin bu konuda haklı olduğunuzu düşünmediğini göreceksiniz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Çünkü medya gerçekliği görmezden gelmeye devam ediyor.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">67:29</span></h2>
+      <p>Bunun doğru olduğunu da düşünmüyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Televizyon ve geleneksel medya tarafından...</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Bence burada daha büyük bir soru var.</p>
+      <p>Neden buna odaklanıyorsunuz? Neden bununla ilgileniyorsunuz?</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">67:38</span></h2>
+      <p>Çünkü konuşmamızın başında bana önümüzdeki 10 yılda gerçekleşecek olağanüstü, dönüştürücü, medeniyet değiştirecek gelişmelerden bahsettiniz.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">67:55</span></h2>
+      <p>Ve aynı zamanda sosyal medyanın en kötü türden kabileciliğinin, adeta bir lağım çukurunun sürekli katılımcısı oluyorsunuz.</p>
+      <p>Bu ikisi nasıl bir araya geliyor? Bunlar dünyanın iki çok farklı görünümü.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Bence birbiriyle çelişmiyor.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">68:11</span></h2>
+      <p>Peki neden ikinci kısmı, yani kabileciliği yapıyorsunuz?</p>
+      <p>İnsanlar size ırkçı diyor. Hakkınızda her türlü şey söyleniyor ve bunların çoğuna katılmayacağınızdan eminim.</p>
+      <p>Ama bunu yapmanızın motivasyonunu anlamıyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Çünkü...</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">68:31</span></h2>
+      <p>Çocuklarımın annelerinden biri yarı Hintli. Onunla dört çocuğum var. Çocuklarımdan birinin adı ünlü bir Hintli fizikçinin adından geliyor.</p>
+      <p>Dolayısıyla ırkçı olmadığımı söyleyebilirim.</p>
+      <p>Ayrıca şirketlerimde çalışan insanlara bakarsanız her ırktan üst düzey yöneticilerimiz var.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">68:57</span></h2>
+      <p>Burada herhangi bir ırkçılık olduğunu düşünmüyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Müslüman karşıtı mısınız?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Bir ülkeye, o ülkenin değerlerine taban tabana zıt görüşlerle gelen insanlara karşıyım.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">69:23</span></h2>
+      <p>Buna karşıyım.</p>
+      <p>Tecavüze ve cinayete karşıyım.</p>
+      <p>Batı&#x27;da kabul ettiğimiz kurallara ve yasalara aykırı kuralların ve yasaların dayatılmasına karşıyım.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">69:48</span></h2>
+      <p>Bence sizin gibi geleneksel medyanın bunları fark etmemesi gerçekten üzücü.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Öncelikle Avrupa&#x27;nın karşı karşıya olduğu sorunları büyük ölçüde abarttığınızı düşünüyorum.</p>
+      <p>İkinci olarak, bazı konularda sizinle tamamen aynı fikirdeyim.</p>
+      <p>Örneğin Birleşik Krallık&#x27;ta ifade özgürlüğüne getirilen bazı kısıtlamaların sorunlu olduğunu düşünüyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">70:06</span></h2>
+      <p>Beni endişelendiren şey, desteklediğiniz bazı insanların gerçekten çok kötü insanlar olması.</p>
+      <p>Örneğin AfD&#x27;nin bazı üyeleri. Alice Weidel, tanıştığım kadarıyla son derece düşünceli biri.</p>
+      <p>Ama partisinde gerçek neo-Naziler var. Gerçekten korkunç insanlar var.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">70:29</span></h2>
+      <p>Ve 240 milyon takipçinizle bu tür bir partiye koşulsuz destek vermeniz, Avrupa&#x27;da sahip olduğunuz etkinin boyutunu belki sizin bile fark etmediğiniz kadar büyük hale getiriyor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Umarım büyük bir etkim vardır.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">70:48</span></h2>
+      <p>Ama neden? Avrupa siyasetini neden şekillendirebilmelisiniz? Orada bile yaşamıyorsunuz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Ben bunu Batı&#x27;nın bütünü olarak görüyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">70:56</span></h2>
+      <p>Ama bütün bu güce sahip dünyanın en zengin insanının, bizim siyasetimizi etkileme hakkına sahip olduğunu düşünmesinin insanlarda neden tepki yarattığını görüyor musunuz?</p>
+      <p>İnsanların sizden nefret etmesinin nedenlerinden biri de bu.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Evet, bazı insanlar benden nefret ediyor.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Peki nedenini anlıyor musunuz? Yaptığınız şeyin Batı demokrasisine yardımcı olduğunu düşünüyor musunuz?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">71:18</span></h2>
+      <p>Bazı insanların benden nefret etmesi muhtemelen doğru. Umurumda değil.</p>
+      <p>Ama sizin de söylediğiniz gibi çeyrek milyar insanın beni takip etmesi, bence beni sevmeyenlerden çok daha fazla insanın beni sevdiğini gösteriyor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">71:35</span></h2>
+      <p>Ayrıca insanların sizden ve medyadan sandığınızdan çok daha fazla nefret ettiğini düşünüyorum.</p>
+      <p>Medyanın nefret edildiğinin farkında mısınız?</p>
+      <p>Gazetecilerin toplumdaki itibarı yaklaşık yüzde 15.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">71:53</span></h2>
+      <p>Amerika Birleşik Devletleri&#x27;nde.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Yani roller tersine dönmüş durumda. Sizden benden çok daha fazla nefret ediyorlar.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Gazeteciliğe hâlâ ciddi miktarda güven olduğunu düşünüyorum.</p>
+      <p>Gazetecilerin ve gazeteciliğin hatalar yaptığını tamamen kabul ediyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">72:12</span></h2>
+      <p>Ama özellikle sosyal medyada, X&#x27;te teşvik ettiğiniz şeylerin yarattığı kutuplaşmış ortamın bunu daha da kötüleştirdiğini düşünüyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Bence öyle değil. Bence sorun sizsiniz, medya.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">72:37</span></h2>
+      <p>Nefret konusuna gelmişken, sizden benden çok daha fazla nefret ediliyor ve bunun farkında bile değilmişsiniz gibi görünüyor.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Bana kıyasla çok az insan kim olduğumu biliyor. Aynı oyunun içinde olduğumuzu düşünmüyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">73:11</span></h2>
+      <p>Sizin de bildiğiniz gibi biz liberal değerleri, geleneksel klasik liberal değerleri savunuyoruz.</p>
+      <p>Gücün yoğunlaşmasından endişe ediyoruz ve bireye, bireyin onuruna ve bireysel özgürlüğe inanıyoruz.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">73:27</span></h2>
+      <p>Ben sizi uzun zamandır klasik liberal olarak gördüm.</p>
+      <p>Ama paylaşımlarınızı okuduğumda bazen gerçekten bunlara inanıp inanmadığınızı merak ediyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Kelimenin tam anlamıyla &quot;güvenli şehirler, güvenli sınırlar ve hükümet açısından makul harcamalar olmalı&quot; dedim.</p>
+      <p>Bu beni hiç de sağcı yapmaz.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">73:51</span></h2>
+      <p>Bu konularda ABD mi, Avrupa ülkeleri mi daha iyi durumda?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>ABD daha iyi.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Hayır.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Evet.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">74:06</span></h2>
+      <p>Güvenli şehirler açısından ABD, Birleşik Krallık&#x27;tan çok daha tehlikeli.</p>
+      <p>Makul harcama açısından burada bütçe açığı daha büyük ve kontrolden çıkmış durumda; siz bunu azaltmayı başaramadınız.</p>
+      <p>Güvenli sınırlar konusunda ise Trump yönetimi altında sizinle aynı fikirdeyim; daha önce değildim.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">74:18</span></h2>
+      <p>Yani bu üç konunun ikisinde Avrupa tartışmasız daha iyi durumda.</p>
+      <p>Buna rağmen Avrupa&#x27;yı adeta bir cehennem çukuruymuş gibi gösteriyorsunuz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Avrupa&#x27;nın cehennem çukuru olduğunu düşünmüyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Tamam, en azından bir konuda anlaşabiliyoruz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Bunu ne zaman söyledim?</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Avrupa hakkında çizdiğiniz tablo...</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Bir şeyler uyduruyorsunuz.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">74:42</span></h2>
+      <p>Hayır, uydurmuyorum.</p>
+      <p>Birleşik Krallık&#x27;ta iç savaşın kaçınılmaz olduğunu söylüyorsunuz ve Avrupa&#x27;yı gerçekten bir cehennem çukuru gibi gösteren Citizen Vigilante filmini destekliyorsunuz.</p>
+      <p>Film uğursuz bir müzikle başlıyor ve Avrupa...</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Kontrolden çıkmış tecavüz ve cinayet vardı.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">75:02</span></h2>
+      <p>Bu ülkede tehlike Avrupa&#x27;dakinden daha fazla.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Buradaki tehlikenin nedeni, tekrarlayan şiddet suçlularını hapse atmakta başarısız olmamız.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">75:22</span></h2>
+      <p>Bir kişi şiddet suçları nedeniyle kelimenin tam anlamıyla 50 kez tutuklanıyorsa, sonunda birini öldürecektir.</p>
+      <p>Dolayısıyla ya onları hapse atarsınız ya da insanlar ölür.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Bence silahların yaygınlığının da bununla çok ilgisi var.</p>
+      <p>Bu ülke çok daha tehlikeli. Cinayet oranlarının çok daha yüksek olmasının büyük nedenlerinden biri bu kadar çok silah bulunması.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">75:35</span></h2>
+      <p>Size ilginç bir rakam vereyim.</p>
+      <p>Avrupa&#x27;da sıcak nedeniyle ölen insanların sayısı, Amerika&#x27;da silahlı saldırılarda ölen insanlardan daha fazla.</p>
+      <p>Neden klima hakkında bir makale yazmıyorsunuz?</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">75:55</span></h2>
+      <p>Aslında klima hakkında birkaç makale yazdık. Geçen hafta kapağımızda da uzun bir yazımız vardı...</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Düzenleme yanlısı mı?</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Evet, düzenlemeyi çok destekliyoruz.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Tamam, güzel.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Gerçekten çok düzenleme yanlısıyız. Bizi okumalısınız.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">76:18</span></h2>
+      <p>Bence The Economist hakkında tamamen doğru olmayan bir görüşünüz var.</p>
+      <p>İngiltere&#x27;ye gelin, The Economist&#x27;i okumaya başlayın. Sonra bu konudaki eleştirilerim konusunda ben de hatalıysam bunu kabul ederim.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Britanya&#x27;nın ve Avrupa&#x27;nın birçok bölgesi güvenli değil. Her yerde rahatça dolaşamazsınız.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">76:32</span></h2>
+      <p>Ama bu ülkede çok daha fazla böyle yer var.</p>
+      <p>Çok daha fazla.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Hayır, bunun doğru olduğunu düşünmüyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Pekâlâ, o zaman doğrulayıcılarıma kontrol ettirelim.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Bunun doğru olduğunu düşünmüyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">76:52</span></h2>
+      <p>Bence neden yaptığınızı artık biraz anlıyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Mesele Amerika&#x27;nın mükemmel olup olmadığı değil.</p>
+      <p>Soru, Avrupa&#x27;nın ciddi ve büyüyen bir sorunu olup olmadığı.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Hangisinin daha tehlikeli olduğu da önemli; konuşmaya buradan başlamıştık.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">77:03</span></h2>
+      <p>Avrupa&#x27;nın ciddi ve büyüyen bir sorunu var.</p>
+      <p>Amerika Birleşik Devletleri&#x27;nin hiçbir sorunu olmadığını söylemeyeceğim. Elbette var.</p>
+      <p>Hepimiz bu sorunları çözmeye çalışmalıyız.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Bu konuda anlaşabiliriz.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">77:20</span></h2>
+      <p>Hepimiz sorunları çözmeye çalışmalıyız.</p>
+      <p>Benim söylediğim yalnızca Avrupa&#x27;nın sorununun boyutunu abarttığınız ve müdahalelerinizin, ne kadar iyi niyetli olursa olsun, Avrupa&#x27;nın sorununu daha da kötüleştirme riski taşıdığı.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Nasıl?</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Çünkü desteğinizi proto-otoriter kişilere veriyorsunuz.</p>
+      <p>Bunlar yalnızca Müslümanların daha iyi entegre edilmesini veya sınırların güvenli hale getirilmesini istemiyorlar; çok açık faşist eğilimleri olan insanlar var.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">77:44</span></h2>
+      <p>Ve Avrupa içinde büyük bölünmelere neden olacaksınız.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Bence söyledikleriniz tamamen kurgu.</p>
+      <p>Ben yalnızca Avrupa&#x27;nın güvenli sınırlara sahip olması gerektiğini söylüyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">77:57</span></h2>
+      <p>Yani Avrupa&#x27;nın güvenli sınırlara sahip olması gerektiğini söylüyorsanız, size tamamen katılıyorum.</p>
+      <p>O zaman sosyal medyadaki müdahalelerinizi yanlış anlamışım; çünkü desteklediğiniz insanlara ve yaptığınız şeylere baktığımda çıkardığım sonuç bu değildi.</p>
+      <p>Ama amacınız buysa, aynı amacı paylaşıyorum: Avrupa&#x27;nın güvenli sınırları olmalı.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">78:33</span></h2>
+      <p>Bu da beni başka bir soruya getiriyor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Sınırların neden güvenli olmadığını açıklayayım.</p>
+      <p>Temel itici güç, ciddi sosyal yardımlar sağlayan bir refah devletiniz olduğunda ortaya çıkıyor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">78:59</span></h2>
+      <p>Oraya gelen herkese önemli miktarda yardım sağlarsanız, yaşam standardı daha düşük olan insanlar için Avrupa&#x27;ya gelmek çok güçlü bir ekonomik teşvik haline gelir.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">79:18</span></h2>
+      <p>Bu çok temel bir şey.</p>
+      <p>İnsanlar dünyanın başka yerlerinde sahip olduklarından daha yüksek bir yaşam standardını Avrupa&#x27;da elde edeceklerse buraya gelirler.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Buna katılıyorum. Buna itiraz etmiyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">79:30</span></h2>
+      <p>Ekonomik koşullar ve ekonomik etkiler göçün büyük bölümünü belirliyor.</p>
+      <p>İltica ayrı bir konu ama göç üzerinde güçlü baskılar olduğu konusunda tamamen haklısınız.</p>
+      <p>Ancak odaklanmadığınız başka bir şey var: göçün birçok faydası da bulunuyor.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">79:51</span></h2>
+      <p>Özellikle hızla yaşlanan bir kıta olan Avrupa&#x27;da bu önemli.</p>
+      <p>Tamamen kontrolsüz sınırların kötü bir fikir olduğu konusunda anlaşabiliriz.</p>
+      <p>Ama Avrupa&#x27;nın kontrollü göçten fayda sağladığını düşünüyorum.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Evet, göçten yanayım.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">80:04</span></h2>
+      <p>Aksi halde ABD&#x27;ye göç etmiş biri olarak ikiyüzlü davranmış olurdum.</p>
+      <p>Göç eden kişinin toplumun üretken bir üyesi olması, dürüst olması ve geldiği ülkedeki insanlara kötü davranmaması koşuluyla göçten yanayım.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">80:17</span></h2>
+      <p>Bunların hepsine katılabilirim.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Evet.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Ama bence Avrupa bu konuda sizin düşündüğünüzden daha iyi durumda.</p>
+      <p>Ayrıldığımız nokta bu.</p>
+      <p>Ama devam edelim.</p>
+      <p>İnsanların sizin hakkınızda en çok yanlış anladığı şey nedir?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">80:29</span></h2>
+      <p>Son 20 dakikada benim hakkımda bir sürü şeyi yanlış söylediniz.</p>
+      <p>Neredeyse her şeyi yanlış anladınız.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">80:38</span></h2>
+      <p>Yani sizin siyasi görüşlerinizi mi yanlış anlıyorum?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Tekrar etmeyelim.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Peki, insanların sizin siyasi tarafınız hakkında en çok yanlış anladığı şey bu mu?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">80:47</span></h2>
+      <p>Evet.</p>
+      <p>Siyasi görüşlerim merkezde.</p>
+      <p>Kesinlikle aşırı sağ değil.</p>
+      <p>Açıkçası buna aşırı sağ demek tarihe hakaret, birçok insana hakaret ve akıl almaz bir yalan.</p>
+      <p>Tamamen saçma.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">81:18</span></h2>
+      <p>Pozisyonumu açıkça belirttim.</p>
+      <p>Güvenli sınırlar olmalı.</p>
+      <p>Eğer göçmen akını olacaksa, Batı idealleri ve Batı değerleriyle uyumlu insanlar olmalı.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">81:42</span></h2>
+      <p>Uzun vadede Batı değerlerini kabul etmeyen veya bazı durumlarda bunlara kesinlikle karşı olan insanların sayısı artarsa, kendinizi iç savaşa hazırlıyorsunuz.</p>
+      <p>Bu açık.</p>
+      <p>Bir çocuk bile bunu görebilir.</p>
+      <p>Bu sağcı bir görüş değil.</p>
+      <p>Ben yalnızca gerçekliği ifade ediyorum.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>İkimiz de kanıtların hangimizin daha doğru olduğunu göstereceği konusunda anlaşabiliriz.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">81:58</span></h2>
+      <p>Avrupa&#x27;nın farklı bölgelerinde ikimizin görüşünü de destekleyen kanıtlar bulacağız.</p>
+      <p>Asıl soru genel tablonun ne olduğu.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Geleceği tahmin etme konusunda çok iyiyim.</p>
+      <p>Mükemmel değilim ama bir insan için isabet oranım çok yüksek.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">82:26</span></h2>
+      <p>Burada biraz Cassandra etkisi var.</p>
+      <p>İnsanlar söylediklerimin gerçekleşme ihtimalinin yüksek olduğuna inanmıyorlar çünkü geleceği çoğu insandan daha yüksek bir başarı olasılığıyla görebildiğimi düşünüyorum.</p>
+      <p>Mükemmel değil, ama olasılık olarak daha başarılıyım.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">82:42</span></h2>
+      <p>Bazı durumlarda insanların sezgilerine aykırı şeyler de dahil olmak üzere...</p>
+      <p>Yine, her zaman haklı olduğumu söylemiyorum. Kesinlikle değilim.</p>
+      <p>Ama isabet oranım çok iyi.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">82:58</span></h2>
+      <p>Cassandra etkisi nedeniyle insanlar söylediklerimin gerçekleşeceğini fark etmiyor.</p>
+      <p>Belki tam olarak tahmin ettiğim zamanda gerçekleşmeyebilir ama gerçekleşecek.</p>
+      <p>Tarih kararını verecek.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">83:25</span></h2>
+      <p>Ama söylediklerimin çok azının yanlış olduğunu ve büyük çoğunluğunun oldukça doğru olduğunu ve gerçekleşeceğini göreceğinizi düşünüyorum.</p>
+      <p>Tabii yön değişikliği olmazsa.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Geleceğe ilişkin beklentileriniz konusunda, konuşmamızın ilk bölümündeki yapay zekâ konusunda mı, yoksa son bölümdeki siyasi konularda mı daha yüksek güveniniz var?</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">83:39</span></h2>
+      <p>Yapay zekâ.</p>
+      <p>Dijital süperzekâya &quot;tekillik&quot; denmesinin nedeni, kara delik gibi, sonrasında ne olacağını bilmemeniz.</p>
+      <p>Her şeyi içine çeken bir şey gibi.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">83:54</span></h2>
+      <p>Bence burada gerçekten büyük makro etkiler açısından yapay zekâ ve robotlar her şeye hâkim olacak.</p>
+      <p>10 yıldan kısa bir zaman ölçeğinde.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist<span class="ts">84:14</span></h2>
+      <p>Bu da muhtemelen konuştuğumuz diğer şeyleri daha az önemli ve daha az anlamlı hale getiriyor.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk</h2>
+      <p>Yapay zekâ ve robotik devrimi, Britanya&#x27;daki iç savaştan daha önce gerçekleşecek.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">84:35</span></h2>
+      <p>Britanya&#x27;daki iç savaşın muhtemelen 20 yıl uzakta olduğunu söyleyebilirim.</p>
+      <p>Yapay zekâ ve robotik tekillik ise 10 yıl uzakta.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Umarım bu iyicil, her şeye gücü yeten yapay zekâlar böyle sonuçların ortaya çıkmasını engeller.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">84:51</span></h2>
+      <p>Muhtemelen engeller.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Eamonn, söylediğiniz her şeye katılmıyorum ama sizinle konuşmak her zaman son derece ilginç.</p>
+      <p>Çok teşekkür ederim.</p>
+    </section>
+    <section class="turn musk">
+      <h2 class="who">Elon Musk<span class="ts">84:57</span></h2>
+      <p>Rica ederim.</p>
+      <p>Sıkıcı değilim.</p>
+    </section>
+    <section class="turn econ">
+      <h2 class="who">The Economist</h2>
+      <p>Kesinlikle sıkıcı değilsiniz.</p>
+    </section>
+</main>
+
+<footer>
+  <p>Türkçe çeviri. Zaman damgaları orijinal röportaj videosuna aittir.</p>
+</footer>
+
+<button id="top" aria-label="Başa dön">↑</button>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var size = parseFloat(localStorage.getItem('elon-fs') || '18');
+  function apply() {
+    size = Math.min(26, Math.max(14, size));
+    root.style.setProperty('--fs', size + 'px');
+    localStorage.setItem('elon-fs', size);
+  }
+  apply();
+  document.getElementById('bigger').onclick = function () { size += 1; apply(); };
+  document.getElementById('smaller').onclick = function () { size -= 1; apply(); };
+
+  var bar = document.getElementById('progress');
+  var top = document.getElementById('top');
+  top.onclick = function () { window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  function onScroll() {
+    var h = document.body.scrollHeight - window.innerHeight;
+    var y = window.scrollY;
+    bar.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+    top.classList.toggle('show', y > 1200);
+  }
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', onScroll);
+  onScroll();
+})();
+</script>
+</body>
+</html>
