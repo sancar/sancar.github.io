@@ -429,14 +429,14 @@
 
   <div style="position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; pointer-events: none;">
     <div style="position: absolute; left: 90px; top: 42px; display: flex; flex-direction: column; gap: 6px;">
-      <div style="font-size: 28px; letter-spacing: 1px; color: #ffe3cf; text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.55);">Birtanem &amp; Biricik</div>
+      <div style="font-size: 28px; letter-spacing: 1px; color: #ffe3cf; text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.55);">Biricik &amp; Birtanem</div>
       <div style="display: flex; align-items: center; gap: 12px; font-size: 20px; color: #e5c3ff; text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55);">
         <span id="dateLabel">&nbsp;</span>
         <span id="clockDot" style="width: 8px; height: 8px; background: #8a6bff;"></span>
         <span id="clockLabel">&nbsp;</span>
       </div>
     </div>
-    <div id="counter" style="position: absolute; right: 90px; top: 46px; text-align: right; font-size: 18px; color: #b9a8d8; text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55);">&nbsp;</div>
+    <div id="counter" style="position: absolute; right: 90px; top: 46px; text-align: right; font-size: 18px; color: #b9a8d8; text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55); white-space: pre-line; line-height: 1.4;">&nbsp;</div>
 
     <div id="thread" style="position: absolute; left: 690px; top: 140px; width: 540px; height: 420px; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; overflow: hidden;"></div>
 
@@ -454,6 +454,7 @@
 
   <div style="position: absolute; left: 0; bottom: 0; width: 1920px; padding: 12px 90px 16px; display: flex; align-items: center; gap: 18px; background: linear-gradient(180deg, rgba(7, 6, 15, 0) 0%, rgba(7, 6, 15, 0.82) 45%);">
     <audio id="bgm" src="sound.mp3" loop preload="auto"></audio>
+    <button id="rew" class="btn" title="Ba&#351;a d&#246;n" style="width: 40px; height: 40px; font-size: 16px; border-width: 2px;">&#124;&#9664;</button>
     <button id="play" class="btn" style="width: 60px; height: 40px; flex: none; background: #ffb38a; color: #2a1830; border-color: #2a1830; box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5); font-size: 18px;">&#10074;&#10074;</button>
     <input id="seek" type="range" min="0" max="100" step="1" value="0" style="flex: 1; height: 16px; cursor: pointer;" />
     <div style="flex: none; display: flex; align-items: center; gap: 9px;">
@@ -538,25 +539,38 @@
     return new TextDecoder('utf-8').decode(pt);
   }
 
-  var HEAD = /^(\d{1,2})\/(\d{1,2})\/(\d{2}), (\d{1,2}):(\d{2})(?::\d{2})?\s*(AM|PM|am|pm)? - ([\s\S]*)$/;
+  var HEAD_SLASH = /^(\d{1,2})\/(\d{1,2})\/(\d{2}|\d{4}),? (\d{1,2}):(\d{2})(?::\d{2})?\s*(AM|PM|am|pm)? - ([\s\S]*)$/;
+  var HEAD_DOT = /^(\d{1,2})[.\-](\d{1,2})[.\-](\d{2}|\d{4}),? (\d{1,2}):(\d{2})(?::\d{2})?\s*(AM|PM|am|pm)? - ([\s\S]*)$/;
+  var SKIPPED = 0;
+
+  function yr(v) { var n = +v; return n < 100 ? 2000 + n : n; }
+
   function parseChat(text) {
     var lines = text.split(/\r?\n/), msgs = [];
+    SKIPPED = 0;
     for (var k = 0; k < lines.length; k++) {
-      var m = lines[k].match(HEAD);
+      var ln = lines[k], dotFmt = false, m = ln.match(HEAD_SLASH);
+      if (!m) { m = ln.match(HEAD_DOT); dotFmt = !!m; }
       if (m) {
         var h = +m[4];
         if (m[6]) { var P = m[6].toUpperCase() === 'PM'; if (h === 12) h = P ? 12 : 0; else if (P) h += 12; }
+        // slash = month-first (WhatsApp US); dot/dash = day-first (EU)
+        var mo = dotFmt ? +m[2] : +m[1], da = dotFmt ? +m[1] : +m[2];
+        if (mo > 12 && da <= 12) { var sw = mo; mo = da; da = sw; }
         var rest = m[7], c = rest.indexOf(': ');
-        if (!(c > 0 && c < 40)) continue;
-        msgs.push({ t: Date.UTC(2000 + +m[3], +m[1] - 1, +m[2], h, +m[5]), s: rest.slice(0, c) === NAMES[0] ? 0 : 1, x: rest.slice(c + 2) });
-      } else if (msgs.length && lines[k].trim()) {
-        msgs[msgs.length - 1].x += '\n' + lines[k];
+        if (!(c > 0 && c < 40)) { SKIPPED++; continue; }
+        msgs.push({ t: Date.UTC(yr(m[3]), mo - 1, da, h, +m[5]), s: rest.slice(0, c) === NAMES[0] ? 0 : 1, x: rest.slice(c + 2) });
+      } else if (msgs.length && ln.trim()) {
+        msgs[msgs.length - 1].x += '\n' + ln;
+      } else if (ln.trim()) {
+        SKIPPED++;
       }
     }
+    msgs.sort(function (a, b) { return a.t - b.t; });
     return msgs;
   }
 
-  var M = [], base = 0, N = 0;
+  var M = [], base = 0, N = 0, RANGE = '';
   var st = { i: 0, playing: true, mins: 0, typing: -1, speed: 1 }, p = 0, last = 0, lastMin = -1, lastI = -1;
   var esc = function (s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; };
 
@@ -641,7 +655,7 @@
 
   function paintMsg(jumped) {
     if (jumped) { rebuild(); } else { appendLatest(); }
-    refs.counter.textContent = (st.i + 1).toLocaleString('tr-TR') + ' / ' + N.toLocaleString('tr-TR') + ' mesaj';
+    refs.counter.textContent = (st.i + 1).toLocaleString('tr-TR') + ' / ' + N.toLocaleString('tr-TR') + ' mesaj' + RANGE;
     refs.seek.value = String(st.i);
     try { localStorage.setItem('sb-chat-idx', String(st.i)); } catch (e) {}
   }
@@ -681,12 +695,21 @@
     if (!M.length) throw new Error('Sohbet okunamad\u0131.');
     N = M.length;
     base = M[0].t;
+    var d0 = new Date(M[0].t), d1 = new Date(M[N - 1].t);
+    RANGE = '\n' + d0.getUTCDate() + ' ' + MONTHS[d0.getUTCMonth()] + ' ' + d0.getUTCFullYear() +
+      ' \u2192 ' + d1.getUTCDate() + ' ' + MONTHS[d1.getUTCMonth()] + ' ' + d1.getUTCFullYear();
+    if (window.console) console.log('[chat] ' + N + ' messages, ' + SKIPPED + ' lines skipped, ' + d0.toISOString() + ' -> ' + d1.toISOString());
     $('gate').style.display = 'none';
     $('fit').style.display = 'block';
     collect();
     fit();
     var saved = 0;
-    try { var v = +localStorage.getItem('sb-chat-idx'); if (v > 0 && v < N) saved = v; } catch (e) {}
+    try {
+      var v = +localStorage.getItem('sb-chat-idx');
+      var sig = localStorage.getItem('sb-chat-sig');
+      if (sig === String(N) && v > 0 && v < N) saved = v;   // new/changed archive -> start at the beginning
+      localStorage.setItem('sb-chat-sig', String(N));
+    } catch (e) {}
     st.i = saved;
     st.mins = (M[st.i].t - base) / 60000;
     refs.seek.max = String(N - 1);
@@ -724,6 +747,11 @@
     };
     paintSound();
     if (sndOn) playBgm();
+    $('rew').onclick = function () {
+      st.i = 0; p = 0; st.typing = -1; st.mins = 0; st.playing = true;
+      refs.play.innerHTML = '&#10074;&#10074;';
+      paintMsg(true); paintScene();
+    };
     $('slower').onclick = function () { st.speed = Math.max(0.25, +(st.speed / 1.5).toFixed(3)); refs.speedLabel.textContent = st.speed + '\u00d7'; };
     $('faster').onclick = function () { st.speed = Math.min(64, +(st.speed * 1.5).toFixed(3)); refs.speedLabel.textContent = st.speed + '\u00d7'; };
     document.addEventListener('keydown', function (e) {
@@ -743,7 +771,7 @@
     err.textContent = '\u00e7\u00f6z\u00fcl\u00fcyor\u2026';
     $('go').disabled = true;
     try {
-      var res = await fetch(ENC_FILE, { cache: 'force-cache' });
+      var res = await fetch(ENC_FILE + '?v=' + Date.now(), { cache: 'no-store' });
       if (!res.ok) throw new Error(ENC_FILE + ' bulunamad\u0131 (' + res.status + ').');
       var text = await decrypt(b64ToBytes(await res.text()), pw);
       start(text);
